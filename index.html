@@ -1077,8 +1077,8 @@
     <!-- Music Player -->
     <div class="music-player" id="musicPlayer">
         <i class="fas fa-pause"></i>
-        <audio id="weddingMusic" loop>
-            <source src="/audio/Cigarettes out the Window [7j6C9METNm0].mp3" type="audio/mpeg">
+        <audio id="weddingMusic" autoplay loop>
+            <source src="/audio/Cigarettes out the Window [7j6C9METNm0].mp3" type="audio/mpeg" autoplay loop>
         </audio>
     </div>
 
@@ -1157,7 +1157,6 @@
             }, 500);
 
             // Play music automatically (muted by default due to browser autoplay policies)
-            audioElement.muted = true;
             audioElement.play().then(() => {
                 // Once play is successful, we can unmute if user interacts
                 musicPlayer.addEventListener('click', function () {

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
@@ -7,14 +8,16 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&family=Poppins:wght@300;400;500&display=swap"
+        rel="stylesheet">
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-        
+
         body {
             font-family: 'Poppins', sans-serif;
             overflow-x: hidden;
@@ -47,7 +50,9 @@
             z-index: -1;
         }
 
-        h1, h2, h3 {
+        h1,
+        h2,
+        h3 {
             font-family: 'Playfair Display', serif;
             font-weight: 500;
         }
@@ -169,7 +174,7 @@
             transition: opacity 0.5s ease, transform 0.5s ease;
             pointer-events: none;
         }
-        
+
         .section.active {
             opacity: 1;
             transform: translateY(0);
@@ -224,9 +229,17 @@
         }
 
         @keyframes pulse {
-            0% { box-shadow: 0 0 0 0 rgba(255, 107, 107, 0.7); }
-            70% { box-shadow: 0 0 0 10px rgba(255, 107, 107, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(255, 107, 107, 0); }
+            0% {
+                box-shadow: 0 0 0 0 rgba(255, 107, 107, 0.7);
+            }
+
+            70% {
+                box-shadow: 0 0 0 10px rgba(255, 107, 107, 0);
+            }
+
+            100% {
+                box-shadow: 0 0 0 0 rgba(255, 107, 107, 0);
+            }
         }
 
         /* Updated Bottom Navbar */
@@ -240,6 +253,7 @@
             background: rgba(255, 255, 255, 0.98);
             display: flex;
             justify-content: center;
+            overflow: hidden;
             align-items: center;
             padding: 10px 15px;
             border-radius: 50px;
@@ -251,7 +265,7 @@
             overflow-x: auto;
             white-space: nowrap;
         }
-        
+
         .nav-item {
             display: flex;
             flex-direction: column;
@@ -264,32 +278,32 @@
             position: relative;
             flex-shrink: 0;
         }
-        
+
         .nav-item i {
             font-size: 18px;
             margin-bottom: 4px;
             transition: all 0.3s ease;
         }
-        
+
         .nav-item span {
             font-size: 11px;
             transition: all 0.3s ease;
         }
-        
+
         .nav-item.active {
             color: #ff6b6b;
         }
-        
+
         .nav-item.active i {
             transform: scale(1.2);
             color: #ff6b6b;
         }
-        
+
         .nav-item.active span {
             font-weight: 600;
             color: #ff6b6b;
         }
-        
+
         .nav-item::before {
             content: '';
             position: absolute;
@@ -303,12 +317,12 @@
             opacity: 0;
             transition: all 0.3s ease;
         }
-        
+
         .nav-item.active::before {
             opacity: 1;
             bottom: -5px;
         }
-        
+
         .nav-item:hover {
             color: #ff6b6b;
         }
@@ -473,41 +487,54 @@
             transform: translateY(-50%) rotate(-90deg);
         }
 
-        /* Updated Gallery Styles */
-        .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 8px;
-            margin-top: 1.5rem;
-            max-height: calc(100vh - 300px);
-            overflow-y: hidden;
-            padding: 5px;
-        }
+        /* Square Gallery Styles */
+.square-gallery {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+    margin-top: 1.5rem;
+}
 
-        .gallery-item {
-            border-radius: 5px;
-            position: relative;
-            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
-            height: 120px;
-            cursor: pointer;
-            overflow: hidden;
-        }
+.gallery-item {
+    aspect-ratio: 1/1;
+    position: relative;
+    border-radius: 6px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
 
-        .gallery-item img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.3s ease;
-        }
+.gallery-item:hover {
+    transform: scale(1.02);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    z-index: 1;
+}
 
-        .gallery-item:hover img {
-            transform: scale(1.05);
-        }
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
 
-        .gallery-item.wide {
-            grid-column: span 2;
-            height: 150px;
-        }
+.gallery-item:hover img {
+    transform: scale(1.05);
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .square-gallery {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 6px;
+    }
+}
+
+@media (max-width: 480px) {
+    .square-gallery {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 4px;
+    }
+}
 
         /* Updated Event Section */
         #event .box-border {
@@ -515,11 +542,11 @@
         }
 
         .event-details {
-            margin: 1rem 0;
+            margin: 10px;
             background: rgba(255, 255, 255, 0.7);
             padding: 1.2rem;
             border-radius: 8px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            box-shadow: 5px 5px 15px 15px rgba(0, 0, 0, 0.05);
             width: 100%;
         }
 
@@ -602,8 +629,15 @@
         }
 
         @keyframes zoomIn {
-            from { transform: scale(0.8); opacity: 0; }
-            to { transform: scale(1); opacity: 1; }
+            from {
+                transform: scale(0.8);
+                opacity: 0;
+            }
+
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
         }
 
         /* Responsive adjustments */
@@ -612,12 +646,12 @@
                 max-width: 95%;
                 padding: 8px 10px;
             }
-            
+
             .nav-item {
                 min-width: 45px;
                 padding: 5px;
             }
-            
+
             .nav-item span {
                 font-size: 10px;
             }
@@ -626,11 +660,15 @@
                 width: 50px;
             }
 
-            .floral-1, .floral-2, .floral-3, .floral-4 {
+            .floral-1,
+            .floral-2,
+            .floral-3,
+            .floral-4 {
                 width: 60px;
             }
 
-            .floral-center-top, .floral-center-bottom {
+            .floral-center-top,
+            .floral-center-bottom {
                 width: 70px;
             }
 
@@ -645,51 +683,43 @@
             .countdown {
                 gap: 8px;
             }
-            
+
             .countdown-item {
                 max-width: 60px;
             }
-            
+
             .countdown-number {
                 font-size: 1.5rem;
             }
         }
-        
+
         @media (max-width: 480px) {
             .cover h1 {
                 font-size: 2rem;
             }
-            
+
             .cover p {
                 font-size: 1rem;
             }
-            
+
             .box-border {
                 padding: 20px;
                 width: 95%;
             }
-            
+
             .couple-names {
                 font-size: 1.8rem;
             }
-            
+
             .nav-item span {
                 display: none;
             }
-            
+
             .nav-item {
                 min-width: 40px;
                 padding: 5px;
             }
-            
-            .gallery-item {
-                height: 100px;
-            }
-            
-            .gallery-item.wide {
-                height: 120px;
-            }
-            
+
             .bottom-nav {
                 width: 95%;
                 padding: 8px;
@@ -699,11 +729,15 @@
                 width: 40px;
             }
 
-            .floral-1, .floral-2, .floral-3, .floral-4 {
+            .floral-1,
+            .floral-2,
+            .floral-3,
+            .floral-4 {
                 width: 50px;
             }
 
-            .floral-center-top, .floral-center-bottom {
+            .floral-center-top,
+            .floral-center-bottom {
                 width: 60px;
             }
 
@@ -722,21 +756,22 @@
             .countdown {
                 gap: 5px;
             }
-            
+
             .countdown-item {
                 max-width: 50px;
             }
-            
+
             .countdown-number {
                 font-size: 1.2rem;
             }
-            
+
             .countdown-label {
                 font-size: 0.6rem;
             }
         }
     </style>
 </head>
+
 <body>
     <!-- Cover Section -->
     <div class="cover" id="cover">
@@ -753,12 +788,17 @@
         <section id="home" class="section active">
             <div class="box-border">
                 <!-- Floral decorations -->
-                <img class="floral-decoration floral-1" src="https://media-public.canva.com/fJDB4/MAFAICfJDB4/1/t.png" alt="floral decoration">
-                <img class="floral-decoration floral-2" src="https://media-public.canva.com/fJDB4/MAFAICfJDB4/1/t.png" alt="floral decoration">
-                <img class="floral-decoration floral-3" src="https://media-public.canva.com/fJDB4/MAFAICfJDB4/1/t.png" alt="floral decoration">
-                <img class="floral-decoration floral-4" src="https://media-public.canva.com/fJDB4/MAFAICfJDB4/1/t.png" alt="floral decoration">
-                <img class="floral-decoration floral-center-top" src="https://media-public.canva.com/fJDB4/MAFAICfJDB4/1/t.png" alt="floral decoration">
-                
+                <img class="floral-decoration floral-1" src="https://media-public.canva.com/fJDB4/MAFAICfJDB4/1/t.png"
+                    alt="floral decoration">
+                <img class="floral-decoration floral-2" src="https://media-public.canva.com/fJDB4/MAFAICfJDB4/1/t.png"
+                    alt="floral decoration">
+                <img class="floral-decoration floral-3" src="https://media-public.canva.com/fJDB4/MAFAICfJDB4/1/t.png"
+                    alt="floral decoration">
+                <img class="floral-decoration floral-4" src="https://media-public.canva.com/fJDB4/MAFAICfJDB4/1/t.png"
+                    alt="floral decoration">
+                <img class="floral-decoration floral-center-top"
+                    src="https://media-public.canva.com/fJDB4/MAFAICfJDB4/1/t.png" alt="floral decoration">
+
                 <h1>The Wedding of</h1>
                 <div class="couple-names">
                     <span>Arka Annur</span>
@@ -773,21 +813,27 @@
         <section id="couple" class="section">
             <div class="box-border">
                 <!-- Floral decorations -->
-                <img class="floral-decoration floral-1" src="https://media-public.canva.com/fJDB4/MAFAICfJDB4/1/t.png" alt="floral decoration">
-                <img class="floral-decoration floral-2" src="https://media-public.canva.com/fJDB4/MAFAICfJDB4/1/t.png" alt="floral decoration">
-                <img class="floral-decoration floral-center-top" src="https://media-public.canva.com/fJDB4/MAFAICfJDB4/1/t.png" alt="floral decoration">
-                <img class="floral-decoration floral-center-bottom" src="https://media-public.canva.com/fJDB4/MAFAICfJDB4/1/t.png" alt="floral decoration">
-                
+                <img class="floral-decoration floral-1" src="https://media-public.canva.com/fJDB4/MAFAICfJDB4/1/t.png"
+                    alt="floral decoration">
+                <img class="floral-decoration floral-2" src="https://media-public.canva.com/fJDB4/MAFAICfJDB4/1/t.png"
+                    alt="floral decoration">
+                <img class="floral-decoration floral-center-top"
+                    src="https://media-public.canva.com/fJDB4/MAFAICfJDB4/1/t.png" alt="floral decoration">
+                <img class="floral-decoration floral-center-bottom"
+                    src="https://media-public.canva.com/fJDB4/MAFAICfJDB4/1/t.png" alt="floral decoration">
+
                 <h1>Mempelai</h1>
                 <div class="couple-info">
                     <h2>Arka Annur</h2>
                     <p>Putra pertama dari Bapak Ahmad dan Ibu Siti</p>
                     <div class="divider">
-                        <img class="floral-decoration floral-divider-left" src="https://media-public.canva.com/fJDB4/MAFAICfJDB4/1/t.png" alt="floral decoration">
+                        <img class="floral-decoration floral-divider-left"
+                            src="https://media-public.canva.com/fJDB4/MAFAICfJDB4/1/t.png" alt="floral decoration">
                         <div class="divider-line"></div>
                         <i class="fas fa-heart"></i>
                         <div class="divider-line"></div>
-                        <img class="floral-decoration floral-divider-right" src="https://media-public.canva.com/fJDB4/MAFAICfJDB4/1/t.png" alt="floral decoration">
+                        <img class="floral-decoration floral-divider-right"
+                            src="https://media-public.canva.com/fJDB4/MAFAICfJDB4/1/t.png" alt="floral decoration">
                     </div>
                     <h2>Setya Ayu</h2>
                     <p>Putri kedua dari Bapak Budi dan Ibu Rina</p>
@@ -799,13 +845,19 @@
         <section id="quotes" class="section">
             <div class="box-border">
                 <!-- Floral decorations -->
-                <img class="floral-decoration floral-1" src="https://media-public.canva.com/fJDB4/MAFAICfJDB4/1/t.png" alt="floral decoration">
-                <img class="floral-decoration floral-2" src="https://media-public.canva.com/fJDB4/MAFAICfJDB4/1/t.png" alt="floral decoration">
-                <img class="floral-decoration floral-3" src="https://media-public.canva.com/fJDB4/MAFAICfJDB4/1/t.png" alt="floral decoration">
-                <img class="floral-decoration floral-4" src="https://media-public.canva.com/fJDB4/MAFAICfJDB4/1/t.png" alt="floral decoration">
-                
+                <img class="floral-decoration floral-1" src="https://media-public.canva.com/fJDB4/MAFAICfJDB4/1/t.png"
+                    alt="floral decoration">
+                <img class="floral-decoration floral-2" src="https://media-public.canva.com/fJDB4/MAFAICfJDB4/1/t.png"
+                    alt="floral decoration">
+                <img class="floral-decoration floral-3" src="https://media-public.canva.com/fJDB4/MAFAICfJDB4/1/t.png"
+                    alt="floral decoration">
+                <img class="floral-decoration floral-4" src="https://media-public.canva.com/fJDB4/MAFAICfJDB4/1/t.png"
+                    alt="floral decoration">
+
                 <h1>Quotes Cinta</h1>
-                <p style="font-style: italic; margin: 1.5rem 0; line-height: 1.8;">"Dan di antara tanda-tanda kekuasaan-Nya ialah Dia menciptakan untukmu pasangan hidup dari jenismu sendiri, supaya kamu dapat ketenangan kepadanya."</p>
+                <p style="font-style: italic; margin: 1.5rem 0; line-height: 1.8;">"Dan di antara tanda-tanda
+                    kekuasaan-Nya ialah Dia menciptakan untukmu pasangan hidup dari jenismu sendiri, supaya kamu dapat
+                    ketenangan kepadanya."</p>
                 <p>(QS. Ar-Rum: 21)</p>
             </div>
         </section>
@@ -814,10 +866,13 @@
         <section id="event" class="section">
             <div class="box-border">
                 <!-- Floral decorations -->
-                <img class="floral-decoration floral-1" src="https://media-public.canva.com/fJDB4/MAFAICfJDB4/1/t.png" alt="floral decoration">
-                <img class="floral-decoration floral-2" src="https://media-public.canva.com/fJDB4/MAFAICfJDB4/1/t.png" alt="floral decoration">
-                <img class="floral-decoration floral-center-top" src="https://media-public.canva.com/fJDB4/MAFAICfJDB4/1/t.png" alt="floral decoration">
-                
+                <img class="floral-decoration floral-1" src="https://media-public.canva.com/fJDB4/MAFAICfJDB4/1/t.png"
+                    alt="floral decoration">
+                <img class="floral-decoration floral-2" src="https://media-public.canva.com/fJDB4/MAFAICfJDB4/1/t.png"
+                    alt="floral decoration">
+                <img class="floral-decoration floral-center-top"
+                    src="https://media-public.canva.com/fJDB4/MAFAICfJDB4/1/t.png" alt="floral decoration">
+
                 <h1>Akad & Resepsi</h1>
 
                 <div style="display: flex;">
@@ -826,17 +881,17 @@
                         <p><i class="far fa-calendar-alt"></i> Sabtu, 5 Februari 2026</p>
                         <p><i class="far fa-clock"></i> Pukul 08.00 - 10.00 WIB</p>
                         <p><i class="fas fa-map-marker-alt"></i> Masjid Al-Hidayah, Jakarta</p>
+                    </div>
+
+                    <div class="event-details">
+                        <h2>Resepsi</h2>
+                        <p><i class="far fa-calendar-alt"></i> Sabtu, 5 Februari 2026</p>
+                        <p><i class="far fa-clock"></i> Pukul 11.00 - 15.00 WIB</p>
+                        <p><i class="fas fa-map-marker-alt"></i> Grand Ballroom Hotel Santika</p>
+                    </div>
                 </div>
 
-                 <div class="event-details">
-                    <h2>Resepsi</h2>
-                    <p><i class="far fa-calendar-alt"></i> Sabtu, 5 Februari 2026</p>
-                    <p><i class="far fa-clock"></i> Pukul 11.00 - 15.00 WIB</p>
-                    <p><i class="fas fa-map-marker-alt"></i> Grand Ballroom Hotel Santika</p>
-                </div>
-                </div>
-
-                  <!-- Centered Countdown Timer -->
+                <!-- Centered Countdown Timer -->
                 <div style="width: 100%; text-align: center; margin: 1rem 0;">
                     <h3 style="margin-bottom: 0.5rem; color: #5a3e2d;">Menuju Hari Bahagia</h3>
                     <div class="countdown">
@@ -861,43 +916,62 @@
             </div>
         </section>
 
-        <!-- Gallery Section -->
-        <section id="gallery" class="section">
-            <div class="box-border">
-                <!-- Floral decorations -->
-                <img class="floral-decoration floral-1" src="https://media-public.canva.com/fJDB4/MAFAICfJDB4/1/t.png" alt="floral decoration">
-                <img class="floral-decoration floral-2" src="https://media-public.canva.com/fJDB4/MAFAICfJDB4/1/t.png" alt="floral decoration">
-                <img class="floral-decoration floral-center-bottom" src="https://media-public.canva.com/fJDB4/MAFAICfJDB4/1/t.png" alt="floral decoration">
-                
-                <h1>Galeri Foto</h1>
-                <p>Koleksi momen indah bersama pasangan</p>
-                
-                <div class="gallery-grid">
-                    <div class="gallery-item">
-                        <img src="https://images.unsplash.com/photo-1518895949257-7621c3c786d7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=688&q=80" alt="Couple 1">
-                    </div>
-                    <div class="gallery-item">
-                        <img src="https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80" alt="Couple 2">
-                    </div>
-                    <div class="gallery-item">
-                        <img src="https://images.unsplash.com/photo-1529333166437-7750a6dd5a70?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1469&q=80" alt="Couple 3">
-                    </div>
-                    <div class="gallery-item wide">
-                        <img src="https://images.unsplash.com/photo-1523438885200-e635ba2c371e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80" alt="Couple 4">
-                    </div>
-                </div>
+       <!-- Gallery Section -->
+<section id="gallery" class="section">
+    <div class="box-border">
+        <h1>Galeri Foto</h1>
+        <p>Koleksi momen indah bersama pasangan</p>
+        
+        <div class="square-gallery">
+            <!-- Row 1 -->
+            <div class="gallery-item">
+                <img src="/image/Gal-1.jpg" alt="Couple photo 1">
             </div>
-        </section>
+            <div class="gallery-item">
+                <img src="/image/Gal-2.jpg" alt="Couple photo 2">
+            </div>
+            <div class="gallery-item">
+                <img src="/image/Gal-3.jpg" alt="Couple photo 3">
+            </div>
+            
+            <!-- Row 2 -->
+            <div class="gallery-item">
+                <img src="/image/Gal-4.jpg" alt="Couple photo 4">
+            </div>
+            <div class="gallery-item">
+                <img src="/image/Gal-5.jpg" alt="Couple photo 5">
+            </div>
+            <div class="gallery-item">
+                <img src="/image/Gal-6.jpg" alt="Couple photo 6">
+            </div>
+            
+            <!-- Row 3 -->
+            <div class="gallery-item">
+                <img src="/image/Gal-7.jpg" alt="Couple photo 7">
+            </div>
+            <div class="gallery-item">
+                <img src="/image/Gal-8.jpg" alt="Couple photo 8">
+            </div>
+            <div class="gallery-item">
+                <img src="/image/Gal-9.jpg" alt="Couple photo 9">
+            </div>
+        </div>
+    </div>
+</section>
 
         <!-- Digital Envelope/Gift Section -->
         <section id="gift" class="section">
             <div class="box-border">
                 <!-- Floral decorations -->
-                <img class="floral-decoration floral-1" src="https://media-public.canva.com/fJDB4/MAFAICfJDB4/1/t.png" alt="floral decoration">
-                <img class="floral-decoration floral-2" src="https://media-public.canva.com/fJDB4/MAFAICfJDB4/1/t.png" alt="floral decoration">
-                <img class="floral-decoration floral-3" src="https://media-public.canva.com/fJDB4/MAFAICfJDB4/1/t.png" alt="floral decoration">
-                <img class="floral-decoration floral-4" src="https://media-public.canva.com/fJDB4/MAFAICfJDB4/1/t.png" alt="floral decoration">
-                
+                <img class="floral-decoration floral-1" src="https://media-public.canva.com/fJDB4/MAFAICfJDB4/1/t.png"
+                    alt="floral decoration">
+                <img class="floral-decoration floral-2" src="https://media-public.canva.com/fJDB4/MAFAICfJDB4/1/t.png"
+                    alt="floral decoration">
+                <img class="floral-decoration floral-3" src="https://media-public.canva.com/fJDB4/MAFAICfJDB4/1/t.png"
+                    alt="floral decoration">
+                <img class="floral-decoration floral-4" src="https://media-public.canva.com/fJDB4/MAFAICfJDB4/1/t.png"
+                    alt="floral decoration">
+
                 <h1>Amplop Digital</h1>
                 <p>Jika Anda ingin memberikan hadiah, kami menerima transfer ke:</p>
                 <div class="bank-account">
@@ -913,18 +987,24 @@
         <section id="location" class="section">
             <div class="box-border">
                 <!-- Floral decorations -->
-                <img class="floral-decoration floral-1" src="https://media-public.canva.com/fJDB4/MAFAICfJDB4/1/t.png" alt="floral decoration">
-                <img class="floral-decoration floral-2" src="https://media-public.canva.com/fJDB4/MAFAICfJDB4/1/t.png" alt="floral decoration">
-                <img class="floral-decoration floral-center-top" src="https://media-public.canva.com/fJDB4/MAFAICfJDB4/1/t.png" alt="floral decoration">
-                
+                <img class="floral-decoration floral-1" src="https://media-public.canva.com/fJDB4/MAFAICfJDB4/1/t.png"
+                    alt="floral decoration">
+                <img class="floral-decoration floral-2" src="https://media-public.canva.com/fJDB4/MAFAICfJDB4/1/t.png"
+                    alt="floral decoration">
+                <img class="floral-decoration floral-center-top"
+                    src="https://media-public.canva.com/fJDB4/MAFAICfJDB4/1/t.png" alt="floral decoration">
+
                 <h1>Lokasi Acara</h1>
                 <h2 style="margin: 1.5rem 0 1rem;">Resepsi Pernikahan</h2>
                 <p><i class="fas fa-map-marker-alt"></i> Grand Ballroom Hotel Santika</p>
                 <p><i class="fas fa-location-arrow"></i> Jl. Gatot Subroto No. 45, Jakarta Selatan</p>
                 <div class="map-container">
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.521260322283!2d106.81956135000001!3d-6.1947419999999945!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f5390917b759%3A0x6b462e9b5e9ee709!2sHotel%20Santika%20Premiere%20Hayam%20Wuruk%20Jakarta!5e0!3m2!1sen!2sid!4v1623830287593!5m2!1sen!2sid" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.521260322283!2d106.81956135000001!3d-6.1947419999999945!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f5390917b759%3A0x6b462e9b5e9ee709!2sHotel%20Santika%20Premiere%20Hayam%20Wuruk%20Jakarta!5e0!3m2!1sen!2sid!4v1623830287593!5m2!1sen!2sid"
+                        width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
                 </div>
-                <button style="margin-top: 1.5rem; padding: 10px 20px; background: #ff6b6b; color: white; border: none; border-radius: 5px; cursor: pointer;">
+                <button
+                    style="margin-top: 1.5rem; padding: 10px 20px; background: #ff6b6b; color: white; border: none; border-radius: 5px; cursor: pointer;">
                     <i class="fas fa-directions"></i> Petunjuk Arah
                 </button>
             </div>
@@ -934,15 +1014,22 @@
         <section id="thanks" class="section">
             <div class="box-border">
                 <!-- Floral decorations -->
-                <img class="floral-decoration floral-1" src="https://media-public.canva.com/fJDB4/MAFAICfJDB4/1/t.png" alt="floral decoration">
-                <img class="floral-decoration floral-2" src="https://media-public.canva.com/fJDB4/MAFAICfJDB4/1/t.png" alt="floral decoration">
-                <img class="floral-decoration floral-3" src="https://media-public.canva.com/fJDB4/MAFAICfJDB4/1/t.png" alt="floral decoration">
-                <img class="floral-decoration floral-4" src="https://media-public.canva.com/fJDB4/MAFAICfJDB4/1/t.png" alt="floral decoration">
-                <img class="floral-decoration floral-center-top" src="https://media-public.canva.com/fJDB4/MAFAICfJDB4/1/t.png" alt="floral decoration">
-                <img class="floral-decoration floral-center-bottom" src="https://media-public.canva.com/fJDB4/MAFAICfJDB4/1/t.png" alt="floral decoration">
-                
+                <img class="floral-decoration floral-1" src="https://media-public.canva.com/fJDB4/MAFAICfJDB4/1/t.png"
+                    alt="floral decoration">
+                <img class="floral-decoration floral-2" src="https://media-public.canva.com/fJDB4/MAFAICfJDB4/1/t.png"
+                    alt="floral decoration">
+                <img class="floral-decoration floral-3" src="https://media-public.canva.com/fJDB4/MAFAICfJDB4/1/t.png"
+                    alt="floral decoration">
+                <img class="floral-decoration floral-4" src="https://media-public.canva.com/fJDB4/MAFAICfJDB4/1/t.png"
+                    alt="floral decoration">
+                <img class="floral-decoration floral-center-top"
+                    src="https://media-public.canva.com/fJDB4/MAFAICfJDB4/1/t.png" alt="floral decoration">
+                <img class="floral-decoration floral-center-bottom"
+                    src="https://media-public.canva.com/fJDB4/MAFAICfJDB4/1/t.png" alt="floral decoration">
+
                 <h1>Terima Kasih</h1>
-                <p style="margin: 1.5rem 0;">Atas kehadiran dan doa restunya, kami mengucapkan terima kasih yang sebesar-besarnya.</p>
+                <p style="margin: 1.5rem 0;">Atas kehadiran dan doa restunya, kami mengucapkan terima kasih yang
+                    sebesar-besarnya.</p>
                 <div class="thank-you">
                     <p>Wassalamu'alaikum Warahmatullahi Wabarakatuh</p>
                     <p style="margin-top: 2rem;">Arka & Ayu</p>
@@ -991,7 +1078,7 @@
     <div class="music-player" id="musicPlayer">
         <i class="fas fa-pause"></i>
         <audio id="weddingMusic" loop>
-            <source src="/audio/Multo - Cup of Joe (Official Audio) [UESlzS1vp-8].mp3" type="audio/mpeg">
+            <source src="/audio/Cigarettes out the Window [7j6C9METNm0].mp3" type="audio/mpeg">
         </audio>
     </div>
 
@@ -1005,10 +1092,10 @@
 
     <script>
         // Prevent zooming and scaling
-        document.addEventListener('gesturestart', function(e) {
+        document.addEventListener('gesturestart', function (e) {
             e.preventDefault();
         });
-        
+
         // DOM Elements
         const cover = document.getElementById('cover');
         const openBtn = document.getElementById('openBtn');
@@ -1034,20 +1121,20 @@
         const weddingDate = new Date('February 5, 2026 08:00:00').getTime();
 
         // Update countdown every second
-        const countdown = setInterval(function() {
+        const countdown = setInterval(function () {
             const now = new Date().getTime();
             const distance = weddingDate - now;
-            
+
             const days = Math.floor(distance / (1000 * 60 * 60 * 24));
             const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
             const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
             const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-            
+
             countdownDays.innerHTML = days.toString().padStart(2, '0');
             countdownHours.innerHTML = hours.toString().padStart(2, '0');
             countdownMinutes.innerHTML = minutes.toString().padStart(2, '0');
             countdownSeconds.innerHTML = seconds.toString().padStart(2, '0');
-            
+
             if (distance < 0) {
                 clearInterval(countdown);
                 document.getElementById('countdown').innerHTML = "The wedding has begun!";
@@ -1055,25 +1142,25 @@
         }, 1000);
 
         // Open Invitation Button
-        openBtn.addEventListener('click', function() {
+        openBtn.addEventListener('click', function () {
             // Hide cover with fade out effect
             cover.classList.add('hidden');
-            
+
             // Show main content with fade in effect
             setTimeout(() => {
                 mainContent.classList.add('visible');
-                
+
                 // Show music player
                 setTimeout(() => {
                     musicPlayer.classList.add('visible');
                 }, 500);
             }, 500);
-            
+
             // Play music automatically (muted by default due to browser autoplay policies)
             audioElement.muted = true;
             audioElement.play().then(() => {
                 // Once play is successful, we can unmute if user interacts
-                musicPlayer.addEventListener('click', function() {
+                musicPlayer.addEventListener('click', function () {
                     audioElement.muted = false;
                     if (!isMusicPlaying) {
                         audioElement.play();
@@ -1088,7 +1175,7 @@
         });
 
         // Music Player Control
-        musicPlayer.addEventListener('click', function() {
+        musicPlayer.addEventListener('click', function () {
             if (isMusicPlaying) {
                 audioElement.pause();
                 musicIcon.classList.remove('fa-pause');
@@ -1103,19 +1190,19 @@
 
         // Gallery Image Click Handler
         galleryItems.forEach(item => {
-            item.addEventListener('click', function() {
+            item.addEventListener('click', function () {
                 modal.style.display = "flex";
                 modalImg.src = this.src;
             });
         });
 
         // Close Modal
-        closeBtn.addEventListener('click', function() {
+        closeBtn.addEventListener('click', function () {
             modal.style.display = "none";
         });
 
         // Close Modal when clicking outside the image
-        modal.addEventListener('click', function(e) {
+        modal.addEventListener('click', function (e) {
             if (e.target === modal) {
                 modal.style.display = "none";
             }
@@ -1130,7 +1217,7 @@
                 item.classList.toggle('active', i === index);
             });
             currentIndex = index;
-            
+
             // Scroll to section smoothly
             sections[index].scrollIntoView({ behavior: 'smooth' });
         }
@@ -1178,11 +1265,12 @@
         showSection(0);
 
         // Directions button
-        document.querySelector('[href="#location"]').addEventListener('click', function() {
+        document.querySelector('[href="#location"]').addEventListener('click', function () {
             // This would normally open Google Maps with directions
             // For demo, we'll just scroll to the location section
             showSection(6);
         });
     </script>
 </body>
+
 </html>

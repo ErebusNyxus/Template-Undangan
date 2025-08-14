@@ -8,10 +8,17 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&family=Poppins:wght@300;400;500&display=swap"
-        rel="stylesheet">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --primary-color: #ff6b6b;
+            --secondary-color: #5a3e2d;
+            --light-color: #fffaf5;
+            --shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+            --transition: all 0.3s ease;
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -24,12 +31,12 @@
             margin: 0 auto;
             min-height: 100vh;
             position: relative;
-            color: #5a3e2d;
+            color: var(--secondary-color);
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            background-color: #fffaf5;
+            background-color: var(--light-color);
             touch-action: pan-y;
             -webkit-text-size-adjust: 100%;
             background-image: url('https://i.pinimg.com/originals/c2/a0/26/c2a0266f476b8098a3c1d661767b7b72.png');
@@ -50,9 +57,7 @@
             z-index: -1;
         }
 
-        h1,
-        h2,
-        h3 {
+        h1, h2, h3 {
             font-family: 'Playfair Display', serif;
             font-weight: 500;
         }
@@ -96,7 +101,7 @@
         }
 
         .cover h1 {
-            font-size: 2.5rem;
+            font-size: clamp(2rem, 5vw, 2.5rem);
             margin-bottom: 1rem;
             color: #fff;
             text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
@@ -104,7 +109,7 @@
         }
 
         .cover p {
-            font-size: 1.2rem;
+            font-size: clamp(1rem, 3vw, 1.2rem);
             margin-bottom: 2rem;
             color: #fff;
             text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
@@ -114,7 +119,7 @@
 
         .open-btn {
             padding: 12px 30px;
-            background: #ff6b6b;
+            background: var(--primary-color);
             color: white;
             border: none;
             border-radius: 30px;
@@ -123,7 +128,7 @@
             display: flex;
             align-items: center;
             gap: 8px;
-            transition: transform 0.3s, background 0.3s;
+            transition: var(--transition);
             box-shadow: 0 4px 15px rgba(255, 107, 107, 0.3);
             font-weight: 500;
         }
@@ -131,10 +136,6 @@
         .open-btn:hover {
             transform: translateY(-3px);
             background: #ff5252;
-        }
-
-        .open-btn i {
-            font-size: 1.2rem;
         }
 
         /* Main Content */
@@ -148,7 +149,7 @@
             position: relative;
             background-color: rgba(255, 250, 245, 0.95);
             min-height: 100vh;
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            box-shadow: var(--shadow);
             overflow: hidden;
         }
 
@@ -189,17 +190,17 @@
             background: rgba(255, 255, 255, 0.95);
             width: 90%;
             margin: 0 auto;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+            box-shadow: var(--shadow);
             position: relative;
         }
 
-        /* Enhanced Music Player */
+        /* Music Player */
         .music-player {
             position: fixed;
             bottom: 80px;
             right: 20px;
             z-index: 100;
-            background: #ff6b6b;
+            background: var(--primary-color);
             border-radius: 50px;
             width: 50px;
             height: 50px;
@@ -209,7 +210,7 @@
             box-shadow: 0 4px 15px rgba(255, 107, 107, 0.4);
             cursor: pointer;
             opacity: 0;
-            transition: all 0.5s ease;
+            transition: var(--transition);
             border: 2px solid white;
         }
 
@@ -223,26 +224,13 @@
             background: #ff5252;
         }
 
-        .music-player i {
-            font-size: 1.4rem;
-            color: white;
-        }
-
         @keyframes pulse {
-            0% {
-                box-shadow: 0 0 0 0 rgba(255, 107, 107, 0.7);
-            }
-
-            70% {
-                box-shadow: 0 0 0 10px rgba(255, 107, 107, 0);
-            }
-
-            100% {
-                box-shadow: 0 0 0 0 rgba(255, 107, 107, 0);
-            }
+            0% { box-shadow: 0 0 0 0 rgba(255, 107, 107, 0.7); }
+            70% { box-shadow: 0 0 0 10px rgba(255, 107, 107, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(255, 107, 107, 0); }
         }
 
-        /* Updated Bottom Navbar */
+        /* Bottom Navbar */
         .bottom-nav {
             position: fixed;
             bottom: 15px;
@@ -253,7 +241,6 @@
             background: rgba(255, 255, 255, 0.98);
             display: flex;
             justify-content: center;
-            overflow: hidden;
             align-items: center;
             padding: 10px 15px;
             border-radius: 50px;
@@ -272,125 +259,86 @@
             align-items: center;
             text-decoration: none;
             color: #888;
-            transition: all 0.3s ease;
+            transition: var(--transition);
             min-width: 50px;
             padding: 5px 8px;
             position: relative;
             flex-shrink: 0;
         }
 
-        .nav-item i {
-            font-size: 18px;
-            margin-bottom: 4px;
-            transition: all 0.3s ease;
-        }
-
-        .nav-item span {
-            font-size: 11px;
-            transition: all 0.3s ease;
-        }
-
         .nav-item.active {
-            color: #ff6b6b;
+            color: var(--primary-color);
         }
 
         .nav-item.active i {
             transform: scale(1.2);
-            color: #ff6b6b;
+            color: var(--primary-color);
         }
 
         .nav-item.active span {
             font-weight: 600;
-            color: #ff6b6b;
-        }
-
-        .nav-item::before {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 6px;
-            height: 6px;
-            background: #ff6b6b;
-            border-radius: 50%;
-            opacity: 0;
-            transition: all 0.3s ease;
-        }
-
-        .nav-item.active::before {
-            opacity: 1;
-            bottom: -5px;
-        }
-
-        .nav-item:hover {
-            color: #ff6b6b;
+            color: var(--primary-color);
         }
 
         /* Couple Section */
         .couple-names {
-            font-size: 2rem;
+            font-size: clamp(1.8rem, 5vw, 2rem);
             margin: 1.5rem 0;
             line-height: 1.4;
         }
 
-        .couple-names span {
-            display: block;
-            margin: 0.5rem 0;
-        }
-
         .couple-names span:nth-child(2) {
-            font-size: 1.5rem;
+            font-size: clamp(1.3rem, 4vw, 1.5rem);
             font-family: 'Poppins', sans-serif;
             font-weight: 300;
             margin: 0.2rem 0;
         }
 
-        /* Digital Envelope/Gift */
-        .bank-account {
-            margin: 1.5rem 0;
-            padding: 1.2rem;
-            background: rgba(255, 255, 255, 0.9);
-            border-radius: 8px;
-            border: 1px dashed #ff6b6b;
-        }
-
-        .bank-account h3 {
-            margin-bottom: 0.8rem;
-            color: #5a3e2d;
-        }
-
-        .bank-account p {
-            margin-bottom: 0.5rem;
-            font-size: 0.95rem;
-        }
-
-        /* Location Map */
-        .map-container {
+        /* Event Section */
+        .event-container {
+            display: flex;
+            flex-direction: row;
+            gap: 20px;
             width: 100%;
-            height: 250px;
-            margin-top: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .event-details {
+            flex: 1;
+            padding: 1.5rem;
+            background: rgba(255, 255, 255, 0.8);
             border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
         }
 
-        /* Thank You Section */
-        .thank-you {
-            margin-top: 2.5rem;
-            font-style: italic;
-            color: #5a3e2d;
-        }
-
-        .thank-you p:first-child {
+        .event-details h2 {
             margin-bottom: 1rem;
+            color: var(--primary-color);
+            font-size: clamp(1.2rem, 4vw, 1.5rem);
         }
 
-        /* Updated Countdown Timer */
+        .event-details p {
+            margin-bottom: 0.8rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            font-size: clamp(0.9rem, 3vw, 1rem);
+        }
+
+        .divider {
+            margin: 1.5rem 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-color);
+        }
+
+        /* Countdown Timer */
         .countdown {
             display: flex;
             justify-content: center;
-            gap: 10px;
+            gap: clamp(5px, 2vw, 10px);
             margin: 1.5rem auto;
             padding: 15px 0;
             width: 100%;
@@ -405,9 +353,9 @@
         }
 
         .countdown-number {
-            font-size: 1.8rem;
+            font-size: clamp(1.2rem, 5vw, 1.8rem);
             font-weight: 600;
-            color: #ff6b6b;
+            color: var(--primary-color);
             width: 100%;
             padding: 8px 0;
             border-radius: 5px;
@@ -415,82 +363,10 @@
             text-align: center;
         }
 
-        .countdown-label {
-            font-size: 0.7rem;
-            text-transform: uppercase;
-            margin-top: 5px;
-            color: #888;
-            letter-spacing: 1px;
-        }
-
-        /* Floral Decoration */
-        .floral-decoration {
-            position: absolute;
-            z-index: -1;
-            pointer-events: none;
-            opacity: 0.2;
-        }
-
-        .floral-1 {
-            top: 20px;
-            left: 20px;
-            width: 80px;
-            transform: rotate(-15deg);
-        }
-
-        .floral-2 {
-            top: 20px;
-            right: 20px;
-            width: 80px;
-            transform: rotate(15deg);
-        }
-
-        .floral-3 {
-            bottom: 20px;
-            left: 20px;
-            width: 80px;
-            transform: rotate(15deg);
-        }
-
-        .floral-4 {
-            bottom: 20px;
-            right: 20px;
-            width: 80px;
-            transform: rotate(-15deg);
-        }
-
-        .floral-center-top {
-            top: 30px;
-            left: 50%;
-            width: 100px;
-            transform: translateX(-50%) rotate(5deg);
-        }
-
-        .floral-center-bottom {
-            bottom: 30px;
-            left: 50%;
-            width: 100px;
-            transform: translateX(-50%) rotate(-5deg);
-        }
-
-        .floral-divider-left {
-            left: 10px;
-            top: 50%;
-            width: 60px;
-            transform: translateY(-50%) rotate(90deg);
-        }
-
-        .floral-divider-right {
-            right: 10px;
-            top: 50%;
-            width: 60px;
-            transform: translateY(-50%) rotate(-90deg);
-        }
-
-        /* Square Gallery Styles */
+        /* Gallery */
         .square-gallery {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns: 1fr 1fr 1fr;
             gap: 8px;
             margin-top: 1.5rem;
         }
@@ -501,91 +377,28 @@
             border-radius: 6px;
             overflow: hidden;
             box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s ease;
+            transition: var(--transition);
+            cursor: pointer;
         }
 
         .gallery-item:hover {
             transform: scale(1.02);
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-            z-index: 1;
         }
 
         .gallery-item img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: transform 0.5s ease;
+            transition: var(--transition);
         }
 
-        .gallery-item:hover img {
-            transform: scale(1.05);
+        .gallery-item.active {
+            border: 3px solid var(--primary-color);
+            transform: scale(0.98);
         }
 
-        /* Responsive Adjustments */
-        @media (max-width: 768px) {
-            .square-gallery {
-                grid-template-columns: repeat(3, 1fr);
-                gap: 6px;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .square-gallery {
-                grid-template-columns: repeat(3, 1fr);
-                gap: 4px;
-            }
-        }
-
-        /* Updated Event Section */
-        #event .box-border {
-            padding: 20px;
-        }
-
-        .event-details {
-            margin: 10px;
-            background: rgba(255, 255, 255, 0.7);
-            padding: 1.2rem;
-            border-radius: 8px;
-            box-shadow: 5px 5px 15px 15px rgba(0, 0, 0, 0.05);
-            width: 100%;
-        }
-
-        .event-details h2 {
-            margin-bottom: 1rem;
-            color: #ff6b6b;
-            font-size: 1.5rem;
-        }
-
-        .event-details p {
-            margin-bottom: 0.8rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-        }
-
-        .event-details i {
-            color: #ff6b6b;
-        }
-
-        .divider {
-            margin: 1.5rem 0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #ff6b6b;
-            position: relative;
-        }
-
-        .divider-line {
-            flex: 1;
-            height: 1px;
-            background: #ff6b6b;
-            margin: 0 10px;
-            opacity: 0.3;
-        }
-
-        /* Image Modal */
+        /* Modal Styles */
         .modal {
             display: none;
             position: fixed;
@@ -604,202 +417,97 @@
             align-items: center;
             height: 100%;
             width: 100%;
+            position: relative;
         }
 
         .modal-img {
             max-width: 90%;
             max-height: 90%;
             object-fit: contain;
-            animation: zoomIn 0.3s;
         }
 
         .close-btn {
             position: absolute;
             top: 20px;
             right: 30px;
-            color: #fff;
+            color: white;
             font-size: 35px;
             font-weight: bold;
             cursor: pointer;
-            transition: 0.3s;
+            z-index: 2001;
         }
 
         .close-btn:hover {
-            color: #ff6b6b;
+            color: var(--primary-color);
         }
 
-        @keyframes zoomIn {
-            from {
-                transform: scale(0.8);
-                opacity: 0;
-            }
-
-            to {
-                transform: scale(1);
-                opacity: 1;
-            }
+        .nav-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            color: white;
+            font-size: 35px;
+            font-weight: bold;
+            cursor: pointer;
+            padding: 20px;
+            z-index: 2001;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 50%;
         }
 
-        /* Responsive adjustments */
+        .prev-btn {
+            left: 20px;
+        }
+
+        .next-btn {
+            right: 20px;
+        }
+
+        .nav-btn:hover {
+            color: var(--primary-color);
+            background: rgba(0, 0, 0, 0.5);
+        }
+
+        /* Responsive Adjustments */
         @media (max-width: 768px) {
+            .event-container {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .box-border {
+                padding: 20px;
+            }
+            
             .bottom-nav {
-                max-width: 95%;
-                padding: 8px 10px;
+                padding: 8px;
             }
-
-            .nav-item {
-                min-width: 45px;
-                padding: 5px;
-            }
-
+            
             .nav-item span {
                 font-size: 10px;
             }
 
-            .floral-decoration {
-                width: 50px;
-            }
-
-            .floral-1,
-            .floral-2,
-            .floral-3,
-            .floral-4 {
-                width: 60px;
-            }
-
-            .floral-center-top,
-            .floral-center-bottom {
-                width: 70px;
-            }
-
-            .event-details {
-                padding: 1rem;
-                display: grid;
-                grid-template-columns: 1fr;
-                gap: 1rem;
-            }
-
-            .event-details h2 {
-                font-size: 1.3rem;
-            }
-
-            .countdown {
-                gap: 8px;
-            }
-
-            .countdown-item {
-                max-width: 60px;
-            }
-
-            .countdown-number {
-                font-size: 1.5rem;
+            .square-gallery {
+                grid-template-columns: 1fr 1fr 1fr;
             }
         }
 
         @media (max-width: 480px) {
-            .cover h1 {
-                font-size: 2rem;
-            }
-
-            .cover p {
-                font-size: 1rem;
-            }
-
             .box-border {
-                padding: 20px;
+                padding: 15px;
                 width: 95%;
             }
-
-            .couple-names {
-                font-size: 1.8rem;
-            }
-
+            
             .nav-item span {
                 display: none;
             }
-
+            
             .nav-item {
                 min-width: 40px;
-                padding: 5px;
             }
 
-            .bottom-nav {
-                width: 95%;
-                padding: 8px;
-            }
-
-            .floral-decoration {
-                width: 40px;
-            }
-
-            .floral-1,
-            .floral-2,
-            .floral-3,
-            .floral-4 {
-                width: 50px;
-            }
-
-            .floral-center-top,
-            .floral-center-bottom {
-                width: 60px;
-            }
-
-            .event-details {
-                padding: 0.8rem;
-            }
-
-            .event-details h2 {
-                font-size: 1.2rem;
-            }
-
-            .event-details p {
-                font-size: 0.9rem;
-            }
-
-            .countdown {
-                gap: 5px;
-            }
-
-            .countdown-item {
-                max-width: 50px;
-            }
-
-            .countdown-number {
-                font-size: 1.2rem;
-            }
-
-            .countdown-label {
-                font-size: 0.6rem;
-            }
-        }
-
-        /* Event Section Styles */
-        .event-container {
-            display: flex;
-            flex-direction: row;
-            gap: 20px;
-            width: 100%;
-            margin: 1.5rem 0;
-        }
-
-        .event-details {
-            flex: 1;
-            padding: 1.5rem;
-            background: rgba(255, 255, 255, 0.8);
-            border-radius: 8px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
-        }
-
-        /* Mobile Responsive */
-        @media (max-width: 768px) {
-            .event-container {
-                display: grid;
-                grid-template-columns: 1fr;
-                gap: 15px;
-            }
-
-            .event-details {
-                width: 100%;
+            .square-gallery {
+                grid-template-columns: 1fr 1fr 1fr;
             }
         }
     </style>
@@ -820,18 +528,6 @@
         <!-- Home Section -->
         <section id="home" class="section active">
             <div class="box-border">
-                <!-- Floral decorations -->
-                <img class="floral-decoration floral-1" src="https://media-public.canva.com/fJDB4/MAFAICfJDB4/1/t.png"
-                    alt="floral decoration">
-                <img class="floral-decoration floral-2" src="https://media-public.canva.com/fJDB4/MAFAICfJDB4/1/t.png"
-                    alt="floral decoration">
-                <img class="floral-decoration floral-3" src="https://media-public.canva.com/fJDB4/MAFAICfJDB4/1/t.png"
-                    alt="floral decoration">
-                <img class="floral-decoration floral-4" src="https://media-public.canva.com/fJDB4/MAFAICfJDB4/1/t.png"
-                    alt="floral decoration">
-                <img class="floral-decoration floral-center-top"
-                    src="https://media-public.canva.com/fJDB4/MAFAICfJDB4/1/t.png" alt="floral decoration">
-
                 <h1>The Wedding of</h1>
                 <div class="couple-names">
                     <span>Arka Annur</span>
@@ -845,28 +541,14 @@
         <!-- Couple Section -->
         <section id="couple" class="section">
             <div class="box-border">
-                <!-- Floral decorations -->
-                <img class="floral-decoration floral-1" src="https://media-public.canva.com/fJDB4/MAFAICfJDB4/1/t.png"
-                    alt="floral decoration">
-                <img class="floral-decoration floral-2" src="https://media-public.canva.com/fJDB4/MAFAICfJDB4/1/t.png"
-                    alt="floral decoration">
-                <img class="floral-decoration floral-center-top"
-                    src="https://media-public.canva.com/fJDB4/MAFAICfJDB4/1/t.png" alt="floral decoration">
-                <img class="floral-decoration floral-center-bottom"
-                    src="https://media-public.canva.com/fJDB4/MAFAICfJDB4/1/t.png" alt="floral decoration">
-
                 <h1>Mempelai</h1>
                 <div class="couple-info">
                     <h2>Arka Annur</h2>
                     <p>Putra pertama dari Bapak Ahmad dan Ibu Siti</p>
                     <div class="divider">
-                        <img class="floral-decoration floral-divider-left"
-                            src="https://media-public.canva.com/fJDB4/MAFAICfJDB4/1/t.png" alt="floral decoration">
                         <div class="divider-line"></div>
                         <i class="fas fa-heart"></i>
                         <div class="divider-line"></div>
-                        <img class="floral-decoration floral-divider-right"
-                            src="https://media-public.canva.com/fJDB4/MAFAICfJDB4/1/t.png" alt="floral decoration">
                     </div>
                     <h2>Setya Ayu</h2>
                     <p>Putri kedua dari Bapak Budi dan Ibu Rina</p>
@@ -877,20 +559,8 @@
         <!-- Quotes Section -->
         <section id="quotes" class="section">
             <div class="box-border">
-                <!-- Floral decorations -->
-                <img class="floral-decoration floral-1" src="https://media-public.canva.com/fJDB4/MAFAICfJDB4/1/t.png"
-                    alt="floral decoration">
-                <img class="floral-decoration floral-2" src="https://media-public.canva.com/fJDB4/MAFAICfJDB4/1/t.png"
-                    alt="floral decoration">
-                <img class="floral-decoration floral-3" src="https://media-public.canva.com/fJDB4/MAFAICfJDB4/1/t.png"
-                    alt="floral decoration">
-                <img class="floral-decoration floral-4" src="https://media-public.canva.com/fJDB4/MAFAICfJDB4/1/t.png"
-                    alt="floral decoration">
-
                 <h1>Quotes Cinta</h1>
-                <p style="font-style: italic; margin: 1.5rem 0; line-height: 1.8;">"Dan di antara tanda-tanda
-                    kekuasaan-Nya ialah Dia menciptakan untukmu pasangan hidup dari jenismu sendiri, supaya kamu dapat
-                    ketenangan kepadanya."</p>
+                <p style="font-style: italic; margin: 1.5rem 0; line-height: 1.8;">"Dan di antara tanda-tanda kekuasaan-Nya ialah Dia menciptakan untukmu pasangan hidup dari jenismu sendiri, supaya kamu dapat ketenangan kepadanya."</p>
                 <p>(QS. Ar-Rum: 21)</p>
             </div>
         </section>
@@ -898,14 +568,6 @@
         <!-- Event Section -->
         <section id="event" class="section">
             <div class="box-border">
-                <!-- Floral decorations -->
-                <img class="floral-decoration floral-1" src="https://media-public.canva.com/fJDB4/MAFAICfJDB4/1/t.png"
-                    alt="floral decoration">
-                <img class="floral-decoration floral-2" src="https://media-public.canva.com/fJDB4/MAFAICfJDB4/1/t.png"
-                    alt="floral decoration">
-                <img class="floral-decoration floral-center-top"
-                    src="https://media-public.canva.com/fJDB4/MAFAICfJDB4/1/t.png" alt="floral decoration">
-
                 <h1>Akad & Resepsi</h1>
 
                 <div class="event-container">
@@ -916,9 +578,16 @@
                         <p><i class="fas fa-map-marker-alt"></i> Masjid Al-Hidayah, Jakarta</p>
                     </div>
 
-                      <!-- Centered Countdown Timer -->
-                <div style="width: 100%; text-align: center; margin: 1rem 0;">
-                    <h3 style="margin-bottom: 0.5rem; color: #5a3e2d;">Menuju Hari Bahagia</h3>
+                    <div class="event-details">
+                        <h2>Resepsi</h2>
+                        <p><i class="far fa-calendar-alt"></i> Sabtu, 5 Februari 2026</p>
+                        <p><i class="far fa-clock"></i> Pukul 11.00 - 15.00 WIB</p>
+                        <p><i class="fas fa-map-marker-alt"></i> Grand Ballroom Hotel Santika</p>
+                    </div>
+                </div>
+
+                <div style="width: 100%; text-align: center; margin: 1.5rem 0;">
+                    <h3 style="margin-bottom: 1rem; color: var(--secondary-color);">Menuju Hari Bahagia</h3>
                     <div class="countdown">
                         <div class="countdown-item">
                             <div class="countdown-number" id="days">00</div>
@@ -938,14 +607,6 @@
                         </div>
                     </div>
                 </div>
-
-                    <div class="event-details">
-                        <h2>Resepsi</h2>
-                        <p><i class="far fa-calendar-alt"></i> Sabtu, 5 Februari 2026</p>
-                        <p><i class="far fa-clock"></i> Pukul 11.00 - 15.00 WIB</p>
-                        <p><i class="fas fa-map-marker-alt"></i> Grand Ballroom Hotel Santika</p>
-                    </div>
-                </div>
             </div>
         </section>
 
@@ -954,39 +615,34 @@
             <div class="box-border">
                 <h1>Galeri Foto</h1>
                 <p>Koleksi momen indah bersama pasangan</p>
-
+                
                 <div class="square-gallery">
-                    <!-- Row 1 -->
-                    <div class="gallery-item">
-                        <img src="/image/Gal-1.jpg" alt="Couple photo 1">
+                    <div class="gallery-item" onclick="openModal('/image/Gal-1.jpg', this)">
+                        <img src="/image/Gal-1.jpg" alt="Moment 1">
                     </div>
-                    <div class="gallery-item">
-                        <img src="/image/Gal-2.jpg" alt="Couple photo 2">
+                    <div class="gallery-item" onclick="openModal('/image/Gal-2.jpg', this)">
+                        <img src="/image/Gal-2.jpg" alt="Moment 2">
                     </div>
-                    <div class="gallery-item">
-                        <img src="/image/Gal-3.jpg" alt="Couple photo 3">
+                    <div class="gallery-item" onclick="openModal('/image/Gal-3.jpg', this)">
+                        <img src="/image/Gal-3.jpg" alt="Moment 3">
                     </div>
-
-                    <!-- Row 2 -->
-                    <div class="gallery-item">
-                        <img src="/image/Gal-4.jpg" alt="Couple photo 4">
+                    <div class="gallery-item" onclick="openModal('/image/Gal-4.jpg', this)">
+                        <img src="/image/Gal-4.jpg" alt="Moment 4">
                     </div>
-                    <div class="gallery-item">
-                        <img src="/image/Gal-5.jpg" alt="Couple photo 5">
+                    <div class="gallery-item" onclick="openModal('/image/Gal-5.jpg', this)">
+                        <img src="/image/Gal-5.jpg" alt="Moment 5">
                     </div>
-                    <div class="gallery-item">
-                        <img src="/image/Gal-6.jpg" alt="Couple photo 6">
+                    <div class="gallery-item" onclick="openModal('/image/Gal-6.jpg', this)">
+                        <img src="/image/Gal-6.jpg" alt="Moment 6">
                     </div>
-
-                    <!-- Row 3 -->
-                    <div class="gallery-item">
-                        <img src="/image/Gal-7.jpg" alt="Couple photo 7">
+                    <div class="gallery-item" onclick="openModal('/image/Gal-7.jpg', this)">
+                        <img src="/image/Gal-7.jpg" alt="Moment 7">
                     </div>
-                    <div class="gallery-item">
-                        <img src="/image/Gal-8.jpg" alt="Couple photo 8">
+                    <div class="gallery-item" onclick="openModal('/image/Gal-8.jpg', this)">
+                        <img src="/image/Gal-8.jpg" alt="Moment 8">
                     </div>
-                    <div class="gallery-item">
-                        <img src="/image/Gal-9.jpg" alt="Couple photo 9">
+                    <div class="gallery-item" onclick="openModal('/image/Gal-9.jpg', this)">
+                        <img src="/image/Gal-9.jpg" alt="Moment 9">
                     </div>
                 </div>
             </div>
@@ -995,16 +651,6 @@
         <!-- Digital Envelope/Gift Section -->
         <section id="gift" class="section">
             <div class="box-border">
-                <!-- Floral decorations -->
-                <img class="floral-decoration floral-1" src="https://media-public.canva.com/fJDB4/MAFAICfJDB4/1/t.png"
-                    alt="floral decoration">
-                <img class="floral-decoration floral-2" src="https://media-public.canva.com/fJDB4/MAFAICfJDB4/1/t.png"
-                    alt="floral decoration">
-                <img class="floral-decoration floral-3" src="https://media-public.canva.com/fJDB4/MAFAICfJDB4/1/t.png"
-                    alt="floral decoration">
-                <img class="floral-decoration floral-4" src="https://media-public.canva.com/fJDB4/MAFAICfJDB4/1/t.png"
-                    alt="floral decoration">
-
                 <h1>Amplop Digital</h1>
                 <p>Jika Anda ingin memberikan hadiah, kami menerima transfer ke:</p>
                 <div class="bank-account">
@@ -1019,25 +665,15 @@
         <!-- Location Section -->
         <section id="location" class="section">
             <div class="box-border">
-                <!-- Floral decorations -->
-                <img class="floral-decoration floral-1" src="https://media-public.canva.com/fJDB4/MAFAICfJDB4/1/t.png"
-                    alt="floral decoration">
-                <img class="floral-decoration floral-2" src="https://media-public.canva.com/fJDB4/MAFAICfJDB4/1/t.png"
-                    alt="floral decoration">
-                <img class="floral-decoration floral-center-top"
-                    src="https://media-public.canva.com/fJDB4/MAFAICfJDB4/1/t.png" alt="floral decoration">
-
                 <h1>Lokasi Acara</h1>
                 <h2 style="margin: 1.5rem 0 1rem;">Resepsi Pernikahan</h2>
                 <p><i class="fas fa-map-marker-alt"></i> Grand Ballroom Hotel Santika</p>
                 <p><i class="fas fa-location-arrow"></i> Jl. Gatot Subroto No. 45, Jakarta Selatan</p>
                 <div class="map-container">
-                    <iframe
-                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.521260322283!2d106.81956135000001!3d-6.1947419999999945!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f5390917b759%3A0x6b462e9b5e9ee709!2sHotel%20Santika%20Premiere%20Hayam%20Wuruk%20Jakarta!5e0!3m2!1sen!2sid!4v1623830287593!5m2!1sen!2sid"
-                        width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.521260322283!2d106.81956135000001!3d-6.1947419999999945!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f5390917b759%3A0x6b462e9b5e9ee709!2sHotel%20Santika%20Premiere%20Hayam%20Wuruk%20Jakarta!5e0!3m2!1sen!2sid!4v1623830287593!5m2!1sen!2sid" 
+                            width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
                 </div>
-                <button
-                    style="margin-top: 1.5rem; padding: 10px 20px; background: #ff6b6b; color: white; border: none; border-radius: 5px; cursor: pointer;">
+                <button style="margin-top: 1.5rem; padding: 10px 20px; background: var(--primary-color); color: white; border: none; border-radius: 5px; cursor: pointer;">
                     <i class="fas fa-directions"></i> Petunjuk Arah
                 </button>
             </div>
@@ -1046,23 +682,8 @@
         <!-- Thank You Section -->
         <section id="thanks" class="section">
             <div class="box-border">
-                <!-- Floral decorations -->
-                <img class="floral-decoration floral-1" src="https://media-public.canva.com/fJDB4/MAFAICfJDB4/1/t.png"
-                    alt="floral decoration">
-                <img class="floral-decoration floral-2" src="https://media-public.canva.com/fJDB4/MAFAICfJDB4/1/t.png"
-                    alt="floral decoration">
-                <img class="floral-decoration floral-3" src="https://media-public.canva.com/fJDB4/MAFAICfJDB4/1/t.png"
-                    alt="floral decoration">
-                <img class="floral-decoration floral-4" src="https://media-public.canva.com/fJDB4/MAFAICfJDB4/1/t.png"
-                    alt="floral decoration">
-                <img class="floral-decoration floral-center-top"
-                    src="https://media-public.canva.com/fJDB4/MAFAICfJDB4/1/t.png" alt="floral decoration">
-                <img class="floral-decoration floral-center-bottom"
-                    src="https://media-public.canva.com/fJDB4/MAFAICfJDB4/1/t.png" alt="floral decoration">
-
                 <h1>Terima Kasih</h1>
-                <p style="margin: 1.5rem 0;">Atas kehadiran dan doa restunya, kami mengucapkan terima kasih yang
-                    sebesar-besarnya.</p>
+                <p style="margin: 1.5rem 0;">Atas kehadiran dan doa restunya, kami mengucapkan terima kasih yang sebesar-besarnya.</p>
                 <div class="thank-you">
                     <p>Wassalamu'alaikum Warahmatullahi Wabarakatuh</p>
                     <p style="margin-top: 2rem;">Arka & Ayu</p>
@@ -1070,7 +691,7 @@
             </div>
         </section>
 
-        <!-- Updated Bottom Navbar with all sections -->
+        <!-- Bottom Navbar -->
         <nav class="bottom-nav">
             <a href="#home" data-index="0" class="nav-item active">
                 <i class="fa-solid fa-house"></i>
@@ -1110,25 +731,22 @@
     <!-- Music Player -->
     <div class="music-player" id="musicPlayer">
         <i class="fas fa-pause"></i>
-        <audio id="weddingMusic" autoplay loop>
-            <source src="/audio/Cigarettes out the Window [7j6C9METNm0].mp3" type="audio/mpeg" autoplay loop>
+        <audio id="weddingMusic" loop>
+            <source src="/audio/Cigarettes out the Window [7j6C9METNm0].mp3" type="audio/mpeg">
         </audio>
     </div>
 
     <!-- Image Modal -->
     <div id="imageModal" class="modal">
         <span class="close-btn">&times;</span>
+        <button class="nav-btn prev-btn">&lt;</button>
+        <button class="nav-btn next-btn">&gt;</button>
         <div class="modal-content">
             <img class="modal-img" id="modalImage">
         </div>
     </div>
 
     <script>
-        // Prevent zooming and scaling
-        document.addEventListener('gesturestart', function (e) {
-            e.preventDefault();
-        });
-
         // DOM Elements
         const cover = document.getElementById('cover');
         const openBtn = document.getElementById('openBtn');
@@ -1138,152 +756,122 @@
         const audioElement = document.getElementById('weddingMusic');
         const sections = document.querySelectorAll('.section');
         const navItems = document.querySelectorAll('.nav-item');
-        const countdownDays = document.getElementById('days');
-        const countdownHours = document.getElementById('hours');
-        const countdownMinutes = document.getElementById('minutes');
-        const countdownSeconds = document.getElementById('seconds');
+        const countdownElements = {
+            days: document.getElementById('days'),
+            hours: document.getElementById('hours'),
+            minutes: document.getElementById('minutes'),
+            seconds: document.getElementById('seconds')
+        };
         const modal = document.getElementById('imageModal');
         const modalImg = document.getElementById('modalImage');
         const closeBtn = document.querySelector('.close-btn');
-        const galleryItems = document.querySelectorAll('.gallery-item img');
+        const prevBtn = document.querySelector('.prev-btn');
+        const nextBtn = document.querySelector('.next-btn');
+        
+        // State
         let currentIndex = 0;
         let scrolling = false;
         let isMusicPlaying = false;
+        let currentImageIndex = 0;
+        let activeGalleryItem = null;
 
-        // Set the wedding date (February 5, 2026)
+        // Gallery images
+        const galleryImages = [
+            '/image/Gal-1.jpg',
+            '/image/Gal-2.jpg',
+            '/image/Gal-3.jpg',
+            '/image/Gal-4.jpg',
+            '/image/Gal-5.jpg',
+            '/image/Gal-6.jpg',
+            '/image/Gal-7.jpg',
+            '/image/Gal-8.jpg',
+            '/image/Gal-9.jpg'
+        ];
+
+        // Constants
         const weddingDate = new Date('February 5, 2026 08:00:00').getTime();
 
-        // Update countdown every second
-        const countdown = setInterval(function () {
+        // Initialize
+        function init() {
+            setupEventListeners();
+            startCountdown();
+            showSection(0);
+        }
+
+        // Event Listeners
+        function setupEventListeners() {
+            openBtn.addEventListener('click', openInvitation);
+            musicPlayer.addEventListener('click', toggleMusic);
+            closeBtn.addEventListener('click', closeModal);
+            prevBtn.addEventListener('click', () => navigateGallery('prev'));
+            nextBtn.addEventListener('click', () => navigateGallery('next'));
+            modal.addEventListener('click', (e) => e.target === modal && closeModal());
+            
+            navItems.forEach(item => {
+                item.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    showSection(parseInt(item.getAttribute('data-index')));
+                });
+            });
+            
+            window.addEventListener('wheel', handleScroll);
+            window.addEventListener('touchstart', handleTouchStart);
+            window.addEventListener('touchend', handleTouchEnd);
+            document.addEventListener('keydown', handleKeyDown);
+        }
+
+        // Countdown
+        function startCountdown() {
+            setInterval(updateCountdown, 1000);
+        }
+
+        function updateCountdown() {
             const now = new Date().getTime();
             const distance = weddingDate - now;
+            
+            if (distance < 0) return;
+            
+            countdownElements.days.textContent = Math.floor(distance / (1000 * 60 * 60 * 24)).toString().padStart(2, '0');
+            countdownElements.hours.textContent = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)).toString().padStart(2, '0');
+            countdownElements.minutes.textContent = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)).toString().padStart(2, '0');
+            countdownElements.seconds.textContent = Math.floor((distance % (1000 * 60)) / 1000).toString().padStart(2, '0');
+        }
 
-            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-            countdownDays.innerHTML = days.toString().padStart(2, '0');
-            countdownHours.innerHTML = hours.toString().padStart(2, '0');
-            countdownMinutes.innerHTML = minutes.toString().padStart(2, '0');
-            countdownSeconds.innerHTML = seconds.toString().padStart(2, '0');
-
-            if (distance < 0) {
-                clearInterval(countdown);
-                document.getElementById('countdown').innerHTML = "The wedding has begun!";
-            }
-        }, 1000);
-
-        // Open Invitation Button
-        openBtn.addEventListener('click', function () {
-            // Hide cover with fade out effect
-            cover.classList.add('hidden');
-
-            // Show main content with fade in effect
-            setTimeout(() => {
-                mainContent.classList.add('visible');
-
-                // Show music player
-                setTimeout(() => {
-                    musicPlayer.classList.add('visible');
-                }, 500);
-            }, 500);
-
-            // Play music automatically (muted by default due to browser autoplay policies)
-            audioElement.play().then(() => {
-                // Once play is successful, we can unmute if user interacts
-                musicPlayer.addEventListener('click', function () {
-                    audioElement.muted = false;
-                    if (!isMusicPlaying) {
-                        audioElement.play();
-                        musicIcon.classList.remove('fa-play');
-                        musicIcon.classList.add('fa-pause');
-                        isMusicPlaying = true;
-                    }
-                }, { once: true });
-            }).catch(error => {
-                console.log("Autoplay prevented:", error);
-            });
-        });
-
-        // Music Player Control
-        musicPlayer.addEventListener('click', function () {
-            if (isMusicPlaying) {
-                audioElement.pause();
-                musicIcon.classList.remove('fa-pause');
-                musicIcon.classList.add('fa-play');
-            } else {
-                audioElement.play();
-                musicIcon.classList.remove('fa-play');
-                musicIcon.classList.add('fa-pause');
-            }
-            isMusicPlaying = !isMusicPlaying;
-        });
-
-        // Gallery Image Click Handler
-        galleryItems.forEach(item => {
-            item.addEventListener('click', function () {
-                modal.style.display = "flex";
-                modalImg.src = this.src;
-            });
-        });
-
-        // Close Modal
-        closeBtn.addEventListener('click', function () {
-            modal.style.display = "none";
-        });
-
-        // Close Modal when clicking outside the image
-        modal.addEventListener('click', function (e) {
-            if (e.target === modal) {
-                modal.style.display = "none";
-            }
-        });
-
-        // Section Navigation
+        // Navigation
         function showSection(index) {
-            sections.forEach((sec, i) => {
-                sec.classList.toggle('active', i === index);
-            });
-            navItems.forEach((item, i) => {
-                item.classList.toggle('active', i === index);
-            });
+            if (index < 0 || index >= sections.length) return;
+            
+            sections.forEach((sec, i) => sec.classList.toggle('active', i === index));
+            navItems.forEach((item, i) => item.classList.toggle('active', i === index));
+            
             currentIndex = index;
-
-            // Scroll to section smoothly
             sections[index].scrollIntoView({ behavior: 'smooth' });
         }
 
-        // Navbar click
-        navItems.forEach(item => {
-            item.addEventListener('click', e => {
-                e.preventDefault();
-                const index = parseInt(item.getAttribute('data-index'));
-                showSection(index);
-            });
-        });
-
-        // Scroll event PC
-        window.addEventListener('wheel', e => {
+        function handleScroll(e) {
             if (scrolling) return;
             scrolling = true;
+            
             if (e.deltaY > 0 && currentIndex < sections.length - 1) {
                 showSection(currentIndex + 1);
             } else if (e.deltaY < 0 && currentIndex > 0) {
                 showSection(currentIndex - 1);
             }
+            
             setTimeout(() => scrolling = false, 800);
-        });
+        }
 
-        // Swipe event HP
+        // Touch Events
         let startY = 0;
-        let endY = 0;
-        window.addEventListener('touchstart', e => {
+
+        function handleTouchStart(e) {
             startY = e.touches[0].clientY;
-        });
-        window.addEventListener('touchend', e => {
-            endY = e.changedTouches[0].clientY;
-            let diff = startY - endY;
+        }
+
+        function handleTouchEnd(e) {
+            const endY = e.changedTouches[0].clientY;
+            const diff = startY - endY;
+            
             if (Math.abs(diff) > 50) {
                 if (diff > 0 && currentIndex < sections.length - 1) {
                     showSection(currentIndex + 1);
@@ -1291,18 +879,92 @@
                     showSection(currentIndex - 1);
                 }
             }
-        });
+        }
 
-        // Initialize first section
-        showSection(0);
+        // Gallery Modal
+        function openModal(imgSrc, element) {
+            currentImageIndex = galleryImages.indexOf(imgSrc);
+            modalImg.src = imgSrc;
+            modal.style.display = "flex";
+            document.body.style.overflow = "hidden";
+            
+            // Update active state
+            if (activeGalleryItem) {
+                activeGalleryItem.classList.remove('active');
+            }
+            activeGalleryItem = element;
+            element.classList.add('active');
+        }
 
-        // Directions button
-        document.querySelector('[href="#location"]').addEventListener('click', function () {
-            // This would normally open Google Maps with directions
-            // For demo, we'll just scroll to the location section
-            showSection(6);
-        });
+        function closeModal() {
+            modal.style.display = "none";
+            document.body.style.overflow = "auto";
+            
+            // Remove active state after a delay
+            setTimeout(() => {
+                if (activeGalleryItem) {
+                    activeGalleryItem.classList.remove('active');
+                    activeGalleryItem = null;
+                }
+            }, 300);
+        }
+
+        function navigateGallery(direction) {
+            if (direction === 'prev') {
+                currentImageIndex = (currentImageIndex - 1 + galleryImages.length) % galleryImages.length;
+            } else {
+                currentImageIndex = (currentImageIndex + 1) % galleryImages.length;
+            }
+            modalImg.src = galleryImages[currentImageIndex];
+            
+            // Update active state
+            if (activeGalleryItem) {
+                activeGalleryItem.classList.remove('active');
+            }
+            const galleryItems = document.querySelectorAll('.gallery-item');
+            activeGalleryItem = galleryItems[currentImageIndex];
+            activeGalleryItem.classList.add('active');
+        }
+
+        function handleKeyDown(e) {
+            if (modal.style.display === "flex") {
+                if (e.key === 'Escape') {
+                    closeModal();
+                } else if (e.key === 'ArrowLeft') {
+                    navigateGallery('prev');
+                } else if (e.key === 'ArrowRight') {
+                    navigateGallery('next');
+                }
+            }
+        }
+
+        // Music
+        function openInvitation() {
+            cover.classList.add('hidden');
+            
+            setTimeout(() => {
+                mainContent.classList.add('visible');
+                setTimeout(() => musicPlayer.classList.add('visible'), 500);
+                
+                // Try to play music (will be muted until user interacts)
+                audioElement.play().catch(console.error);
+            }, 500);
+        }
+
+        function toggleMusic() {
+            if (isMusicPlaying) {
+                audioElement.pause();
+                musicIcon.classList.replace('fa-pause', 'fa-play');
+            } else {
+                audioElement.muted = false;
+                audioElement.play();
+                musicIcon.classList.replace('fa-play', 'fa-pause');
+            }
+            isMusicPlaying = !isMusicPlaying;
+        }
+
+        // Initialize the app
+        init();
     </script>
 </body>
-
 </html>

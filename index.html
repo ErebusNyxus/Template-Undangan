@@ -12,6 +12,7 @@
         href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&family=Poppins:wght@300;400;500&display=swap"
         rel="stylesheet">
     <style>
+        /* ========== BASE STYLES ========== */
         :root {
             --primary-color: #ff6b6b;
             --secondary-color: #5a3e2d;
@@ -68,7 +69,7 @@
             font-weight: 500;
         }
 
-        /* Cover Styles */
+        /* ========== COVER SECTION ========== */
         .cover {
             position: fixed;
             top: 0;
@@ -83,11 +84,15 @@
             background: rgba(57, 57, 57, 0.7);
             z-index: 1000;
             transition: opacity 1s ease;
-            background-image: url('/image/Gal-2.jpg');
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
             background-attachment: fixed;
+        }
+
+        /* Default mobile cover */
+        .cover {
+            background-image: url('/image/Gal-2.jpg');
         }
 
         .cover::before {
@@ -144,7 +149,7 @@
             background: #ff5252;
         }
 
-        /* Main Content */
+        /* ========== MAIN CONTENT ========== */
         .main-content {
             display: none;
             opacity: 0;
@@ -175,7 +180,6 @@
             padding: 20px;
             text-align: center;
             position: absolute;
-            background-image: url('https://i.pinimg.com/736x/c9/ab/59/c9ab5908121e728e584e618992b35adf.jpg');
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
@@ -186,6 +190,39 @@
             transition: opacity 0.5s ease, transform 0.5s ease;
             pointer-events: none;
             z-index: 1;
+        }
+
+        /* Different background for each section on mobile */
+        #home {
+            background-image: url('https://i.pinimg.com/736x/c9/ab/59/c9ab5908121e728e584e618992b35adf.jpg');
+        }
+
+        #couple {
+            background-image: url('https://i.pinimg.com/736x/8f/6d/ff/8f6dff9a8c8b8e8b8e8b8e8b8e8b8e8b.jpg');
+        }
+
+        #quotes {
+            background-image: url('https://i.pinimg.com/736x/5a/3e/2d/5a3e2d5a3e2d5a3e2d5a3e2d5a3e2d5a.jpg');
+        }
+
+        #event {
+            background-image: url('https://i.pinimg.com/736x/ff/6b/6b/ff6b6bff6b6bff6b6bff6b6bff6b6bff.jpg');
+        }
+
+        #gallery {
+            background-image: url('https://i.pinimg.com/736x/5a/3e/2d/5a3e2d5a3e2d5a3e2d5a3e2d5a3e2d5a.jpg');
+        }
+
+        #gift {
+            background-image: url('https://i.pinimg.com/736x/8f/6d/ff/8f6dff9a8c8b8e8b8e8b8e8b8e8b8e8b.jpg');
+        }
+
+        #location {
+            background-image: url('https://i.pinimg.com/736x/c9/ab/59/c9ab5908121e728e584e618992b35adf.jpg');
+        }
+
+        #thanks {
+            background-image: url('https://i.pinimg.com/736x/ff/6b/6b/ff6b6bff6b6bff6b6bff6b6bff6b6bff.jpg');
         }
 
         .section.active {
@@ -221,7 +258,7 @@
             overflow-y: auto;
         }
 
-        /* Music Player */
+        /* ========== MUSIC PLAYER ========== */
         .music-player {
             position: fixed;
             bottom: 120px;
@@ -265,7 +302,7 @@
             }
         }
 
-        /* Bottom Navbar - FIXED */
+        /* ========== BOTTOM NAVIGATION ========== */
         .bottom-nav {
             position: fixed;
             bottom: 20px;
@@ -327,7 +364,7 @@
             margin-top: 4px;
         }
 
-        /* Couple Section */
+        /* ========== COUPLE SECTION ========== */
         .couple-names {
             font-size: clamp(1.8rem, 5vw, 2rem);
             margin: 1.5rem 0;
@@ -341,13 +378,14 @@
             margin: 0.2rem 0;
         }
 
-        /* Event Section */
+        /* ========== EVENT SECTION ========== */
         .event-container {
             display: flex;
             flex-direction: row;
             gap: 20px;
             width: 100%;
             margin: 1.5rem 0;
+            overflow-y: hidden;
         }
 
         .event-details {
@@ -381,7 +419,7 @@
             color: var(--primary-color);
         }
 
-        /* Countdown Timer */
+        /* ========== COUNTDOWN TIMER ========== */
         .countdown {
             display: flex;
             justify-content: center;
@@ -410,7 +448,7 @@
             text-align: center;
         }
 
-        /* Gallery */
+        /* ========== GALLERY SECTION ========== */
         .square-gallery {
             display: grid;
             grid-template-columns: 1fr 1fr 1fr;
@@ -446,7 +484,7 @@
             transform: scale(0.98);
         }
 
-        /* Modal Styles */
+        /* ========== MODAL STYLES ========== */
         .modal {
             display: none;
             position: fixed;
@@ -516,7 +554,7 @@
             background: rgba(0, 0, 0, 0.5);
         }
 
-        /* Map container */
+        /* ========== MAP CONTAINER ========== */
         .map-container {
             width: 100%;
             height: 200px;
@@ -525,41 +563,45 @@
             overflow: hidden;
         }
 
-        /* Responsive Adjustments */
-        @media (max-width: 768px) {
-            .event-container {
-                flex-direction: column;
-                gap: 15px;
+        /* ========== SWIPE GESTURES ========== */
+        /* For iOS devices to prevent elastic scrolling */
+        body {
+            overscroll-behavior-y: contain;
+        }
+
+        /* Visual feedback for swipe */
+        .swipe-left {
+            transform: translateX(-20px);
+        }
+
+        .swipe-right {
+            transform: translateX(20px);
+        }
+
+        /* ========== RESPONSIVE ADJUSTMENTS ========== */
+        /* Small phones (portrait) */
+        @media (max-width: 359px) {
+            .cover h1 {
+                font-size: 1.8rem;
+            }
+
+            .cover p {
+                font-size: 0.9rem;
             }
 
             .box-border {
-                padding: 20px;
-                max-height: calc(80vh - 90px);
+                padding: 15px;
+                max-height: calc(70vh - 90px);
             }
 
             .bottom-nav {
-                padding: 10px 15px;
-                bottom: 15px;
-            }
-
-            .nav-item span {
-                font-size: 10px;
+                bottom: 8px;
+                padding: 6px 10px;
             }
 
             .music-player {
-                bottom: 100px;
-            }
-
-            .main-content {
-                padding-bottom: 100px;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .box-border {
-                padding: 15px;
-                width: 95%;
-                max-height: calc(75vh - 90px);
+                bottom: 85px;
+                right: 15px;
             }
 
             .nav-item span {
@@ -569,6 +611,25 @@
             .nav-item {
                 min-width: 40px;
                 padding: 8px;
+            }
+
+            .nav-item.active span {
+                display: block;
+                font-size: 8px;
+                margin-top: 2px;
+            }
+
+            .main-content {
+                padding-bottom: 90px;
+            }
+        }
+
+        /* Phones (landscape) and small tablets */
+        @media (min-width: 360px) and (max-width: 767px) {
+            .box-border {
+                padding: 15px;
+                width: 95%;
+                max-height: calc(75vh - 90px);
             }
 
             .bottom-nav {
@@ -582,10 +643,13 @@
                 right: 15px;
             }
 
-            .nav-item.active span {
-                display: block;
-                font-size: 8px;
-                margin-top: 2px;
+            .event-container {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .nav-item span {
+                font-size: 10px;
             }
 
             .main-content {
@@ -593,22 +657,182 @@
             }
         }
 
-        @media (max-width: 360px) {
+        /* Tablets (portrait) */
+        @media (min-width: 768px) and (max-width: 1023px) {
+            .cover {
+                background-image: url('/image/Dekstop.png');
+            }
+
             .box-border {
-                max-height: calc(70vh - 90px);
+                padding: 20px;
+                max-height: calc(80vh - 90px);
             }
 
             .bottom-nav {
-                bottom: 8px;
-                padding: 6px 10px;
+                padding: 10px 15px;
+                bottom: 15px;
+            }
+
+            .music-player {
+                bottom: 100px;
             }
 
             .main-content {
-                padding-bottom: 90px;
+                padding-bottom: 100px;
+            }
+
+            /* Tablet-specific section backgrounds */
+            #home {
+                background-image: url('https://i.pinimg.com/736x/ff/6b/6b/ff6b6bff6b6bff6b6bff6b6bff6b6bff.jpg');
+            }
+
+            #couple {
+                background-image: url('https://i.pinimg.com/736x/c9/ab/59/c9ab5908121e728e584e618992b35adf.jpg');
+            }
+
+            #quotes {
+                background-image: url('https://i.pinimg.com/736x/8f/6d/ff/8f6dff9a8c8b8e8b8e8b8e8b8e8b8e8b.jpg');
+            }
+
+            #event {
+                background-image: url('https://i.pinimg.com/736x/5a/3e/2d/5a3e2d5a3e2d5a3e2d5a3e2d5a3e2d5a.jpg');
+            }
+
+            #gallery {
+                background-image: url('https://i.pinimg.com/736x/c9/ab/59/c9ab5908121e728e584e618992b35adf.jpg');
+            }
+
+            #gift {
+                background-image: url('https://i.pinimg.com/736x/ff/6b/6b/ff6b6bff6b6bff6b6bff6b6bff6b6bff.jpg');
+            }
+
+            #location {
+                background-image: url('https://i.pinimg.com/736x/8f/6d/ff/8f6dff9a8c8b8e8b8e8b8e8b8e8b8e8b.jpg');
+            }
+
+            #thanks {
+                background-image: url('https://i.pinimg.com/736x/5a/3e/2d/5a3e2d5a3e2d5a3e2d5a3e2d5a3e2d5a.jpg');
             }
         }
 
-        /* Scrollbar styling */
+        /* Laptops and small desktops */
+        @media (min-width: 1024px) and (max-width: 1279px) {
+            .cover {
+                background-image: url('/image/Dekstop.png');
+            }
+
+            .cover p {
+                font-size: 1.1rem;
+                max-width: 70%;
+            }
+
+            .open-btn {
+                padding: 12px 30px;
+                font-size: 1rem;
+            }
+
+            .box-border {
+                padding: 30px;
+                max-height: calc(80vh - 90px);
+            }
+
+            .music-player {
+                width: 50px;
+                height: 50px;
+            }
+
+            .music-player i {
+                font-size: 24px;
+            }
+
+            /* Desktop-specific section backgrounds */
+            #home {
+                background-image: url('https://i.pinimg.com/736x/8f/6d/ff/8f6dff9a8c8b8e8b8e8b8e8b8e8b8e8b.jpg');
+            }
+
+            #couple {
+                background-image: url('https://i.pinimg.com/736x/5a/3e/2d/5a3e2d5a3e2d5a3e2d5a3e2d5a3e2d5a.jpg');
+            }
+
+            #quotes {
+                background-image: url('https://i.pinimg.com/736x/c9/ab/59/c9ab5908121e728e584e618992b35adf.jpg');
+            }
+
+            #event {
+                background-image: url('https://i.pinimg.com/736x/ff/6b/6b/ff6b6bff6b6bff6b6bff6b6bff6b6bff.jpg');
+            }
+
+            #gallery {
+                background-image: url('https://i.pinimg.com/736x/5a/3e/2d/5a3e2d5a3e2d5a3e2d5a3e2d5a3e2d5a.jpg');
+            }
+
+            #gift {
+                background-image: url('https://i.pinimg.com/736x/c9/ab/59/c9ab5908121e728e584e618992b35adf.jpg');
+            }
+
+            #location {
+                background-image: url('https://i.pinimg.com/736x/ff/6b/6b/ff6b6bff6b6bff6b6bff6b6bff6b6bff.jpg');
+            }
+
+            #thanks {
+                background-image: url('https://i.pinimg.com/736x/8f/6d/ff/8f6dff9a8c8b8e8b8e8b8e8b8e8b8e8b.jpg');
+            }
+        }
+
+        /* Large desktops */
+        @media (min-width: 1280px) {
+            .cover {
+                background-image: url('/image/Dekstop.png');
+            }
+
+            body {
+                background-image: url('/image/Dekstop.png');
+            }
+
+            .main-content {
+                max-width: 1000px;
+            }
+
+            .box-border {
+                padding: 40px;
+                max-width: 900px;
+            }
+
+            /* Large desktop-specific section backgrounds */
+            #home {
+                background-image: url('https://i.pinimg.com/736x/5a/3e/2d/5a3e2d5a3e2d5a3e2d5a3e2d5a3e2d5a.jpg');
+            }
+
+            #couple {
+                background-image: url('https://i.pinimg.com/736x/ff/6b/6b/ff6b6bff6b6bff6b6bff6b6bff6b6bff.jpg');
+            }
+
+            #quotes {
+                background-image: url('https://i.pinimg.com/736x/c9/ab/59/c9ab5908121e728e584e618992b35adf.jpg');
+            }
+
+            #event {
+                background-image: url('https://i.pinimg.com/736x/8f/6d/ff/8f6dff9a8c8b8e8b8e8b8e8b8e8b8e8b.jpg');
+            }
+
+            #gallery {
+                background-image: url('https://i.pinimg.com/736x/ff/6b/6b/ff6b6bff6b6bff6b6bff6b6bff6b6bff.jpg');
+            }
+
+            #gift {
+                background-image: url('https://i.pinimg.com/736x/5a/3e/2d/5a3e2d5a3e2d5a3e2d5a3e2d5a3e2d5a.jpg');
+            }
+
+            #location {
+                background-image: url('https://i.pinimg.com/736x/c9/ab/59/c9ab5908121e728e584e618992b35adf.jpg');
+            }
+
+            #thanks {
+                background-image: url('https://i.pinimg.com/736x/8f/6d/ff/8f6dff9a8c8b8e8b8e8b8e8b8e8b8e8b.jpg');
+            }
+        }
+
+        /* ========== SCROLLBAR STYLING ========== */
         .box-border::-webkit-scrollbar {
             width: 6px;
         }
@@ -667,16 +891,17 @@
         <section id="couple" class="section">
             <div class="box-border">
                 <h1>Mempelai</h1>
+                <br>
                 <div class="couple-info">
                     <h2>Arka Annur</h2>
-                    <p>Putra pertama dari Bapak Ahmad dan Ibu Siti</p>
+                    <p>Putra pertama dari Bapak Azhar dan Ibu Siska</p>
                     <div class="divider">
                         <div class="divider-line"></div>
                         <i class="fas fa-heart"></i>
                         <div class="divider-line"></div>
                     </div>
                     <h2>Setya Ayu</h2>
-                    <p>Putri kedua dari Bapak Budi dan Ibu Rina</p>
+                    <p>Putri kedua dari Bapak Kusnuri dan Ibu Sulastri</p>
                 </div>
             </div>
         </section>
@@ -699,7 +924,6 @@
 
                 <div class="event-container">
                     <div class="event-details">
-                        <h2>Acara</h2>
                         <p><i class="far fa-calendar-alt"></i> Sabtu, 5 Februari 2026</p>
                         <p><i class="far fa-clock"></i> Pukul 08.00 - 10.00 WIB</p>
                         <p><i class="fas fa-map-marker-alt"></i> Masjid Al-Hidayah, Jakarta</p>
@@ -707,7 +931,6 @@
                 </div>
 
                 <div style="width: 100%; text-align: center; margin: 1.5rem 0;">
-                    <h3 style="margin-bottom: 1rem; color: var(--secondary-color);">Menuju Hari Bahagia</h3>
                     <div class="countdown">
                         <div class="countdown-item">
                             <div class="countdown-number" id="days">00</div>
@@ -737,35 +960,23 @@
                 <p>Koleksi momen indah bersama pasangan</p>
 
                 <div class="square-gallery">
-                    <div class="gallery-item"
-                        onclick="openModal('https://images.unsplash.com/photo-1511285560929-80b456fea0bc?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2069&q=80', this)">
-                        <img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80"
-                            alt="Moment 1">
+                    <div class="gallery-item" onclick="openModal('/image/Gal-1.jpg', this)">
+                        <img src="/image/Gal-1.jpg" alt="Moment 1">
                     </div>
-                    <div class="gallery-item"
-                        onclick="openModal('https://images.unsplash.com/photo-1606800052052-a08af7148866?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80', this)">
-                        <img src="https://images.unsplash.com/photo-1606800052052-a08af7148866?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80"
-                            alt="Moment 2">
+                    <div class="gallery-item" onclick="openModal('/image/Gal-2.jpg', this)">
+                        <img src="/image/Gal-7.jpg" alt="Moment 2">
                     </div>
-                    <div class="gallery-item"
-                        onclick="openModal('https://images.unsplash.com/photo-1583939003579-730e3918a45a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2087&q=80', this)">
-                        <img src="https://images.unsplash.com/photo-1583939003579-730e3918a45a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80"
-                            alt="Moment 3">
+                    <div class="gallery-item" onclick="openModal('/image/Gal-3.jpg', this)">
+                        <img src="/image/Gal-3.jpg" alt="Moment 3">
                     </div>
-                    <div class="gallery-item"
-                        onclick="openModal('https://images.unsplash.com/photo-1469371670807-013ccf25f16a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80', this)">
-                        <img src="https://images.unsplash.com/photo-1469371670807-013ccf25f16a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80"
-                            alt="Moment 4">
+                    <div class="gallery-item" onclick="openModal('/image/Gal-4.jpg', this)">
+                        <img src="/image/Gal-4.jpg" alt="Moment 4">
                     </div>
-                    <div class="gallery-item"
-                        onclick="openModal('https://images.unsplash.com/photo-1522673607200-164d1b6ce486?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80', this)">
-                        <img src="https://images.unsplash.com/photo-1522673607200-164d1b6ce486?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80"
-                            alt="Moment 5">
+                    <div class="gallery-item" onclick="openModal('/image/Gal-5.jpg', this)">
+                        <img src="/image/Gal-5.jpg" alt="Moment 5">
                     </div>
-                    <div class="gallery-item"
-                        onclick="openModal('https://images.unsplash.com/photo-1465495976277-4387d4b0e4a6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80', this)">
-                        <img src="https://images.unsplash.com/photo-1465495976277-4387d4b0e4a6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80"
-                            alt="Moment 6">
+                    <div class="gallery-item" onclick="openModal('/image/Gal-6.jpg', this)">
+                        <img src="/image/Gal-6.jpg" alt="Moment 6">
                     </div>
                 </div>
             </div>
@@ -821,8 +1032,9 @@
     <!-- Music Player -->
     <div class="music-player" id="musicPlayer">
         <i class="fas fa-music"></i>
-        <audio id="audioPlayer" loop>
-            <source src="/audio/Multo - Cup of Joe (Official Audio) [UESlzS1vp-8].mp3" autoplay type="audio/mpeg">
+        <audio id="audioPlayer" autoplay loop>
+            <source src="/audio/Multo - Cup of Joe (Official Audio) [UESlzS1vp-8].mp3" autoplay loop type="audio/mp3">
+            Your browser does not support the audio element.
         </audio>
     </div>
 
@@ -873,7 +1085,7 @@
     </div>
 
     <script>
-        // Cover and Main Content Transition
+        // ========== COVER AND MAIN CONTENT TRANSITION ==========
         const cover = document.getElementById('cover');
         const openBtn = document.getElementById('openBtn');
         const mainContent = document.getElementById('mainContent');
@@ -881,32 +1093,39 @@
         const audioPlayer = document.getElementById('audioPlayer');
         let isMusicPlaying = false;
 
-        // Initialize audio to be muted to allow autoplay
-        audioPlayer.muted = true;
+        // Function to handle audio playback
+        function playAudio() {
+            // First, we need to ensure the audio is loaded
+            audioPlayer.load();
+
+            // Then try to play it
+            const playPromise = audioPlayer.play();
+
+            if (playPromise !== undefined) {
+                playPromise.then(_ => {
+                    // Audio played successfully
+                    isMusicPlaying = true;
+                    musicPlayer.innerHTML = '<i class="fas fa-pause"></i>';
+                    musicPlayer.classList.add('visible');
+                })
+                    .catch(error => {
+                        // Auto-play was prevented, show play button
+                        console.log('Playback prevented:', error);
+                        isMusicPlaying = false;
+                        musicPlayer.innerHTML = '<i class="fas fa-play"></i>';
+                        musicPlayer.classList.add('visible');
+                    });
+            }
+        }
 
         function openInvitation() {
             cover.classList.add('hidden');
 
             setTimeout(() => {
                 mainContent.classList.add('visible');
-                setTimeout(() => musicPlayer.classList.add('visible'), 500);
 
-                // Try to play music (muted initially to comply with autoplay policies)
-                const playPromise = audioPlayer.play();
-
-                if (playPromise !== undefined) {
-                    playPromise.then(() => {
-                        // Autoplay started successfully
-                        isMusicPlaying = true;
-                        musicPlayer.innerHTML = '<i class="fas fa-pause"></i>';
-                    })
-                        .catch(error => {
-                            // Autoplay was prevented
-                            console.log('Autoplay prevented:', error);
-                            isMusicPlaying = false;
-                            musicPlayer.innerHTML = '<i class="fas fa-play"></i>';
-                        });
-                }
+                // Start playing music when user clicks the button
+                playAudio();
             }, 500);
         }
 
@@ -915,8 +1134,6 @@
                 audioPlayer.pause();
                 musicPlayer.innerHTML = '<i class="fas fa-play"></i>';
             } else {
-                // Unmute when user initiates playback
-                audioPlayer.muted = false;
                 audioPlayer.play()
                     .then(() => {
                         musicPlayer.innerHTML = '<i class="fas fa-pause"></i>';
@@ -932,7 +1149,7 @@
         openBtn.addEventListener('click', openInvitation);
         musicPlayer.addEventListener('click', toggleMusic);
 
-        // Section Navigation
+        // ========== SECTION NAVIGATION ==========
         const sections = document.querySelectorAll('.section');
         const navItems = document.querySelectorAll('.nav-item');
 
@@ -962,6 +1179,41 @@
             });
         });
 
+        // ========== SWIPE GESTURES FOR MOBILE ==========
+        let touchStartX = 0;
+        let touchEndX = 0;
+        const swipeThreshold = 50; // Minimum swipe distance in pixels
+
+        document.addEventListener('touchstart', (e) => {
+            touchStartX = e.changedTouches[0].screenX;
+        }, { passive: true });
+
+        document.addEventListener('touchend', (e) => {
+            touchEndX = e.changedTouches[0].screenX;
+            handleSwipe();
+        }, { passive: true });
+
+        function handleSwipe() {
+            const deltaX = touchEndX - touchStartX;
+
+            // Only trigger if swipe is significant enough
+            if (Math.abs(deltaX) > swipeThreshold) {
+                if (deltaX > 0) {
+                    // Swipe right - go to previous section
+                    const prevSection = document.querySelector('.section.active').previousElementSibling;
+                    if (prevSection) {
+                        showSection(prevSection.id);
+                    }
+                } else {
+                    // Swipe left - go to next section
+                    const nextSection = document.querySelector('.section.active + .section');
+                    if (nextSection) {
+                        showSection(nextSection.id);
+                    }
+                }
+            }
+        }
+
         // Mouse Scroll Navigation
         document.addEventListener('wheel', (event) => {
             if (event.deltaY > 0) {
@@ -979,7 +1231,7 @@
             }
         });
 
-        // Countdown Timer
+        // ========== COUNTDOWN TIMER ==========
         function updateCountdown() {
             const weddingDate = new Date('February 5, 2026 08:00:00').getTime();
             const now = new Date().getTime();
@@ -999,7 +1251,7 @@
         setInterval(updateCountdown, 1000);
         updateCountdown();
 
-        // Gallery Modal
+        // ========== GALLERY MODAL ==========
         let currentImageIndex = 0;
         const galleryImages = Array.from(document.querySelectorAll('.gallery-item img'));
         const modal = document.getElementById('imageModal');
@@ -1038,6 +1290,21 @@
 
         // Initialize by showing home section
         showSection('home');
+
+        // Arrow Navigation for desktop
+        document.addEventListener('keydown', (event) => {
+            if (event.key === 'ArrowRight') {
+                const nextSection = document.querySelector('.section.active + .section');
+                if (nextSection) {
+                    showSection(nextSection.id);
+                }
+            } else if (event.key === 'ArrowLeft') {
+                const prevSection = document.querySelector('.section.active').previousElementSibling;
+                if (prevSection) {
+                    showSection(prevSection.id);
+                }
+            }
+        });
     </script>
 </body>
 

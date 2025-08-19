@@ -185,9 +185,8 @@
             background-attachment: fixed;
             top: 0;
             left: 0;
+            /* HAPUS ANIMASI TRANSISI */
             opacity: 0;
-            transform: translateY(50px);
-            transition: opacity 0.5s ease, transform 0.5s ease;
             pointer-events: none;
             z-index: 1;
         }
@@ -226,8 +225,8 @@
         }
 
         .section.active {
+            /* HAPUS ANIMASI TRANSISI */
             opacity: 1;
-            transform: translateY(0);
             pointer-events: auto;
             z-index: 2;
             position: fixed;
@@ -256,6 +255,15 @@
             position: relative;
             max-height: calc(85vh - 90px);
             overflow-y: auto;
+            /* ANIMASI SLIDE IN */
+            transform: translateY(-50px);
+            opacity: 0;
+            transition: transform 0.8s ease, opacity 0.8s ease;
+        }
+
+        .section.active .box-border {
+            transform: translateY(0);
+            opacity: 1;
         }
 
         /* ========== MUSIC PLAYER ========== */
@@ -305,7 +313,7 @@
         /* ========== BOTTOM NAVIGATION ========== */
         .bottom-nav {
             position: fixed;
-            bottom: 20px;
+            bottom: 0; /* NAVBAR DIUBAH MENYENTUH BAWAH */
             left: 0;
             width: 100%;
             background: rgba(255, 255, 255, 0.98);
@@ -586,7 +594,6 @@
             }
 
             .bottom-nav {
-                bottom: 8px;
                 padding: 6px 3px;
             }
 
@@ -628,7 +635,6 @@
             }
 
             .bottom-nav {
-                bottom: 10px;
                 padding: 8px 5px;
             }
 
@@ -673,7 +679,6 @@
 
             .bottom-nav {
                 padding: 10px 8px;
-                bottom: 15px;
             }
 
             .music-player {
@@ -754,7 +759,6 @@
 
             .bottom-nav {
                 padding: 12px 10px;
-                bottom: 20px;
             }
 
             .music-player {

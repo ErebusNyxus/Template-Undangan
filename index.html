@@ -192,37 +192,37 @@
             z-index: 1;
         }
 
-        /* Different background for each section on mobile */
+        /* Default mobile background images */
         #home {
-            background-image: url('https://i.pinimg.com/736x/c9/ab/59/c9ab5908121e728e584e618992b35adf.jpg');
+            background-image: url('https://i.pinimg.com/1200x/6e/53/2a/6e532a2a60bdf632b920842a70e16e46.jpg');
         }
 
         #couple {
-            background-image: url('https://i.pinimg.com/736x/8f/6d/ff/8f6dff9a8c8b8e8b8e8b8e8b8e8b8e8b.jpg');
+            background-image: url('https://i.pinimg.com/1200x/6e/53/2a/6e532a2a60bdf632b920842a70e16e46.jpg');
         }
 
         #quotes {
-            background-image: url('https://i.pinimg.com/736x/5a/3e/2d/5a3e2d5a3e2d5a3e2d5a3e2d5a3e2d5a.jpg');
+            background-image: url('https://i.pinimg.com/1200x/6e/53/2a/6e532a2a60bdf632b920842a70e16e46.jpg');
         }
 
         #event {
-            background-image: url('https://i.pinimg.com/736x/ff/6b/6b/ff6b6bff6b6bff6b6bff6b6bff6b6bff.jpg');
+            background-image: url('https://i.pinimg.com/1200x/6e/53/2a/6e532a2a60bdf632b920842a70e16e46.jpg');
         }
 
         #gallery {
-            background-image: url('https://i.pinimg.com/736x/5a/3e/2d/5a3e2d5a3e2d5a3e2d5a3e2d5a3e2d5a.jpg');
+            background-image: url('https://i.pinimg.com/1200x/6e/53/2a/6e532a2a60bdf632b920842a70e16e46.jpg');
         }
 
         #gift {
-            background-image: url('https://i.pinimg.com/736x/8f/6d/ff/8f6dff9a8c8b8e8b8e8b8e8b8e8b8e8b.jpg');
+            background-image: url('https://i.pinimg.com/1200x/6e/53/2a/6e532a2a60bdf632b920842a70e16e46.jpg');
         }
 
         #location {
-            background-image: url('https://i.pinimg.com/736x/c9/ab/59/c9ab5908121e728e584e618992b35adf.jpg');
+            background-image: url('https://i.pinimg.com/1200x/6e/53/2a/6e532a2a60bdf632b920842a70e16e46.jpg');
         }
 
         #thanks {
-            background-image: url('https://i.pinimg.com/736x/ff/6b/6b/ff6b6bff6b6bff6b6bff6b6bff6b6bff.jpg');
+            background-image: url('https://i.pinimg.com/1200x/6e/53/2a/6e532a2a60bdf632b920842a70e16e46.jpg');
         }
 
         .section.active {
@@ -306,23 +306,24 @@
         .bottom-nav {
             position: fixed;
             bottom: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: auto;
-            max-width: 90vw;
+            left: 0;
+            width: 100%;
             background: rgba(255, 255, 255, 0.98);
             display: flex;
-            justify-content: center;
+            justify-content: space-around;
             align-items: center;
-            padding: 12px 20px;
-            border-radius: 50px;
-            border: 1px solid rgba(0, 0, 0, 0.08);
+            padding: 12px 5px;
             z-index: 999;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+            box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.15);
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
-            overflow: visible;
-            margin: 0;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none;
+        }
+
+        .bottom-nav::-webkit-scrollbar {
+            display: none;
         }
 
         .nav-item {
@@ -332,11 +333,12 @@
             text-decoration: none;
             color: #888;
             transition: var(--transition);
-            min-width: 50px;
-            padding: 8px 12px;
+            min-width: 40px;
+            padding: 8px 10px;
             position: relative;
             flex-shrink: 0;
             border-radius: 20px;
+            font-size: 0.9rem;
         }
 
         .nav-item:hover {
@@ -360,8 +362,13 @@
         }
 
         .nav-item span {
-            font-size: 12px;
+            font-size: 11px;
             margin-top: 4px;
+            white-space: nowrap;
+        }
+
+        .nav-item i {
+            font-size: 18px;
         }
 
         /* ========== COUPLE SECTION ========== */
@@ -563,30 +570,15 @@
             overflow: hidden;
         }
 
-        /* ========== SWIPE GESTURES ========== */
-        /* For iOS devices to prevent elastic scrolling */
-        body {
-            overscroll-behavior-y: contain;
-        }
-
-        /* Visual feedback for swipe */
-        .swipe-left {
-            transform: translateX(-20px);
-        }
-
-        .swipe-right {
-            transform: translateX(20px);
-        }
-
         /* ========== RESPONSIVE ADJUSTMENTS ========== */
-        /* Small phones (portrait) */
-        @media (max-width: 359px) {
+        /* Extra small devices (phones, 320px and down) */
+        @media (max-width: 320px) {
             .cover h1 {
-                font-size: 1.8rem;
+                font-size: 1.6rem;
             }
 
             .cover p {
-                font-size: 0.9rem;
+                font-size: 0.85rem;
             }
 
             .box-border {
@@ -596,50 +588,53 @@
 
             .bottom-nav {
                 bottom: 8px;
-                padding: 6px 10px;
+                padding: 6px 3px;
             }
 
             .music-player {
                 bottom: 85px;
                 right: 15px;
-            }
-
-            .nav-item span {
-                display: none;
+                width: 45px;
+                height: 45px;
             }
 
             .nav-item {
-                min-width: 40px;
-                padding: 8px;
+                min-width: 35px;
+                padding: 6px;
             }
 
-            .nav-item.active span {
-                display: block;
-                font-size: 8px;
-                margin-top: 2px;
+            .nav-item span {
+                font-size: 9px;
+            }
+
+            .nav-item i {
+                font-size: 16px;
             }
 
             .main-content {
-                padding-bottom: 90px;
+                padding-bottom: 85px;
             }
         }
 
-        /* Phones (landscape) and small tablets */
-        @media (min-width: 360px) and (max-width: 767px) {
+        /* Small devices (phones, 321px to 575px) */
+        @media (min-width: 321px) and (max-width: 575px) {
+            .cover {
+                background-image: url('/image/Dekstop.png');
+            }
+
             .box-border {
-                padding: 15px;
+                padding: 20px;
                 width: 95%;
                 max-height: calc(75vh - 90px);
             }
 
             .bottom-nav {
                 bottom: 10px;
-                padding: 8px 12px;
-                max-width: 95vw;
+                padding: 8px 5px;
             }
 
             .music-player {
-                bottom: 85px;
+                bottom: 90px;
                 right: 15px;
             }
 
@@ -648,33 +643,55 @@
                 gap: 15px;
             }
 
+            .nav-item {
+                min-width: 38px;
+                padding: 7px;
+            }
+
             .nav-item span {
                 font-size: 10px;
             }
 
+            .nav-item i {
+                font-size: 17px;
+            }
+
             .main-content {
-                padding-bottom: 95px;
+                padding-bottom: 90px;
             }
         }
 
-        /* Tablets (portrait) */
-        @media (min-width: 768px) and (max-width: 1023px) {
+        /* Medium devices (tablets, 576px to 767px) */
+        @media (min-width: 576px) and (max-width: 767px) {
             .cover {
                 background-image: url('/image/Dekstop.png');
             }
 
             .box-border {
-                padding: 20px;
+                padding: 25px;
                 max-height: calc(80vh - 90px);
             }
 
             .bottom-nav {
-                padding: 10px 15px;
+                padding: 10px 8px;
                 bottom: 15px;
             }
 
             .music-player {
                 bottom: 100px;
+            }
+
+            .nav-item {
+                min-width: 45px;
+                padding: 8px 10px;
+            }
+
+            .nav-item span {
+                font-size: 11px;
+            }
+
+            .nav-item i {
+                font-size: 18px;
             }
 
             .main-content {
@@ -683,40 +700,40 @@
 
             /* Tablet-specific section backgrounds */
             #home {
-                background-image: url('https://i.pinimg.com/736x/ff/6b/6b/ff6b6bff6b6bff6b6bff6b6bff6b6bff.jpg');
+                background-image: url('https://i.pinimg.com/1200x/6e/53/2a/6e532a2a60bdf632b920842a70e16e46.jpg');
             }
 
             #couple {
-                background-image: url('https://i.pinimg.com/736x/c9/ab/59/c9ab5908121e728e584e618992b35adf.jpg');
+                background-image: url('https://i.pinimg.com/1200x/6e/53/2a/6e532a2a60bdf632b920842a70e16e46.jpg');
             }
 
             #quotes {
-                background-image: url('https://i.pinimg.com/736x/8f/6d/ff/8f6dff9a8c8b8e8b8e8b8e8b8e8b8e8b.jpg');
+                background-image: url('https://i.pinimg.com/1200x/6e/53/2a/6e532a2a60bdf632b920842a70e16e46.jpg');
             }
 
             #event {
-                background-image: url('https://i.pinimg.com/736x/5a/3e/2d/5a3e2d5a3e2d5a3e2d5a3e2d5a3e2d5a.jpg');
+                background-image: url('https://i.pinimg.com/1200x/6e/53/2a/6e532a2a60bdf632b920842a70e16e46.jpg');
             }
 
             #gallery {
-                background-image: url('https://i.pinimg.com/736x/c9/ab/59/c9ab5908121e728e584e618992b35adf.jpg');
+                background-image: url('https://i.pinimg.com/1200x/6e/53/2a/6e532a2a60bdf632b920842a70e16e46.jpg');
             }
 
             #gift {
-                background-image: url('https://i.pinimg.com/736x/ff/6b/6b/ff6b6bff6b6bff6b6bff6b6bff6b6bff.jpg');
+                background-image: url('https://i.pinimg.com/1200x/6e/53/2a/6e532a2a60bdf632b920842a70e16e46.jpg');
             }
 
             #location {
-                background-image: url('https://i.pinimg.com/736x/8f/6d/ff/8f6dff9a8c8b8e8b8e8b8e8b8e8b8e8b.jpg');
+                background-image: url('https://i.pinimg.com/1200x/6e/53/2a/6e532a2a60bdf632b920842a70e16e46.jpg');
             }
 
             #thanks {
-                background-image: url('https://i.pinimg.com/736x/5a/3e/2d/5a3e2d5a3e2d5a3e2d5a3e2d5a3e2d5a.jpg');
+                background-image: url('https://i.pinimg.com/1200x/6e/53/2a/6e532a2a60bdf632b920842a70e16e46.jpg');
             }
         }
 
-        /* Laptops and small desktops */
-        @media (min-width: 1024px) and (max-width: 1279px) {
+        /* Large devices (tablets, 768px to 991px) */
+        @media (min-width: 768px) and (max-width: 991px) {
             .cover {
                 background-image: url('/image/Dekstop.png');
             }
@@ -727,8 +744,8 @@
             }
 
             .open-btn {
-                padding: 12px 30px;
-                font-size: 1rem;
+                padding: 14px 35px;
+                font-size: 1.1rem;
             }
 
             .box-border {
@@ -736,99 +753,157 @@
                 max-height: calc(80vh - 90px);
             }
 
+            .bottom-nav {
+                padding: 12px 10px;
+                bottom: 20px;
+            }
+
             .music-player {
-                width: 50px;
-                height: 50px;
+                bottom: 110px;
+                width: 55px;
+                height: 55px;
+            }
+
+            .music-player i {
+                font-size: 22px;
+            }
+
+            .nav-item {
+                min-width: 50px;
+                padding: 10px 12px;
+            }
+
+            .nav-item span {
+                font-size: 12px;
+            }
+
+            .nav-item i {
+                font-size: 20px;
+            }
+
+            .main-content {
+                padding-bottom: 110px;
+            }
+
+            /* Large tablet-specific section backgrounds */
+            #home {
+                background-image: url('https://i.pinimg.com/1200x/6e/53/2a/6e532a2a60bdf632b920842a70e16e46.jpg');
+            }
+
+            #couple {
+                background-image: url('https://i.pinimg.com/1200x/6e/53/2a/6e532a2a60bdf632b920842a70e16e46.jpg');
+            }
+
+            #quotes {
+                background-image: url('https://i.pinimg.com/1200x/6e/53/2a/6e532a2a60bdf632b920842a70e16e46.jpg');
+            }
+
+            #event {
+                background-image: url('https://i.pinimg.com/1200x/6e/53/2a/6e532a2a60bdf632b920842a70e16e46.jpg');
+            }
+
+            #gallery {
+                background-image: url('https://i.pinimg.com/1200x/6e/53/2a/6e532a2a60bdf632b920842a70e16e46.jpg');
+            }
+
+            #gift {
+                background-image: url('https://i.pinimg.com/1200x/6e/53/2a/6e532a2a60bdf632b920842a70e16e46.jpg');
+            }
+
+            #location {
+                background-image: url('https://i.pinimg.com/1200x/6e/53/2a/6e532a2a60bdf632b920842a70e16e46.jpg');
+            }
+
+            #thanks {
+                background-image: url('https://i.pinimg.com/1200x/6e/53/2a/6e532a2a60bdf632b920842a70e16e46.jpg');
+            }
+        }
+
+        /* Extra large devices (desktops, 992px and up) */
+        @media (min-width: 992px) {
+            .cover {
+                background-image: url('/image/Dekstop.png');
+            }
+
+            .main-content {
+                max-width: 900px;
+            }
+
+            .box-border {
+                padding: 40px;
+                max-width: 800px;
+                max-height: calc(85vh - 90px);
+            }
+
+            .bottom-nav {
+                left: 50%;
+                transform: translateX(-50%);
+                width: auto;
+                max-width: 90%;
+                border-radius: 50px;
+                border: 1px solid rgba(0, 0, 0, 0.08);
+                padding: 12px 20px;
+            }
+
+            .music-player {
+                width: 60px;
+                height: 60px;
+                bottom: 120px;
+                right: 30px;
             }
 
             .music-player i {
                 font-size: 24px;
             }
 
-            /* Desktop-specific section backgrounds */
-            #home {
-                background-image: url('https://i.pinimg.com/736x/8f/6d/ff/8f6dff9a8c8b8e8b8e8b8e8b8e8b8e8b.jpg');
+            .nav-item {
+                min-width: 55px;
+                padding: 10px 15px;
             }
 
-            #couple {
-                background-image: url('https://i.pinimg.com/736x/5a/3e/2d/5a3e2d5a3e2d5a3e2d5a3e2d5a3e2d5a.jpg');
+            .nav-item span {
+                font-size: 12px;
             }
 
-            #quotes {
-                background-image: url('https://i.pinimg.com/736x/c9/ab/59/c9ab5908121e728e584e618992b35adf.jpg');
-            }
-
-            #event {
-                background-image: url('https://i.pinimg.com/736x/ff/6b/6b/ff6b6bff6b6bff6b6bff6b6bff6b6bff.jpg');
-            }
-
-            #gallery {
-                background-image: url('https://i.pinimg.com/736x/5a/3e/2d/5a3e2d5a3e2d5a3e2d5a3e2d5a3e2d5a.jpg');
-            }
-
-            #gift {
-                background-image: url('https://i.pinimg.com/736x/c9/ab/59/c9ab5908121e728e584e618992b35adf.jpg');
-            }
-
-            #location {
-                background-image: url('https://i.pinimg.com/736x/ff/6b/6b/ff6b6bff6b6bff6b6bff6b6bff6b6bff.jpg');
-            }
-
-            #thanks {
-                background-image: url('https://i.pinimg.com/736x/8f/6d/ff/8f6dff9a8c8b8e8b8e8b8e8b8e8b8e8b.jpg');
-            }
-        }
-
-        /* Large desktops */
-        @media (min-width: 1280px) {
-            .cover {
-                background-image: url('/image/Dekstop.png');
-            }
-
-            body {
-                background-image: url('/image/Dekstop.png');
+            .nav-item i {
+                font-size: 22px;
             }
 
             .main-content {
-                max-width: 1000px;
+                padding-bottom: 120px;
             }
 
-            .box-border {
-                padding: 40px;
-                max-width: 900px;
-            }
-
-            /* Large desktop-specific section backgrounds */
+            /* Desktop-specific section backgrounds */
             #home {
-                background-image: url('https://i.pinimg.com/736x/5a/3e/2d/5a3e2d5a3e2d5a3e2d5a3e2d5a3e2d5a.jpg');
+                background-image: url('https://i.pinimg.com/1200x/6e/53/2a/6e532a2a60bdf632b920842a70e16e46.jpg');
             }
 
             #couple {
-                background-image: url('https://i.pinimg.com/736x/ff/6b/6b/ff6b6bff6b6bff6b6bff6b6bff6b6bff.jpg');
+                background-image: url('https://i.pinimg.com/1200x/6e/53/2a/6e532a2a60bdf632b920842a70e16e46.jpg');
             }
 
             #quotes {
-                background-image: url('https://i.pinimg.com/736x/c9/ab/59/c9ab5908121e728e584e618992b35adf.jpg');
+                background-image: url('https://i.pinimg.com/1200x/6e/53/2a/6e532a2a60bdf632b920842a70e16e46.jpg');
             }
 
             #event {
-                background-image: url('https://i.pinimg.com/736x/8f/6d/ff/8f6dff9a8c8b8e8b8e8b8e8b8e8b8e8b.jpg');
+                background-image: url('https://i.pinimg.com/1200x/6e/53/2a/6e532a2a60bdf632b920842a70e16e46.jpg');
             }
 
             #gallery {
-                background-image: url('https://i.pinimg.com/736x/ff/6b/6b/ff6b6bff6b6bff6b6bff6b6bff6b6bff.jpg');
+                background-image: url('https://i.pinimg.com/1200x/6e/53/2a/6e532a2a60bdf632b920842a70e16e46.jpg');
             }
 
             #gift {
-                background-image: url('https://i.pinimg.com/736x/5a/3e/2d/5a3e2d5a3e2d5a3e2d5a3e2d5a3e2d5a.jpg');
+                background-image: url('https://i.pinimg.com/1200x/6e/53/2a/6e532a2a60bdf632b920842a70e16e46.jpg');
             }
 
             #location {
-                background-image: url('https://i.pinimg.com/736x/c9/ab/59/c9ab5908121e728e584e618992b35adf.jpg');
+                background-image: url('https://i.pinimg.com/1200x/6e/53/2a/6e532a2a60bdf632b920842a70e16e46.jpg');
             }
 
             #thanks {
-                background-image: url('https://i.pinimg.com/736x/8f/6d/ff/8f6dff9a8c8b8e8b8e8b8e8b8e8b8e8b.jpg');
+                background-image: url('https://i.pinimg.com/1200x/6e/53/2a/6e532a2a60bdf632b920842a70e16e46.jpg');
             }
         }
 
@@ -960,23 +1035,23 @@
                 <p>Koleksi momen indah bersama pasangan</p>
 
                 <div class="square-gallery">
-                    <div class="gallery-item" onclick="openModal('/image/Gal-1.jpg', this)">
-                        <img src="/image/Gal-1.jpg" alt="Moment 1">
+                    <div class="gallery-item" onclick="openModal('https://i.pinimg.com/736x/c9/ab/59/c9ab5908121e728e584e618992b35adf.jpg', this)">
+                        <img src="https://i.pinimg.com/736x/c9/ab/59/c9ab5908121e728e584e618992b35adf.jpg" alt="Moment 1">
                     </div>
-                    <div class="gallery-item" onclick="openModal('/image/Gal-2.jpg', this)">
-                        <img src="/image/Gal-7.jpg" alt="Moment 2">
+                    <div class="gallery-item" onclick="openModal('https://i.pinimg.com/736x/8f/6d/ff/8f6dff9a8c8b8e8b8e8b8e8b8e8b8e8b.jpg', this)">
+                        <img src="https://i.pinimg.com/736x/8f/6d/ff/8f6dff9a8c8b8e8b8e8b8e8b8e8b8e8b.jpg" alt="Moment 2">
                     </div>
-                    <div class="gallery-item" onclick="openModal('/image/Gal-3.jpg', this)">
-                        <img src="/image/Gal-3.jpg" alt="Moment 3">
+                    <div class="gallery-item" onclick="openModal('https://i.pinimg.com/736x/5a/3e/2d/5a3e2d5a3e2d5a3e2d5a3e2d5a3e2d5a.jpg', this)">
+                        <img src="https://i.pinimg.com/736x/5a/3e/2d/5a3e2d5a3e2d5a3e2d5a3e2d5a3e2d5a.jpg" alt="Moment 3">
                     </div>
-                    <div class="gallery-item" onclick="openModal('/image/Gal-4.jpg', this)">
-                        <img src="/image/Gal-4.jpg" alt="Moment 4">
+                    <div class="gallery-item" onclick="openModal('https://i.pinimg.com/736x/ff/6b/6b/ff6b6bff6b6bff6b6bff6b6bff6b6bff.jpg', this)">
+                        <img src="https://i.pinimg.com/736x/ff/6b/6b/ff6b6bff6b6bff6b6bff6b6bff6b6bff.jpg" alt="Moment 4">
                     </div>
-                    <div class="gallery-item" onclick="openModal('/image/Gal-5.jpg', this)">
-                        <img src="/image/Gal-5.jpg" alt="Moment 5">
+                    <div class="gallery-item" onclick="openModal('https://i.pinimg.com/736x/c9/ab/59/c9ab5908121e728e584e618992b35adf.jpg', this)">
+                        <img src="https://i.pinimg.com/736x/c9/ab/59/c9ab5908121e728e584e618992b35adf.jpg" alt="Moment 5">
                     </div>
-                    <div class="gallery-item" onclick="openModal('/image/Gal-6.jpg', this)">
-                        <img src="/image/Gal-6.jpg" alt="Moment 6">
+                    <div class="gallery-item" onclick="openModal('https://i.pinimg.com/736x/8f/6d/ff/8f6dff9a8c8b8e8b8e8b8e8b8e8b8e8b.jpg', this)">
+                        <img src="https://i.pinimg.com/736x/8f/6d/ff/8f6dff9a8c8b8e8b8e8b8e8b8e8b8e8b.jpg" alt="Moment 6">
                     </div>
                 </div>
             </div>
@@ -1032,8 +1107,8 @@
     <!-- Music Player -->
     <div class="music-player" id="musicPlayer">
         <i class="fas fa-music"></i>
-        <audio id="audioPlayer" autoplay loop>
-            <source src="/audio/Multo - Cup of Joe (Official Audio) [UESlzS1vp-8].mp3" autoplay loop type="audio/mp3">
+        <audio id="audioPlayer" loop>
+            <source src="https://cdn.pixabay.com/download/audio/2022/01/20/audio_d1715ab8b5.mp3?filename=soft-sweet-romantic-background-music-6446.mp3" type="audio/mp3">
             Your browser does not support the audio element.
         </audio>
     </div>
@@ -1152,6 +1227,7 @@
         // ========== SECTION NAVIGATION ==========
         const sections = document.querySelectorAll('.section');
         const navItems = document.querySelectorAll('.nav-item');
+        const sectionIds = Array.from(sections).map(section => section.id);
 
         function showSection(sectionId) {
             sections.forEach(section => {
@@ -1169,6 +1245,9 @@
                     item.classList.remove('active');
                 }
             });
+            
+            // Update URL hash without scrolling
+            history.replaceState(null, null, `#${sectionId}`);
         }
 
         navItems.forEach(item => {
@@ -1179,57 +1258,70 @@
             });
         });
 
-        // ========== SWIPE GESTURES FOR MOBILE ==========
+        // ========== IMPROVED SWIPE GESTURES FOR MOBILE ==========
         let touchStartX = 0;
+        let touchStartY = 0;
         let touchEndX = 0;
+        let touchEndY = 0;
         const swipeThreshold = 50; // Minimum swipe distance in pixels
 
         document.addEventListener('touchstart', (e) => {
             touchStartX = e.changedTouches[0].screenX;
+            touchStartY = e.changedTouches[0].screenY;
         }, { passive: true });
 
         document.addEventListener('touchend', (e) => {
             touchEndX = e.changedTouches[0].screenX;
+            touchEndY = e.changedTouches[0].screenY;
             handleSwipe();
         }, { passive: true });
 
         function handleSwipe() {
             const deltaX = touchEndX - touchStartX;
+            const deltaY = touchEndY - touchStartY;
 
-            // Only trigger if swipe is significant enough
-            if (Math.abs(deltaX) > swipeThreshold) {
+            // Only trigger if horizontal swipe is significant and vertical is minimal
+            if (Math.abs(deltaX) > swipeThreshold && Math.abs(deltaX) > Math.abs(deltaY) * 2) {
                 if (deltaX > 0) {
                     // Swipe right - go to previous section
-                    const prevSection = document.querySelector('.section.active').previousElementSibling;
-                    if (prevSection) {
-                        showSection(prevSection.id);
-                    }
+                    navigateToPrevSection();
                 } else {
                     // Swipe left - go to next section
-                    const nextSection = document.querySelector('.section.active + .section');
-                    if (nextSection) {
-                        showSection(nextSection.id);
-                    }
+                    navigateToNextSection();
                 }
             }
         }
 
-        // Mouse Scroll Navigation
-        document.addEventListener('wheel', (event) => {
-            if (event.deltaY > 0) {
-                // Scroll down
-                const nextSection = document.querySelector('.section.active + .section');
-                if (nextSection) {
-                    showSection(nextSection.id);
-                }
-            } else {
-                // Scroll up
-                const prevSection = document.querySelector('.section.active').previousElementSibling;
-                if (prevSection) {
-                    showSection(prevSection.id);
-                }
+        function navigateToNextSection() {
+            const currentSection = document.querySelector('.section.active');
+            const nextSection = currentSection.nextElementSibling;
+            if (nextSection && nextSection.classList.contains('section')) {
+                showSection(nextSection.id);
             }
-        });
+        }
+
+        function navigateToPrevSection() {
+            const currentSection = document.querySelector('.section.active');
+            const prevSection = currentSection.previousElementSibling;
+            if (prevSection && prevSection.classList.contains('section')) {
+                showSection(prevSection.id);
+            }
+        }
+
+        // Mouse Scroll Navigation
+        let scrollTimeout;
+        document.addEventListener('wheel', (event) => {
+            clearTimeout(scrollTimeout);
+            scrollTimeout = setTimeout(() => {
+                if (event.deltaY > 0) {
+                    // Scroll down - next section
+                    navigateToNextSection();
+                } else {
+                    // Scroll up - previous section
+                    navigateToPrevSection();
+                }
+            }, 100);
+        }, { passive: true });
 
         // ========== COUNTDOWN TIMER ==========
         function updateCountdown() {
@@ -1294,17 +1386,32 @@
         // Arrow Navigation for desktop
         document.addEventListener('keydown', (event) => {
             if (event.key === 'ArrowRight') {
-                const nextSection = document.querySelector('.section.active + .section');
-                if (nextSection) {
-                    showSection(nextSection.id);
-                }
+                navigateToNextSection();
             } else if (event.key === 'ArrowLeft') {
-                const prevSection = document.querySelector('.section.active').previousElementSibling;
-                if (prevSection) {
-                    showSection(prevSection.id);
-                }
+                navigateToPrevSection();
+            } else if (event.key === 'Escape') {
+                closeModal();
             }
         });
+        
+        // Handle browser back/forward buttons
+        window.addEventListener('popstate', () => {
+            const hash = window.location.hash.substring(1);
+            if (sectionIds.includes(hash)) {
+                showSection(hash);
+            }
+        });
+
+        // ========== DEVICE-SPECIFIC BACKGROUND IMAGES ==========
+        function updateBackgroundImages() {
+            // This function can be expanded to dynamically change images based on device
+            // For now, we rely on CSS media queries
+            console.log("Device-specific backgrounds loaded via CSS media queries");
+        }
+
+        // Call on load and resize
+        window.addEventListener('load', updateBackgroundImages);
+        window.addEventListener('resize', updateBackgroundImages);
     </script>
 </body>
 

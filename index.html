@@ -9,16 +9,23 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&family=Poppins:wght@300;400;500&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap"
         rel="stylesheet">
     <style>
-        /* ========== BASE STYLES ========== */
+        /* ========== VARIABEL & BASE STYLES ========== */
         :root {
             --primary-color: #ff6b6b;
+            --primary-light: #ff9e9e;
+            --primary-dark: #e25c5c;
             --secondary-color: #5a3e2d;
+            --secondary-light: #8a6d5b;
+            --accent-color: #d4af37;
             --light-color: #fffaf5;
-            --shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+            --dark-color: #333333;
+            --shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            --shadow-light: 0 2px 10px rgba(0, 0, 0, 0.05);
             --transition: all 0.3s ease;
+            --border-radius: 12px;
         }
 
         html {
@@ -49,6 +56,7 @@
             background-position: center;
             background-attachment: fixed;
             padding-bottom: 0;
+            line-height: 1.6;
         }
 
         body::before {
@@ -58,7 +66,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(255, 250, 245, 0.85);
+            background: rgba(255, 250, 245, 0.92);
             z-index: -1;
         }
 
@@ -66,7 +74,12 @@
         h2,
         h3 {
             font-family: 'Playfair Display', serif;
-            font-weight: 500;
+            font-weight: 600;
+            color: var(--secondary-color);
+        }
+
+        p {
+            margin-bottom: 1rem;
         }
 
         /* ========== COVER SECTION ========== */
@@ -102,7 +115,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.5);
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7));
             z-index: -1;
         }
 
@@ -111,42 +124,72 @@
             pointer-events: none;
         }
 
+        .cover-content {
+            max-width: 90%;
+            animation: fadeInUp 1s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
         .cover h1 {
-            font-size: clamp(2rem, 5vw, 2.5rem);
+            font-size: clamp(2rem, 5vw, 3rem);
             margin-bottom: 1rem;
             color: #fff;
-            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
-            letter-spacing: 1px;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.4);
+            letter-spacing: 2px;
+            font-weight: 700;
         }
 
         .cover p {
-            font-size: clamp(1rem, 3vw, 1.2rem);
-            margin-bottom: 2rem;
+            font-size: clamp(1rem, 3vw, 1.4rem);
+            margin-bottom: 2.5rem;
             color: #fff;
-            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.3);
             max-width: 80%;
             line-height: 1.6;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         .open-btn {
-            padding: 12px 30px;
+            padding: 14px 35px;
             background: var(--primary-color);
             color: white;
             border: none;
-            border-radius: 30px;
-            font-size: 1rem;
+            border-radius: 50px;
+            font-size: 1.1rem;
             cursor: pointer;
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 10px;
             transition: var(--transition);
-            box-shadow: 0 4px 15px rgba(255, 107, 107, 0.3);
+            box-shadow: 0 5px 20px rgba(255, 107, 107, 0.4);
             font-weight: 500;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .open-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: 0.5s;
         }
 
         .open-btn:hover {
             transform: translateY(-3px);
-            background: #ff5252;
+            background: var(--primary-dark);
+            box-shadow: 0 8px 25px rgba(255, 107, 107, 0.5);
+        }
+
+        .open-btn:hover::before {
+            left: 100%;
         }
 
         /* ========== MAIN CONTENT ========== */
@@ -185,7 +228,6 @@
             background-attachment: fixed;
             top: 0;
             left: 0;
-            /* HAPUS ANIMASI TRANSISI */
             opacity: 0;
             pointer-events: none;
             z-index: 1;
@@ -225,7 +267,6 @@
         }
 
         .section.active {
-            /* HAPUS ANIMASI TRANSISI */
             opacity: 1;
             pointer-events: auto;
             z-index: 2;
@@ -240,27 +281,63 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(255, 255, 255, 0.7);
+            background: rgba(255, 255, 255, 0.82);
             z-index: -1;
         }
 
-        .box-border {
-            border: 1px solid rgba(0, 0, 0, 0.1);
-            padding: 30px;
-            border-radius: 8px;
-            background: rgba(255, 255, 255, 0.95);
-            width: 90%;
-            margin: 0 auto;
-            box-shadow: var(--shadow);
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(1.8rem, 5vw, 2.5rem);
+            margin-bottom: 1.8rem;
+            color: var(--secondary-color);
             position: relative;
-            max-height: calc(85vh - 90px);
+            transform: translateY(-30px);
+            opacity: 0;
+            transition: transform 0.8s ease, opacity 0.8s ease;
+            padding-bottom: 10px;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background: var(--primary-color);
+            border-radius: 3px;
+        }
+
+        .box-border {
+            border: 1px solid rgba(0, 0, 0, 0.08);
+            padding: 30px;
+            border-radius: var(--border-radius);
+            background: rgba(255, 255, 255, 0.95);
+            width: 88%;
+            margin: 0 auto;
+            box-shadow: var(--shadow-light);
+            position: relative;
+            max-height: calc(90vh - 200px);
             overflow-y: auto;
-            /* ANIMASI SLIDE IN */
-            transform: translateY(-50px);
+            transform: translateY(30px);
             opacity: 0;
             transition: transform 0.8s ease, opacity 0.8s ease;
         }
 
+        .box-border::before {
+            content: '';
+            position: absolute;
+            top: 8px;
+            left: 8px;
+            right: 8px;
+            bottom: 8px;
+            border: 1px solid rgba(90, 62, 45, 0.1);
+            border-radius: calc(var(--border-radius) - 2px);
+            pointer-events: none;
+        }
+
+        .section.active .section-title,
         .section.active .box-border {
             transform: translateY(0);
             opacity: 1;
@@ -293,7 +370,7 @@
 
         .music-player:hover {
             transform: scale(1.1);
-            background: #ff5252;
+            background: var(--primary-dark);
         }
 
         @keyframes pulse {
@@ -313,7 +390,7 @@
         /* ========== BOTTOM NAVIGATION ========== */
         .bottom-nav {
             position: fixed;
-            bottom: 0; /* NAVBAR DIUBAH MENYENTUH BAWAH */
+            bottom: 0;
             left: 0;
             width: 100%;
             background: rgba(255, 255, 255, 0.98);
@@ -378,69 +455,201 @@
             font-size: 18px;
         }
 
-        /* ========== COUPLE SECTION ========== */
+        /* ========== HOME SECTION ========== */
         .couple-names {
-            font-size: clamp(1.8rem, 5vw, 2rem);
-            margin: 1.5rem 0;
+            font-size: clamp(1.8rem, 5vw, 2.5rem);
+            margin: 1.8rem 0;
             line-height: 1.4;
+            font-family: 'Playfair Display', serif;
+            font-weight: 600;
+            color: var(--secondary-color);
         }
 
-        .couple-names span:nth-child(2) {
-            font-size: clamp(1.3rem, 4vw, 1.5rem);
+        .couple-names span {
+            display: block;
+            margin: 0.5rem 0;
+        }
+
+        .couple-names .amp {
+            font-size: clamp(1.3rem, 4vw, 1.8rem);
             font-family: 'Poppins', sans-serif;
             font-weight: 300;
-            margin: 0.2rem 0;
+            margin: 0.5rem 0;
+            color: var(--primary-color);
+        }
+
+        /* ========== COUPLE SECTION ========== */
+        .couple-info {
+            width: 100%;
+        }
+
+        .couple-info h2 {
+            font-size: clamp(1.5rem, 4vw, 1.8rem);
+            margin-bottom: 0.8rem;
+            color: var(--primary-color);
+        }
+
+        .couple-info p {
+            margin-bottom: 1.5rem;
+            font-size: clamp(0.9rem, 3vw, 1rem);
+        }
+
+        .divider {
+            margin: 1.8rem 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-color);
+            width: 100%;
+        }
+
+        .divider-line {
+            height: 1px;
+            background: linear-gradient(to right, transparent, var(--primary-color), transparent);
+            flex: 1;
+            max-width: 100px;
+        }
+
+        .divider i {
+            margin: 0 15px;
+            font-size: 1.2rem;
+            color: var(--primary-color);
+            animation: heartbeat 1.5s ease-in-out infinite both;
+        }
+
+        @keyframes heartbeat {
+            from {
+                transform: scale(1);
+                transform-origin: center center;
+                animation-timing-function: ease-out;
+            }
+            10% {
+                transform: scale(0.91);
+                animation-timing-function: ease-in;
+            }
+            17% {
+                transform: scale(0.98);
+                animation-timing-function: ease-out;
+            }
+            33% {
+                transform: scale(0.87);
+                animation-timing-function: ease-in;
+            }
+            45% {
+                transform: scale(1);
+                animation-timing-function: ease-out;
+            }
+        }
+
+        /* ========== QUOTES SECTION ========== */
+        .quote-text {
+            font-style: italic;
+            margin: 1.8rem 0;
+            line-height: 1.8;
+            font-size: clamp(1rem, 3vw, 1.2rem);
+            color: var(--secondary-light);
+            position: relative;
+            padding: 0 20px;
+            text-align: center;
+        }
+
+        .quote-text::before,
+        .quote-text::after {
+            content: '"';
+            font-size: 2.5rem;
+            color: var(--primary-light);
+            position: absolute;
+            line-height: 1;
+        }
+
+        .quote-text::before {
+            top: -10px;
+            left: 0;
+        }
+
+        .quote-text::after {
+            bottom: -30px;
+            right: 0;
+        }
+
+        .quote-source {
+            margin-top: 2rem;
+            font-weight: 500;
+            color: var(--secondary-color);
+            text-align: center;
         }
 
         /* ========== EVENT SECTION ========== */
         .event-container {
             display: flex;
-            flex-direction: row;
-            gap: 20px;
+            flex-direction: column;
+            gap: 25px;
             width: 100%;
-            margin: 1.5rem 0;
-            overflow-y: hidden;
+            margin: 1.8rem 0;
         }
 
         .event-details {
-            flex: 1;
-            padding: 1.5rem;
-            background: rgba(255, 255, 255, 0.8);
-            border-radius: 8px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            padding: 1.8rem;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-light);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .event-details::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+            background: var(--primary-color);
         }
 
         .event-details h2 {
-            margin-bottom: 1rem;
+            margin-bottom: 1.2rem;
             color: var(--primary-color);
             font-size: clamp(1.2rem, 4vw, 1.5rem);
+            position: relative;
+            display: inline-block;
+        }
+
+        .event-details h2::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background: var(--accent-color);
         }
 
         .event-details p {
             margin-bottom: 0.8rem;
             display: flex;
             align-items: center;
-            justify-content: center;
-            gap: 8px;
+            justify-content: flex-start;
+            gap: 12px;
             font-size: clamp(0.9rem, 3vw, 1rem);
+            text-align: left;
         }
 
-        .divider {
-            margin: 1.5rem 0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+        .event-details i {
             color: var(--primary-color);
+            min-width: 20px;
+            text-align: center;
         }
 
         /* ========== COUNTDOWN TIMER ========== */
         .countdown {
             display: flex;
             justify-content: center;
-            gap: clamp(5px, 2vw, 10px);
-            margin: 1.5rem auto;
-            padding: 15px 0;
+            gap: clamp(8px, 2vw, 12px);
+            margin: 2rem auto;
+            padding: 20px 0;
             width: 100%;
+            max-width: 400px;
         }
 
         .countdown-item {
@@ -448,42 +657,86 @@
             flex-direction: column;
             align-items: center;
             flex: 1;
-            max-width: 70px;
+            max-width: 80px;
         }
 
         .countdown-number {
-            font-size: clamp(1.2rem, 5vw, 1.8rem);
-            font-weight: 600;
+            font-size: clamp(1.5rem, 5vw, 2.2rem);
+            font-weight: 700;
             color: var(--primary-color);
             width: 100%;
-            padding: 8px 0;
-            border-radius: 5px;
+            padding: 12px 0;
+            border-radius: 8px;
             background: rgba(255, 107, 107, 0.1);
             text-align: center;
+            margin-bottom: 8px;
+            box-shadow: var(--shadow-light);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .countdown-number::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(to right, transparent, var(--primary-color), transparent);
+        }
+
+        .countdown-label {
+            font-size: clamp(0.7rem, 2vw, 0.8rem);
+            color: var(--secondary-light);
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
         /* ========== GALLERY SECTION ========== */
+        .gallery-container {
+            width: 100%;
+            margin-top: 1.5rem;
+        }
+
         .square-gallery {
             display: grid;
-            grid-template-columns: 1fr 1fr 1fr;
-            gap: 8px;
-            margin-top: 1.5rem;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+            width: 100%;
         }
 
         .gallery-item {
             aspect-ratio: 1/1;
             position: relative;
-            border-radius: 6px;
+            border-radius: 10px;
             overflow: hidden;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            box-shadow: var(--shadow);
             transition: var(--transition);
             cursor: pointer;
             background: #f0f0f0;
         }
 
+        .gallery-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, transparent 60%, rgba(0, 0, 0, 0.5));
+            opacity: 0;
+            transition: var(--transition);
+            z-index: 1;
+        }
+
         .gallery-item:hover {
-            transform: scale(1.02);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .gallery-item:hover::before {
+            opacity: 1;
         }
 
         .gallery-item img {
@@ -493,9 +746,182 @@
             transition: var(--transition);
         }
 
+        .gallery-item:hover img {
+            transform: scale(1.05);
+        }
+
         .gallery-item.active {
             border: 3px solid var(--primary-color);
             transform: scale(0.98);
+        }
+
+        /* ========== GIFT SECTION ========== */
+        .bank-account {
+            background: rgba(255, 107, 107, 0.05);
+            padding: 1.5rem;
+            border-radius: var(--border-radius);
+            margin: 1.5rem 0;
+            border-left: 4px solid var(--primary-color);
+        }
+
+        .bank-account h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+            text-align: center;
+        }
+
+        .bank-account p {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 0.8rem;
+            font-size: clamp(0.9rem, 3vw, 1rem);
+        }
+
+        .bank-account i {
+            color: var(--primary-color);
+            width: 20px;
+        }
+
+        .copy-btn-container {
+            display: flex;
+            justify-content: center;
+            margin-top: 1rem;
+            width: 100%;
+        }
+
+        .copy-btn {
+            padding: 8px 16px;
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            transition: var(--transition);
+        }
+
+        .copy-btn:hover {
+            background: var(--primary-dark);
+        }
+
+        .copy-notification {
+            position: fixed;
+            bottom: 100px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            z-index: 1000;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .copy-notification.show {
+            opacity: 1;
+        }
+
+        /* ========== LOCATION SECTION ========== */
+        .location-info {
+            margin-bottom: 1rem;
+            width: 100%;
+        }
+
+        .location-info h2 {
+            margin: 1rem 0;
+            color: var(--primary-color);
+            font-size: 1.4rem;
+        }
+
+        .location-info p {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 0.8rem;
+            text-align: center;
+        }
+
+        .location-info i {
+            color: var(--primary-color);
+            min-width: 20px;
+        }
+
+        .map-container {
+            width: 100%;
+            height: 200px;
+            margin: 1rem 0;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            position: relative;
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .map-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: transparent;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .direction-btn {
+            margin-top: 1rem;
+            padding: 10px 20px;
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            font-weight: 500;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: var(--transition);
+            box-shadow: 0 4px 15px rgba(255, 107, 107, 0.3);
+        }
+
+        .direction-btn:hover {
+            transform: translateY(-3px);
+            background: var(--primary-dark);
+            box-shadow: 0 6px 20px rgba(255, 107, 107, 0.4);
+        }
+
+        /* ========== THANK YOU SECTION ========== */
+        .thank-you {
+            padding: 1rem 0;
+        }
+
+        .thank-you p:first-child {
+            font-style: italic;
+            margin-bottom: 1.5rem;
+            color: var(--secondary-light);
+            font-size: 1.1rem;
+        }
+
+        .thank-you p:last-child {
+            margin-top: 2rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            font-size: 1.2rem;
+            letter-spacing: 1px;
         }
 
         /* ========== MODAL STYLES ========== */
@@ -507,8 +933,14 @@
             top: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0, 0, 0, 0.9);
+            background-color: rgba(0, 0, 0, 0.95);
             overflow: auto;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .modal.show {
+            opacity: 1;
         }
 
         .modal-content {
@@ -518,27 +950,45 @@
             height: 100%;
             width: 100%;
             position: relative;
+            padding: 40px 20px;
         }
 
         .modal-img {
-            max-width: 90%;
-            max-height: 90%;
+            max-width: 100%;
+            max-height: 80vh;
             object-fit: contain;
+            border-radius: 8px;
+            box-shadow: 0 5px 30px rgba(0, 0, 0, 0.3);
+            opacity: 0;
+            transform: scale(0.9);
+            transition: all 0.3s ease;
+        }
+
+        .modal.show .modal-img {
+            opacity: 1;
+            transform: scale(1);
         }
 
         .close-btn {
             position: absolute;
-            top: 20px;
+            top: 25px;
             right: 30px;
             color: white;
-            font-size: 35px;
+            font-size: 40px;
             font-weight: bold;
             cursor: pointer;
             z-index: 2001;
+            transition: var(--transition);
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .close-btn:hover {
             color: var(--primary-color);
+            transform: rotate(90deg);
         }
 
         .nav-btn {
@@ -549,10 +999,16 @@
             font-size: 35px;
             font-weight: bold;
             cursor: pointer;
-            padding: 20px;
-            z-index: 1;
+            padding: 15px;
+            z-index: 2001;
             background: rgba(0, 0, 0, 0.3);
             border-radius: 50%;
+            transition: var(--transition);
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .prev-btn {
@@ -566,15 +1022,19 @@
         .nav-btn:hover {
             color: var(--primary-color);
             background: rgba(0, 0, 0, 0.5);
+            transform: translateY(-50%) scale(1.1);
         }
 
-        /* ========== MAP CONTAINER ========== */
-        .map-container {
-            width: 100%;
-            height: 200px;
-            margin: 1.5rem 0;
-            border-radius: 8px;
-            overflow: hidden;
+        /* ========== ANIMATIONS ========== */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         /* ========== RESPONSIVE ADJUSTMENTS ========== */
@@ -590,11 +1050,12 @@
 
             .box-border {
                 padding: 15px;
-                max-height: calc(70vh - 90px);
+                max-height: calc(75vh - 90px);
+                width: 92%;
             }
 
             .bottom-nav {
-                padding: 6px 3px;
+                padding: 8px 3px;
             }
 
             .music-player {
@@ -620,6 +1081,36 @@
             .main-content {
                 padding-bottom: 85px;
             }
+            
+            .square-gallery {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 8px;
+            }
+            
+            .gallery-item {
+                border-radius: 8px;
+            }
+            
+            .event-details {
+                padding: 1rem;
+            }
+            
+            .countdown {
+                gap: 5px;
+            }
+            
+            .countdown-item {
+                max-width: 65px;
+            }
+            
+            .countdown-number {
+                padding: 8px 0;
+                font-size: 1.2rem;
+            }
+            
+            .map-container {
+                height: 180px;
+            }
         }
 
         /* Small devices (phones, 321px to 575px) */
@@ -630,27 +1121,27 @@
 
             .box-border {
                 padding: 20px;
-                width: 95%;
-                max-height: calc(75vh - 90px);
+                width: 92%;
+                max-height: calc(80vh - 90px);
             }
 
             .bottom-nav {
-                padding: 8px 5px;
+                padding: 10px 5px;
             }
 
             .music-player {
-                bottom: 90px;
+                bottom: 95px;
                 right: 15px;
             }
 
             .event-container {
                 flex-direction: column;
-                gap: 15px;
+                gap: 20px;
             }
 
             .nav-item {
                 min-width: 38px;
-                padding: 7px;
+                padding: 8px;
             }
 
             .nav-item span {
@@ -662,7 +1153,17 @@
             }
 
             .main-content {
-                padding-bottom: 90px;
+                padding-bottom: 95px;
+            }
+            
+            /* Perubahan grid gallery menjadi 3 kolom untuk handphone */
+            .square-gallery {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 10px;
+            }
+            
+            .map-container {
+                height: 200px;
             }
         }
 
@@ -674,20 +1175,22 @@
 
             .box-border {
                 padding: 25px;
-                max-height: calc(80vh - 90px);
+                max-height: calc(85vh - 90px);
+                width: 90%;
             }
 
             .bottom-nav {
-                padding: 10px 8px;
+                padding: 12px 8px;
             }
 
             .music-player {
-                bottom: 100px;
+                bottom: 105px;
+                right: 20px;
             }
 
             .nav-item {
                 min-width: 45px;
-                padding: 8px 10px;
+                padding: 10px 12px;
             }
 
             .nav-item span {
@@ -695,11 +1198,11 @@
             }
 
             .nav-item i {
-                font-size: 18px;
+                font-size: 19px;
             }
 
             .main-content {
-                padding-bottom: 100px;
+                padding-bottom: 105px;
             }
 
             /* Tablet-specific section backgrounds */
@@ -734,6 +1237,18 @@
             #thanks {
                 background-image: url('https://i.pinimg.com/1200x/6e/53/2a/6e532a2a60bdf632b920842a70e16e46.jpg');
             }
+            
+            /* Galeri untuk tablet */
+            .square-gallery {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 12px;
+                max-width: 500px;
+                margin: 0 auto;
+            }
+            
+            .map-container {
+                height: 250px;
+            }
         }
 
         /* Large devices (tablets, 768px to 991px) */
@@ -748,21 +1263,30 @@
             }
 
             .open-btn {
-                padding: 14px 35px;
+                padding: 15px 40px;
                 font-size: 1.1rem;
             }
 
             .box-border {
                 padding: 30px;
-                max-height: calc(80vh - 90px);
+                max-height: calc(85vh - 90px);
+                width: 85%;
             }
 
             .bottom-nav {
-                padding: 12px 10px;
+                padding: 14px 12px;
+                justify-content: space-between;
+                max-width: 90%;
+                margin: 0 auto;
+                left: 50%;
+                transform: translateX(-50%);
+                border-radius: 50px;
+                width: auto;
             }
 
             .music-player {
-                bottom: 110px;
+                bottom: 115px;
+                right: 30px;
                 width: 55px;
                 height: 55px;
             }
@@ -773,7 +1297,7 @@
 
             .nav-item {
                 min-width: 50px;
-                padding: 10px 12px;
+                padding: 10px 15px;
             }
 
             .nav-item span {
@@ -786,6 +1310,7 @@
 
             .main-content {
                 padding-bottom: 110px;
+                max-width: 700px;
             }
 
             /* Large tablet-specific section backgrounds */
@@ -820,6 +1345,22 @@
             #thanks {
                 background-image: url('/image/BG-Flower-2.png');
             }
+            
+            /* Galeri untuk tablet besar */
+            .square-gallery {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 15px;
+                max-width: 550px;
+            }
+            
+            .map-container {
+                height: 280px;
+            }
+            
+            .event-container {
+                flex-direction: row;
+                gap: 25px;
+            }
         }
 
         /* Extra large devices (desktops, 992px and up) */
@@ -833,26 +1374,27 @@
             }
 
             .box-border {
-                padding: 40px;
+                padding: 35px;
                 max-width: 800px;
                 max-height: calc(85vh - 90px);
+                width: 80%;
             }
 
             .bottom-nav {
                 left: 50%;
                 transform: translateX(-50%);
                 width: auto;
-                max-width: 90%;
+                max-width: 800px;
                 border-radius: 50px;
                 border: 1px solid rgba(0, 0, 0, 0.08);
-                padding: 12px 20px;
+                padding: 15px 25px;
             }
 
             .music-player {
                 width: 60px;
                 height: 60px;
-                bottom: 120px;
-                right: 30px;
+                bottom: 125px;
+                right: 40px;
             }
 
             .music-player i {
@@ -861,7 +1403,7 @@
 
             .nav-item {
                 min-width: 55px;
-                padding: 10px 15px;
+                padding: 12px 18px;
             }
 
             .nav-item span {
@@ -876,37 +1418,69 @@
                 padding-bottom: 120px;
             }
 
-            /* Desktop-specific section backgrounds */
+            /* Desktop-specific section backgrounds - MEMPERBESAR GAMBAR */
             #home {
                 background-image: url('/image/BG-Flower-2.png');
+                background-size: 120% auto;
             }
 
             #couple {
                 background-image: url('/image/BG-Flower-2.png');
+                background-size: 120% auto;
             }
 
             #quotes {
                 background-image: url('/image/BG-Flower-2.png');
+                background-size: 120% auto;
             }
 
             #event {
                 background-image: url('/image/BG-Flower-2.png');
+                background-size: 120% auto;
             }
 
             #gallery {
                 background-image: url('/image/BG-Flower-2.png');
+                background-size: 120% auto;
             }
 
             #gift {
                 background-image: url('/image/BG-Flower-2.png');
+                background-size: 120% auto;
             }
 
             #location {
                 background-image: url('/image/BG-Flower-2.png');
+                background-size: 120% auto;
             }
 
             #thanks {
                 background-image: url('/image/BG-Flower-2.png');
+                background-size: 120% auto;
+            }
+            
+            /* Galeri untuk desktop - diatur agar tidak overflow */
+            .square-gallery {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 15px;
+                max-width: 500px;
+                margin: 0 auto;
+                max-height: 400px;
+                overflow-y: auto;
+                padding: 5px;
+            }
+            
+            .map-container {
+                height: 300px;
+            }
+            
+            .event-container {
+                flex-direction: row;
+                gap: 30px;
+            }
+            
+            .event-details {
+                padding: 1.8rem;
             }
         }
 
@@ -942,34 +1516,34 @@
 <body>
     <!-- Cover Section -->
     <div class="cover" id="cover">
-        <h1>Undangan Pernikahan</h1>
-        <p>Arka Annur & Setya Ayu</p>
-        <button class="open-btn" id="openBtn">
-            <i class="fas fa-envelope"></i> Buka Undangan
-        </button>
+        <div class="cover-content">
+            <h1>Undangan Pernikahan</h1>
+            <p>Arka Annur & Setya Ayu</p>
+            <button class="open-btn" id="openBtn">
+                <i class="fas fa-envelope"></i> Buka Undangan
+            </button>
+        </div>
     </div>
 
     <!-- Main Content -->
     <div class="main-content" id="mainContent">
         <!-- Home Section -->
         <section id="home" class="section active">
+            <h1 class="section-title">The Wedding of</h1>
             <div class="box-border">
-                <h1>The Wedding of</h1>
                 <div class="couple-names">
                     <span>Arka Annur</span>
-                    <br> &amp;
-                    <br>
+                    <span class="amp">&</span>
                     <span>Setya Ayu</span>
                 </div>
-                <p>Kami mengundang Anda untuk berbagi kebahagiaan dalam acara pernikahan kami</p>
+                <p>Kami mengundang Anda untuk berpartisipasi dalam kebahagiaan kami</p>
             </div>
         </section>
 
         <!-- Couple Section -->
         <section id="couple" class="section">
+            <h1 class="section-title">Mempelai</h1>
             <div class="box-border">
-                <h1>Mempelai</h1>
-                <br>
                 <div class="couple-info">
                     <h2>Arka Annur</h2>
                     <p>Putra pertama dari Bapak Azhar dan Ibu Siska</p>
@@ -986,29 +1560,34 @@
 
         <!-- Quotes Section -->
         <section id="quotes" class="section">
+            <h1 class="section-title">Quotes Cinta</h1>
             <div class="box-border">
-                <h1>Quotes Cinta</h1>
-                <p style="font-style: italic; margin: 1.5rem 0; line-height: 1.8;">"Dan di antara tanda-tanda
-                    kekuasaan-Nya ialah Dia menciptakan untukmu pasangan hidup dari jenismu sendiri, supaya kamu dapat
-                    ketenangan kepadanya."</p>
-                <p>(QS. Ar-Rum: 21)</p>
+                <p class="quote-text">"Dan di antara tanda-tanda kekuasaan-Nya ialah Dia menciptakan untukmu pasangan hidup dari jenismu sendiri, supaya kamu dapat ketenangan kepadanya."</p>
+                <p class="quote-source">(QS. Ar-Rum: 21)</p>
             </div>
         </section>
 
         <!-- Event Section -->
         <section id="event" class="section">
+            <h1 class="section-title">Akad & Resepsi</h1>
             <div class="box-border">
-                <h1>Akad & Resepsi</h1>
-
                 <div class="event-container">
                     <div class="event-details">
+                        <h2>Akad Nikah</h2>
                         <p><i class="far fa-calendar-alt"></i> Sabtu, 5 Februari 2026</p>
                         <p><i class="far fa-clock"></i> Pukul 08.00 - 10.00 WIB</p>
                         <p><i class="fas fa-map-marker-alt"></i> Masjid Al-Hidayah, Jakarta</p>
                     </div>
+                    
+                    <div class="event-details">
+                        <h2>Resepsi</h2>
+                        <p><i class="far fa-calendar-alt"></i> Sabtu, 5 Februari 2026</p>
+                        <p><i class="far fa-clock"></i> Pukul 11.00 - 14.00 WIB</p>
+                        <p><i class="fas fa-map-marker-alt"></i> Grand Ballroom Hotel Santika</p>
+                    </div>
                 </div>
 
-                <div style="width: 100%; text-align: center; margin: 1.5rem 0;">
+                <div style="width: 100%; text-align: center; margin: 2rem 0;">
                     <div class="countdown">
                         <div class="countdown-item">
                             <div class="countdown-number" id="days">00</div>
@@ -1033,25 +1612,38 @@
 
         <!-- Gallery Section -->
         <section id="gallery" class="section">
+            <h1 class="section-title">Galeri Kami</h1>
             <div class="box-border">
-                <div class="square-gallery">
-                    <div class="gallery-item" onclick="openModal('/image/Gal-1.jpg', this)">
-                        <img src="/image/Gal-1.jpg" alt="Moment 1">
-                    </div>
-                    <div class="gallery-item" onclick="openModal('/image/Gal-8.jpg', this)">
-                        <img src="/image/Gal-8.jpg" alt="Moment 2">
-                    </div>
-                    <div class="gallery-item" onclick="openModal('/image/Gal-3.jpg', this)">
-                        <img src="/image/Gal-3.jpg" alt="Moment 3">
-                    </div>
-                    <div class="gallery-item" onclick="openModal('/image/Gal-4.jpg', this)">
-                        <img src="/image/Gal-4.jpg" alt="Moment 4">
-                    </div>
-                    <div class="gallery-item" onclick="openModal('/image/Gal-5.jpg', this)">
-                        <img src="/image/Gal-5.jpg" alt="Moment 5">
-                    </div>
-                    <div class="gallery-item" onclick="openModal('/image/Gal-6.jpg', this)">
-                        <img src="/image/Gal-6.jpg" alt="Moment 6">
+                <div class="gallery-container">
+                    <div class="square-gallery">
+                        <div class="gallery-item" onclick="openModal('/image/Gal-1.jpg', this)">
+                            <img src="/image/Gal-1.jpg" alt="Moment 1">
+                        </div>
+                        <div class="gallery-item" onclick="openModal('/image/Gal-8.jpg', this)">
+                            <img src="/image/Gal-8.jpg" alt="Moment 2">
+                        </div>
+                        <div class="gallery-item" onclick="openModal('/image/Gal-3.jpg', this)">
+                            <img src="/image/Gal-3.jpg" alt="Moment 3">
+                        </div>
+                        <div class="gallery-item" onclick="openModal('/image/Gal-4.jpg', this)">
+                            <img src="/image/Gal-4.jpg" alt="Moment 4">
+                        </div>
+                        <div class="gallery-item" onclick="openModal('/image/Gal-5.jpg', this)">
+                            <img src="/image/Gal-5.jpg" alt="Moment 5">
+                        </div>
+                        <div class="gallery-item" onclick="openModal('/image/Gal-6.jpg', this)">
+                            <img src="/image/Gal-6.jpg" alt="Moment 6">
+                        </div>
+                        <!-- Menambahkan 3 gambar baru -->
+                        <div class="gallery-item" onclick="openModal('/image/Gal-7.jpg', this)">
+                            <img src="/image/Gal-7.jpg" alt="Moment 7">
+                        </div>
+                        <div class="gallery-item" onclick="openModal('/image/Gal-9.jpg', this)">
+                            <img src="/image/Gal-9.jpg" alt="Moment 8">
+                        </div>
+                        <div class="gallery-item" onclick="openModal('/image/Gal-10.jpg', this)">
+                            <img src="/image/Gal-10.jpg" alt="Moment 9">
+                        </div>
                     </div>
                 </div>
             </div>
@@ -1059,13 +1651,18 @@
 
         <!-- Digital Envelope/Gift Section -->
         <section id="gift" class="section">
+            <h1 class="section-title">Amplop Digital</h1>
             <div class="box-border">
-                <h1>Amplop Digital</h1>
                 <p>Jika Anda ingin memberikan hadiah, kami menerima transfer ke:</p>
                 <div class="bank-account">
                     <h3>Bank ABC</h3>
-                    <p><i class="fas fa-credit-card"></i> 1234 5678 9012 3456</p>
+                    <p><i class="fas fa-credit-card"></i> <span id="account-number">1234 5678 9012 3456</span></p>
                     <p><i class="fas fa-user"></i> a.n. Arka Annur & Setya Ayu</p>
+                    <div class="copy-btn-container">
+                        <button class="copy-btn" onclick="copyAccountNumber()">
+                            <i class="fas fa-copy"></i> Salin Nomor Rekening
+                        </button>
+                    </div>
                 </div>
                 <p style="margin-top: 1.5rem;">Terima kasih atas kebaikan dan doa restu Anda.</p>
             </div>
@@ -1073,32 +1670,37 @@
 
         <!-- Location Section -->
         <section id="location" class="section">
+            <h1 class="section-title">Lokasi Acara</h1>
             <div class="box-border">
-                <h1>Lokasi Acara</h1>
-                <h2 style="margin: 1.5rem 0 1rem;">Resepsi Pernikahan</h2>
-                <p><i class="fas fa-map-marker-alt"></i> Grand Ballroom Hotel Santika</p>
-                <p><i class="fas fa-location-arrow"></i> Jl. Gatot Subroto No. 45, Jakarta Selatan</p>
+                <div class="location-info">
+                    <h2>Resepsi Pernikahan</h2>
+                    <p><i class="fas fa-map-marker-alt"></i> Grand Ballroom Hotel Santika</p>
+                    <p><i class="fas fa-location-arrow"></i> Jl. Gatot Subroto No. 45, Jakarta Selatan</p>
+                </div>
+                
                 <div class="map-container">
                     <iframe
                         src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.521260322283!2d106.81956135000001!3d-6.1947419999999945!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f5390917b759%3A0x6b462e9b5e9ee709!2sHotel%20Santika%20Premiere%20Hayam%20Wuruk%20Jakarta!5e0!3m2!1sen!2sid!4v1623830287593!5m2!1sen!2sid"
                         width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                    <div class="map-overlay"></div>
                 </div>
-                <button
-                    style="margin-top: 1.5rem; padding: 10px 20px; background: var(--primary-color); color: white; border: none; border-radius: 5px; cursor: pointer;">
-                    <i class="fas fa-directions"></i> Petunjuk Arah
-                </button>
+                
+                <div style="text-align: center; margin-top: 1rem;">
+                    <button class="direction-btn" onclick="window.open('https://maps.google.com?q=Hotel+Santika+Premiere+Hayam+Wuruk+Jakarta')">
+                        <i class="fas fa-directions"></i> Petunjuk Arah
+                    </button>
+                </div>
             </div>
         </section>
 
         <!-- Thank You Section -->
         <section id="thanks" class="section">
+            <h1 class="section-title">Terima Kasih</h1>
             <div class="box-border">
-                <h1>Terima Kasih</h1>
-                <p style="margin: 1.5rem 0;">Atas kehadiran dan doa restunya, kami mengucapkan terima kasih yang
-                    sebesar-besarnya.</p>
                 <div class="thank-you">
+                    <p>Atas kehadiran dan doa restunya, kami mengucapkan terima kasih yang sebesar-besarnya.</p>
                     <p>Wassalamu'alaikum Warahmatullahi Wabarakatuh</p>
-                    <p style="margin-top: 2rem;">Arka & Ayu</p>
+                    <p>Arka & Ayu</p>
                 </div>
             </div>
         </section>
@@ -1157,6 +1759,11 @@
             <img class="modal-img" id="modalImage">
             <span class="nav-btn next-btn" onclick="changeImage(1)">&#10095;</span>
         </div>
+    </div>
+
+    <!-- Copy Notification -->
+    <div id="copyNotification" class="copy-notification">
+        Nomor rekening berhasil disalin!
     </div>
 
     <script>
@@ -1352,12 +1959,18 @@
         function openModal(src, element) {
             currentImageIndex = galleryImages.findIndex(img => img.src === element.querySelector('img').src);
             modal.style.display = 'block';
+            setTimeout(() => {
+                modal.classList.add('show');
+            }, 10);
             modalImg.src = src;
             document.body.style.overflow = 'hidden';
         }
 
         function closeModal() {
-            modal.style.display = 'none';
+            modal.classList.remove('show');
+            setTimeout(() => {
+                modal.style.display = 'none';
+            }, 300);
             document.body.style.overflow = 'auto';
         }
 
@@ -1371,7 +1984,14 @@
             }
 
             const imgSrc = galleryImages[currentImageIndex].parentNode.getAttribute('onclick').split("'")[1];
-            modalImg.src = imgSrc;
+            modalImg.style.opacity = 0;
+            modalImg.style.transform = 'scale(0.9)';
+            
+            setTimeout(() => {
+                modalImg.src = imgSrc;
+                modalImg.style.opacity = 1;
+                modalImg.style.transform = 'scale(1)';
+            }, 300);
         }
 
         window.addEventListener('click', (e) => {
@@ -1379,6 +1999,25 @@
                 closeModal();
             }
         });
+
+        // ========== COPY ACCOUNT NUMBER FUNCTION ==========
+        function copyAccountNumber() {
+            const accountNumber = document.getElementById('account-number').textContent;
+            const tempTextArea = document.createElement('textarea');
+            tempTextArea.value = accountNumber;
+            document.body.appendChild(tempTextArea);
+            tempTextArea.select();
+            document.execCommand('copy');
+            document.body.removeChild(tempTextArea);
+            
+            // Show notification
+            const notification = document.getElementById('copyNotification');
+            notification.classList.add('show');
+            
+            setTimeout(() => {
+                notification.classList.remove('show');
+            }, 2000);
+        }
 
         // Initialize by showing home section
         showSection('home');

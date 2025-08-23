@@ -105,7 +105,7 @@
 
         /* Default mobile cover */
         .cover {
-            background-image: url('/image/Gal-2.jpg');
+            background-image: url('https://i.pinimg.com/1200x/7f/05/df/7f05df35aefac647df9b64583cefcb6d.jpg');
         }
 
         .cover::before {
@@ -285,15 +285,27 @@
             z-index: -1;
         }
 
+        .section-content {
+            width: 90%;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 30px 0;
+            transform: translateY(30px);
+            opacity: 0;
+            transition: transform 0.8s ease, opacity 0.8s ease;
+        }
+
+        .section.active .section-content {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
         .section-title {
             font-family: 'Playfair Display', serif;
             font-size: clamp(1.8rem, 5vw, 2.5rem);
             margin-bottom: 1.8rem;
             color: var(--secondary-color);
             position: relative;
-            transform: translateY(-30px);
-            opacity: 0;
-            transition: transform 0.8s ease, opacity 0.8s ease;
             padding-bottom: 10px;
         }
 
@@ -307,40 +319,6 @@
             height: 3px;
             background: var(--primary-color);
             border-radius: 3px;
-        }
-
-        .box-border {
-            border: 1px solid rgba(0, 0, 0, 0.08);
-            padding: 30px;
-            border-radius: var(--border-radius);
-            background: rgba(255, 255, 255, 0.95);
-            width: 88%;
-            margin: 0 auto;
-            box-shadow: var(--shadow-light);
-            position: relative;
-            max-height: calc(90vh - 200px);
-            overflow-y: auto;
-            transform: translateY(30px);
-            opacity: 0;
-            transition: transform 0.8s ease, opacity 0.8s ease;
-        }
-
-        .box-border::before {
-            content: '';
-            position: absolute;
-            top: 8px;
-            left: 8px;
-            right: 8px;
-            bottom: 8px;
-            border: 1px solid rgba(90, 62, 45, 0.1);
-            border-radius: calc(var(--border-radius) - 2px);
-            pointer-events: none;
-        }
-
-        .section.active .section-title,
-        .section.active .box-border {
-            transform: translateY(0);
-            opacity: 1;
         }
 
         /* ========== MUSIC PLAYER ========== */
@@ -523,18 +501,22 @@
                 transform-origin: center center;
                 animation-timing-function: ease-out;
             }
+
             10% {
                 transform: scale(0.91);
                 animation-timing-function: ease-in;
             }
+
             17% {
                 transform: scale(0.98);
                 animation-timing-function: ease-out;
             }
+
             33% {
                 transform: scale(0.87);
                 animation-timing-function: ease-in;
             }
+
             45% {
                 transform: scale(1);
                 animation-timing-function: ease-out;
@@ -1031,6 +1013,7 @@
                 opacity: 0;
                 transform: translateY(20px);
             }
+
             to {
                 opacity: 1;
                 transform: translateY(0);
@@ -1048,10 +1031,9 @@
                 font-size: 0.85rem;
             }
 
-            .box-border {
-                padding: 15px;
-                max-height: calc(75vh - 90px);
-                width: 92%;
+            .section-content {
+                padding: 15px 0;
+                width: 95%;
             }
 
             .bottom-nav {
@@ -1081,33 +1063,33 @@
             .main-content {
                 padding-bottom: 85px;
             }
-            
+
             .square-gallery {
                 grid-template-columns: repeat(2, 1fr);
                 gap: 8px;
             }
-            
+
             .gallery-item {
                 border-radius: 8px;
             }
-            
+
             .event-details {
                 padding: 1rem;
             }
-            
+
             .countdown {
                 gap: 5px;
             }
-            
+
             .countdown-item {
                 max-width: 65px;
             }
-            
+
             .countdown-number {
                 padding: 8px 0;
                 font-size: 1.2rem;
             }
-            
+
             .map-container {
                 height: 180px;
             }
@@ -1116,13 +1098,12 @@
         /* Small devices (phones, 321px to 575px) */
         @media (min-width: 321px) and (max-width: 575px) {
             .cover {
-                background-image: url('/image/Gal-2.jpg');
+                background-image: url('https://i.pinimg.com/1200x/7f/05/df/7f05df35aefac647df9b64583cefcb6d.jpg');
             }
 
-            .box-border {
-                padding: 20px;
+            .section-content {
                 width: 92%;
-                max-height: calc(80vh - 90px);
+                padding: 20px 0;
             }
 
             .bottom-nav {
@@ -1155,13 +1136,13 @@
             .main-content {
                 padding-bottom: 95px;
             }
-            
+
             /* Perubahan grid gallery menjadi 3 kolom untuk handphone */
             .square-gallery {
                 grid-template-columns: repeat(3, 1fr);
                 gap: 10px;
             }
-            
+
             .map-container {
                 height: 200px;
             }
@@ -1170,12 +1151,11 @@
         /* Medium devices (tablets, 576px to 767px) */
         @media (min-width: 576px) and (max-width: 767px) {
             .cover {
-                background-image: url('/image/Dekstop.png');
+                background-image: url('https://i.pinimg.com/1200x/93/1f/9c/931f9cc4c1bf7a0f1ee7b4fdfa334c5d.jpg');
             }
 
-            .box-border {
-                padding: 25px;
-                max-height: calc(85vh - 90px);
+            .section-content {
+                padding: 25px 0;
                 width: 90%;
             }
 
@@ -1237,7 +1217,7 @@
             #thanks {
                 background-image: url('https://i.pinimg.com/1200x/6e/53/2a/6e532a2a60bdf632b920842a70e16e46.jpg');
             }
-            
+
             /* Galeri untuk tablet */
             .square-gallery {
                 grid-template-columns: repeat(3, 1fr);
@@ -1245,7 +1225,7 @@
                 max-width: 500px;
                 margin: 0 auto;
             }
-            
+
             .map-container {
                 height: 250px;
             }
@@ -1254,7 +1234,7 @@
         /* Large devices (tablets, 768px to 991px) */
         @media (min-width: 768px) and (max-width: 991px) {
             .cover {
-                background-image: url('/image/Dekstop.png');
+                background-image: url('https://i.pinimg.com/1200x/93/1f/9c/931f9cc4c1bf7a0f1ee7b4fdfa334c5d.jpg');
             }
 
             .cover p {
@@ -1267,9 +1247,8 @@
                 font-size: 1.1rem;
             }
 
-            .box-border {
-                padding: 30px;
-                max-height: calc(85vh - 90px);
+            .section-content {
+                padding: 30px 0;
                 width: 85%;
             }
 
@@ -1345,18 +1324,18 @@
             #thanks {
                 background-image: url('/image/BG-Flower-2.png');
             }
-            
+
             /* Galeri untuk tablet besar */
             .square-gallery {
                 grid-template-columns: repeat(3, 1fr);
                 gap: 15px;
                 max-width: 550px;
             }
-            
+
             .map-container {
                 height: 280px;
             }
-            
+
             .event-container {
                 flex-direction: row;
                 gap: 25px;
@@ -1366,17 +1345,16 @@
         /* Extra large devices (desktops, 992px and up) */
         @media (min-width: 992px) {
             .cover {
-                background-image: url('/image/Dekstop.png');
+                background-image: url('https://i.pinimg.com/1200x/93/1f/9c/931f9cc4c1bf7a0f1ee7b4fdfa334c5d.jpg');
             }
 
             .main-content {
                 max-width: 900px;
             }
 
-            .box-border {
-                padding: 35px;
+            .section-content {
+                padding: 35px 0;
                 max-width: 800px;
-                max-height: calc(85vh - 90px);
                 width: 80%;
             }
 
@@ -1458,7 +1436,7 @@
                 background-image: url('/image/BG-Flower-2.png');
                 background-size: 120% auto;
             }
-            
+
             /* Galeri untuk desktop - diatur agar tidak overflow */
             .square-gallery {
                 grid-template-columns: repeat(3, 1fr);
@@ -1469,16 +1447,16 @@
                 overflow-y: auto;
                 padding: 5px;
             }
-            
+
             .map-container {
                 height: 300px;
             }
-            
+
             .event-container {
                 flex-direction: row;
                 gap: 30px;
             }
-            
+
             .event-details {
                 padding: 1.8rem;
             }
@@ -1530,7 +1508,7 @@
         <!-- Home Section -->
         <section id="home" class="section active">
             <h1 class="section-title">The Wedding of</h1>
-            <div class="box-border">
+            <div class="section-content">
                 <div class="couple-names">
                     <span>Arka Annur</span>
                     <span class="amp">&</span>
@@ -1543,7 +1521,7 @@
         <!-- Couple Section -->
         <section id="couple" class="section">
             <h1 class="section-title">Mempelai</h1>
-            <div class="box-border">
+            <div class="section-content">
                 <div class="couple-info">
                     <h2>Arka Annur</h2>
                     <p>Putra pertama dari Bapak Azhar dan Ibu Siska</p>
@@ -1561,8 +1539,9 @@
         <!-- Quotes Section -->
         <section id="quotes" class="section">
             <h1 class="section-title">Quotes Cinta</h1>
-            <div class="box-border">
-                <p class="quote-text">"Dan di antara tanda-tanda kekuasaan-Nya ialah Dia menciptakan untukmu pasangan hidup dari jenismu sendiri, supaya kamu dapat ketenangan kepadanya."</p>
+            <div class="section-content">
+                <p class="quote-text">"Dan di antara tanda-tanda kekuasaan-Nya ialah Dia menciptakan untukmu pasangan
+                    hidup dari jenismu sendiri, supaya kamu dapat ketenangan kepadanya."</p>
                 <p class="quote-source">(QS. Ar-Rum: 21)</p>
             </div>
         </section>
@@ -1570,50 +1549,46 @@
         <!-- Event Section -->
         <section id="event" class="section">
             <h1 class="section-title">Akad & Resepsi</h1>
-            <div class="box-border">
+            <div class="section-content">
                 <div class="event-container">
                     <div class="event-details">
-                        <h2>Akad Nikah</h2>
+                        <h2>Acara</h2>
                         <p><i class="far fa-calendar-alt"></i> Sabtu, 5 Februari 2026</p>
                         <p><i class="far fa-clock"></i> Pukul 08.00 - 10.00 WIB</p>
-                        <p><i class="fas fa-map-marker-alt"></i> Masjid Al-Hidayah, Jakarta</p>
-                    </div>
-                    
-                    <div class="event-details">
+                        <p><i class="fas fa-map-marker-alt"></i> Masjid At - Tanwir, Banjarmasin</p>
                         <h2>Resepsi</h2>
                         <p><i class="far fa-calendar-alt"></i> Sabtu, 5 Februari 2026</p>
                         <p><i class="far fa-clock"></i> Pukul 11.00 - 14.00 WIB</p>
-                        <p><i class="fas fa-map-marker-alt"></i> Grand Ballroom Hotel Santika</p>
+                        <p><i class="fas fa-map-marker-alt"></i> Gedung Hafiyun, Banjarmasin</p>
                     </div>
-                </div>
 
-                <div style="width: 100%; text-align: center; margin: 2rem 0;">
-                    <div class="countdown">
-                        <div class="countdown-item">
-                            <div class="countdown-number" id="days">00</div>
-                            <div class="countdown-label">Hari</div>
-                        </div>
-                        <div class="countdown-item">
-                            <div class="countdown-number" id="hours">00</div>
-                            <div class="countdown-label">Jam</div>
-                        </div>
-                        <div class="countdown-item">
-                            <div class="countdown-number" id="minutes">00</div>
-                            <div class="countdown-label">Menit</div>
-                        </div>
-                        <div class="countdown-item">
-                            <div class="countdown-number" id="seconds">00</div>
-                            <div class="countdown-label">Detik</div>
+                    <div style="width: 100%; text-align: center; margin: 2rem 0;">
+                        <div class="countdown">
+                            <div class="countdown-item">
+                                <div class="countdown-number" id="days">00</div>
+                                <div class="countdown-label">Hari</div>
+                            </div>
+                            <div class="countdown-item">
+                                <div class="countdown-number" id="hours">00</div>
+                                <div class="countdown-label">Jam</div>
+                            </div>
+                            <div class="countdown-item">
+                                <div class="countdown-number" id="minutes">00</div>
+                                <div class="countdown-label">Menit</div>
+                            </div>
+                            <div class="countdown-item">
+                                <div class="countdown-number" id="seconds">00</div>
+                                <div class="countdown-label">Detik</div>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
         </section>
 
         <!-- Gallery Section -->
         <section id="gallery" class="section">
             <h1 class="section-title">Galeri Kami</h1>
-            <div class="box-border">
+            <div class="section-content">
                 <div class="gallery-container">
                     <div class="square-gallery">
                         <div class="gallery-item" onclick="openModal('/image/Gal-1.jpg', this)">
@@ -1641,8 +1616,8 @@
                         <div class="gallery-item" onclick="openModal('/image/Gal-9.jpg', this)">
                             <img src="/image/Gal-9.jpg" alt="Moment 8">
                         </div>
-                        <div class="gallery-item" onclick="openModal('/image/Gal-10.jpg', this)">
-                            <img src="/image/Gal-10.jpg" alt="Moment 9">
+                        <div class="gallery-item" onclick="openModal('/image/Gal-2.jpg', this)">
+                            <img src="/image/Gal-2.jpg" alt="Moment 9">
                         </div>
                     </div>
                 </div>
@@ -1652,7 +1627,7 @@
         <!-- Digital Envelope/Gift Section -->
         <section id="gift" class="section">
             <h1 class="section-title">Amplop Digital</h1>
-            <div class="box-border">
+            <div class="section-content">
                 <p>Jika Anda ingin memberikan hadiah, kami menerima transfer ke:</p>
                 <div class="bank-account">
                     <h3>Bank ABC</h3>
@@ -1671,22 +1646,23 @@
         <!-- Location Section -->
         <section id="location" class="section">
             <h1 class="section-title">Lokasi Acara</h1>
-            <div class="box-border">
+            <div class="section-content">
                 <div class="location-info">
                     <h2>Resepsi Pernikahan</h2>
                     <p><i class="fas fa-map-marker-alt"></i> Grand Ballroom Hotel Santika</p>
                     <p><i class="fas fa-location-arrow"></i> Jl. Gatot Subroto No. 45, Jakarta Selatan</p>
                 </div>
-                
+
                 <div class="map-container">
                     <iframe
                         src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.521260322283!2d106.81956135000001!3d-6.1947419999999945!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f5390917b759%3A0x6b462e9b5e9ee709!2sHotel%20Santika%20Premiere%20Hayam%20Wuruk%20Jakarta!5e0!3m2!1sen!2sid!4v1623830287593!5m2!1sen!2sid"
                         width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
                     <div class="map-overlay"></div>
                 </div>
-                
+
                 <div style="text-align: center; margin-top: 1rem;">
-                    <button class="direction-btn" onclick="window.open('https://maps.google.com?q=Hotel+Santika+Premiere+Hayam+Wuruk+Jakarta')">
+                    <button class="direction-btn"
+                        onclick="window.open('https://maps.google.com?q=Hotel+Santika+Premiere+Hayam+Wuruk+Jakarta')">
                         <i class="fas fa-directions"></i> Petunjuk Arah
                     </button>
                 </div>
@@ -1696,7 +1672,7 @@
         <!-- Thank You Section -->
         <section id="thanks" class="section">
             <h1 class="section-title">Terima Kasih</h1>
-            <div class="box-border">
+            <div class="section-content">
                 <div class="thank-you">
                     <p>Atas kehadiran dan doa restunya, kami mengucapkan terima kasih yang sebesar-besarnya.</p>
                     <p>Wassalamu'alaikum Warahmatullahi Wabarakatuh</p>
@@ -1773,7 +1749,7 @@
         const mainContent = document.getElementById('mainContent');
         const musicPlayer = document.getElementById('musicPlayer');
         const audioPlayer = document.getElementById('audioPlayer');
-        let isMusicPlaying = false;
+        let isMusicPlaying = true;
 
         // Function to handle audio playback
         function playAudio() {
@@ -1852,7 +1828,7 @@
                     item.classList.remove('active');
                 }
             });
-            
+
             // Update URL hash without scrolling
             history.replaceState(null, null, `#${sectionId}`);
         }
@@ -1986,7 +1962,7 @@
             const imgSrc = galleryImages[currentImageIndex].parentNode.getAttribute('onclick').split("'")[1];
             modalImg.style.opacity = 0;
             modalImg.style.transform = 'scale(0.9)';
-            
+
             setTimeout(() => {
                 modalImg.src = imgSrc;
                 modalImg.style.opacity = 1;
@@ -2009,11 +1985,11 @@
             tempTextArea.select();
             document.execCommand('copy');
             document.body.removeChild(tempTextArea);
-            
+
             // Show notification
             const notification = document.getElementById('copyNotification');
             notification.classList.add('show');
-            
+
             setTimeout(() => {
                 notification.classList.remove('show');
             }, 2000);
@@ -2032,7 +2008,7 @@
                 closeModal();
             }
         });
-        
+
         // Handle browser back/forward buttons
         window.addEventListener('popstate', () => {
             const hash = window.location.hash.substring(1);

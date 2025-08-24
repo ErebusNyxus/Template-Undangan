@@ -180,6 +180,7 @@
             height: 100%;
             background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
             transition: 0.5s;
+            z-index: 1;
         }
 
         .open-btn:hover {
@@ -562,10 +563,8 @@
         }
 
         /* ========== EVENT SECTION ========== */
+        /* PERBAIKAN: Menghapus flex container dan mengatur ulang layout */
         .event-container {
-            display: flex;
-            flex-direction: column;
-            gap: 25px;
             width: 100%;
             margin: 1.8rem 0;
         }
@@ -577,6 +576,7 @@
             box-shadow: var(--shadow-light);
             position: relative;
             overflow: hidden;
+            margin-bottom: 1.5rem;
         }
 
         .event-details::before {
@@ -624,12 +624,13 @@
         }
 
         /* ========== COUNTDOWN TIMER ========== */
+        /* PERBAIKAN: Menyesuaikan posisi countdown */
         .countdown {
             display: flex;
             justify-content: center;
             gap: clamp(8px, 2vw, 12px);
-            margin: 2rem auto;
-            padding: 20px 0;
+            margin: 1.5rem auto 1rem;
+            padding: 15px 0;
             width: 100%;
             max-width: 400px;
         }
@@ -1116,7 +1117,6 @@
             }
 
             .event-container {
-                flex-direction: column;
                 gap: 20px;
             }
 
@@ -1337,7 +1337,6 @@
             }
 
             .event-container {
-                flex-direction: row;
                 gap: 25px;
             }
         }
@@ -1453,7 +1452,6 @@
             }
 
             .event-container {
-                flex-direction: row;
                 gap: 30px;
             }
 
@@ -1552,37 +1550,32 @@
             <div class="section-content">
                 <div class="event-container">
                     <div class="event-details">
-                        <h2>Acara</h2>
+                        <h2>Akad Nikah</h2>
                         <p><i class="far fa-calendar-alt"></i> Sabtu, 5 Februari 2026</p>
                         <p><i class="far fa-clock"></i> Pukul 08.00 - 10.00 WIB</p>
                         <p><i class="fas fa-map-marker-alt"></i> Masjid At - Tanwir, Banjarmasin</p>
-                        <h2>Resepsi</h2>
-                        <p><i class="far fa-calendar-alt"></i> Sabtu, 5 Februari 2026</p>
-                        <p><i class="far fa-clock"></i> Pukul 11.00 - 14.00 WIB</p>
-                        <p><i class="fas fa-map-marker-alt"></i> Gedung Hafiyun, Banjarmasin</p>
                     </div>
-
-                    <div style="width: 100%; text-align: center; margin: 2rem 0;">
-                        <div class="countdown">
-                            <div class="countdown-item">
-                                <div class="countdown-number" id="days">00</div>
-                                <div class="countdown-label">Hari</div>
-                            </div>
-                            <div class="countdown-item">
-                                <div class="countdown-number" id="hours">00</div>
-                                <div class="countdown-label">Jam</div>
-                            </div>
-                            <div class="countdown-item">
-                                <div class="countdown-number" id="minutes">00</div>
-                                <div class="countdown-label">Menit</div>
-                            </div>
-                            <div class="countdown-item">
-                                <div class="countdown-number" id="seconds">00</div>
-                                <div class="countdown-label">Detik</div>
-                            </div>
+                
+                    <div class="countdown">
+                        <div class="countdown-item">
+                            <div class="countdown-number" id="days">00</div>
+                            <div class="countdown-label">Hari</div>
+                        </div>
+                        <div class="countdown-item">
+                            <div class="countdown-number" id="hours">00</div>
+                            <div class="countdown-label">Jam</div>
+                        </div>
+                        <div class="countdown-item">
+                            <div class="countdown-number" id="minutes">00</div>
+                            <div class="countdown-label">Menit</div>
+                        </div>
+                        <div class="countdown-item">
+                            <div class="countdown-number" id="seconds">00</div>
+                            <div class="countdown-label">Detik</div>
                         </div>
                     </div>
                 </div>
+            </div>
         </section>
 
         <!-- Gallery Section -->

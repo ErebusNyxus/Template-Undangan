@@ -304,7 +304,7 @@
         .section-title {
             font-family: 'Playfair Display', serif;
             font-size: clamp(1.8rem, 5vw, 2.5rem);
-            margin-bottom: 1.8rem;
+            margin-bottom: 1rem; /* Diperkecil margin-bottom */
             color: var(--secondary-color);
             position: relative;
             padding-bottom: 10px;
@@ -766,6 +766,7 @@
         .bank-account i {
             color: var(--primary-color);
             width: 20px;
+            text-align: center;
         }
 
         .copy-btn-container {
@@ -812,13 +813,14 @@
         }
 
         /* ========== LOCATION SECTION ========== */
+        /* PERBAIKAN: Menaikkan lokasi acara dan memperbesar peta */
         .location-info {
-            margin-bottom: 1rem;
+            margin: -10px 0 1rem 0; /* Margin negatif untuk menaikkan posisi */
             width: 100%;
         }
 
         .location-info h2 {
-            margin: 1rem 0;
+            margin: 0 0 1rem 0; /* Margin atas dihilangkan */
             color: var(--primary-color);
             font-size: 1.4rem;
         }
@@ -839,7 +841,7 @@
 
         .map-container {
             width: 100%;
-            height: 200px;
+            height: 280px; /* PERBAIKAN: Meninggikan peta */
             margin: 1rem 0;
             border-radius: var(--border-radius);
             overflow: hidden;
@@ -1092,7 +1094,7 @@
             }
 
             .map-container {
-                height: 180px;
+                height: 220px; /* PERBAIKAN: Meninggikan peta untuk mobile kecil */
             }
         }
 
@@ -1144,7 +1146,7 @@
             }
 
             .map-container {
-                height: 200px;
+                height: 240px; /* PERBAIKAN: Meninggikan peta untuk handphone */
             }
         }
 
@@ -1227,7 +1229,7 @@
             }
 
             .map-container {
-                height: 250px;
+                height: 280px; /* PERBAIKAN: Meninggikan peta untuk tablet */
             }
         }
 
@@ -1333,7 +1335,7 @@
             }
 
             .map-container {
-                height: 280px;
+                height: 320px; /* PERBAIKAN: Meninggikan peta untuk tablet besar */
             }
 
             .event-container {
@@ -1448,7 +1450,7 @@
             }
 
             .map-container {
-                height: 300px;
+                height: 350px; /* PERBAIKAN: Meninggikan peta untuk desktop */
             }
 
             .event-container {
@@ -1550,7 +1552,7 @@
             <div class="section-content">
                 <div class="event-container">
                     <div class="event-details">
-                        <h2>Akad Nikah</h2>
+                        <h2>Tanggal Acara</h2>
                         <p><i class="far fa-calendar-alt"></i> Sabtu, 5 Februari 2026</p>
                         <p><i class="far fa-clock"></i> Pukul 08.00 - 10.00 WIB</p>
                         <p><i class="fas fa-map-marker-alt"></i> Masjid At - Tanwir, Banjarmasin</p>
@@ -1640,12 +1642,14 @@
         <section id="location" class="section">
             <h1 class="section-title">Lokasi Acara</h1>
             <div class="section-content">
+                <!-- PERBAIKAN: Menambahkan margin negatif untuk menaikkan posisi -->
                 <div class="location-info">
-                    <h2>Resepsi Pernikahan</h2>
+                    <h2 style="margin-top: 0;">Resepsi Pernikahan</h2>
                     <p><i class="fas fa-map-marker-alt"></i> Grand Ballroom Hotel Santika</p>
                     <p><i class="fas fa-location-arrow"></i> Jl. Gatot Subroto No. 45, Jakarta Selatan</p>
                 </div>
 
+                <!-- PERBAIKAN: Memperbesar peta dengan menambah tinggi -->
                 <div class="map-container">
                     <iframe
                         src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.521260322283!2d106.81956135000001!3d-6.1947419999999945!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f5390917b759%3A0x6b462e9b5e9ee709!2sHotel%20Santika%20Premiere%20Hayam%20Wuruk%20Jakarta!5e0!3m2!1sen!2sid!4v1623830287593!5m2!1sen!2sid"

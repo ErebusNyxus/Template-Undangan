@@ -12,7 +12,7 @@
         href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap"
         rel="stylesheet">
 
-        <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
     <style>
         /* ========== VARIABEL & BASE STYLES ========== */
         :root {
@@ -27,7 +27,8 @@
             --shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
             --shadow-light: 0 2px 10px rgba(0, 0, 0, 0.05);
             --transition: all 0.3s ease;
-            --border-radius: 12px;
+            --border-radius: 20px;
+            --container-padding: 25px;
         }
 
         html {
@@ -44,6 +45,7 @@
             font-family: 'Poppins', sans-serif;
             overflow-x: hidden;
             margin: 0 auto;
+            width: 450px;
             min-height: 100vh;
             position: relative;
             color: var(--secondary-color);
@@ -157,8 +159,8 @@
 
         .open-btn {
             padding: 14px 35px;
-            background: var(--primary-color);
-            color: white;
+            background: #6c1902;
+            color: black;
             border: none;
             border-radius: 50px;
             font-size: 1.1rem;
@@ -167,7 +169,7 @@
             align-items: center;
             gap: 10px;
             transition: var(--transition);
-            box-shadow: 0 5px 20px rgba(255, 107, 107, 0.4);
+            box-shadow: 0 5px 20px rgba(72, 51, 51, 0.4);
             font-weight: 500;
             position: relative;
             overflow: hidden;
@@ -226,6 +228,7 @@
             padding: 20px;
             text-align: center;
             position: absolute;
+            background-color: #ffffff;
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
@@ -241,7 +244,11 @@
             background-image: url('https://i.pinimg.com/1200x/6e/53/2a/6e532a2a60bdf632b920842a70e16e46.jpg');
         }
 
-        #couple {
+        #groom {
+            background-image: url('https://i.pinimg.com/1200x/6e/53/2a/6e532a2a60bdf632b920842a70e16e46.jpg');
+        }
+
+        #bride {
             background-image: url('https://i.pinimg.com/1200x/6e/53/2a/6e532a2a60bdf632b920842a70e16e46.jpg');
         }
 
@@ -250,6 +257,10 @@
         }
 
         #event {
+            background-image: url('https://i.pinimg.com/1200x/6e/53/2a/6e532a2a60bdf632b920842a70e16e46.jpg');
+        }
+
+        #rsvp {
             background-image: url('https://i.pinimg.com/1200x/6e/53/2a/6e532a2a60bdf632b920842a70e16e46.jpg');
         }
 
@@ -303,10 +314,20 @@
             opacity: 1;
         }
 
+        .section-container {
+            background: #ffffff;
+            border-radius: var(--border-radius);
+            padding: var(--container-padding);
+            box-shadow: var(--shadow-light);
+            margin: 0 auto;
+            width: 100%;
+        }
+
         .section-title {
             font-family: 'Playfair Display', serif;
             font-size: clamp(1.8rem, 5vw, 2.5rem);
-            margin-bottom: 1rem; /* Diperkecil margin-bottom */
+            margin-bottom: 1rem;
+            /* Diperkecil margin-bottom */
             color: var(--secondary-color);
             position: relative;
             padding-bottom: 10px;
@@ -459,7 +480,7 @@
             color: var(--primary-color);
         }
 
-        /* ========== COUPLE SECTION ========== */
+        /* ========== GROOM & BRIDE SECTIONS ========== */
         .couple-info {
             width: 100%;
         }
@@ -678,6 +699,88 @@
             letter-spacing: 1px;
         }
 
+        /* ========== RSVP SECTION ========== */
+        .rsvp-form {
+            width: 100%;
+            margin: 1.5rem 0;
+        }
+
+        .form-group {
+            margin-bottom: 1.2rem;
+            text-align: left;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: var(--secondary-color);
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.95rem;
+            transition: var(--transition);
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(255, 107, 107, 0.2);
+        }
+
+        .form-group textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+
+        .submit-btn {
+            padding: 12px 30px;
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            font-size: 1rem;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            transition: var(--transition);
+            box-shadow: 0 5px 15px rgba(255, 107, 107, 0.3);
+            font-weight: 500;
+            margin-top: 0.5rem;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-3px);
+            background: var(--primary-dark);
+            box-shadow: 0 8px 20px rgba(255, 107, 107, 0.4);
+        }
+
+        .rsvp-message {
+            margin-top: 1.5rem;
+            padding: 1.5rem;
+            background: rgba(76, 175, 80, 0.1);
+            border-radius: var(--border-radius);
+            border-left: 4px solid #4CAF50;
+            display: none;
+        }
+
+        .rsvp-message p {
+            margin-bottom: 0;
+            color: #2E7D32;
+            font-weight: 500;
+        }
+
         /* ========== GALLERY SECTION ========== */
         .gallery-container {
             width: 100%;
@@ -686,7 +789,7 @@
 
         .square-gallery {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
+            grid-template-columns: repeat(3, 1fr);
             gap: 12px;
             width: 100%;
         }
@@ -817,12 +920,14 @@
         /* ========== LOCATION SECTION ========== */
         /* PERBAIKAN: Menaikkan lokasi acara dan memperbesar peta */
         .location-info {
-            margin: -10px 0 1rem 0; /* Margin negatif untuk menaikkan posisi */
+            margin: -10px 0 1rem 0;
+            /* Margin negatif untuk menaikkan posisi */
             width: 100%;
         }
 
         .location-info h2 {
-            margin: 0 0 1rem 0; /* Margin atas dihilangkan */
+            margin: 0 0 1rem 0;
+            /* Margin atas dihilangkan */
             color: var(--primary-color);
             font-size: 1.4rem;
         }
@@ -843,7 +948,8 @@
 
         .map-container {
             width: 100%;
-            height: 280px; /* PERBAIKAN: Meninggikan peta */
+            height: 280px;
+            /* PERBAIKAN: Meninggikan peta */
             margin: 1rem 0;
             border-radius: var(--border-radius);
             overflow: hidden;
@@ -1096,7 +1202,8 @@
             }
 
             .map-container {
-                height: 220px; /* PERBAIKAN: Meninggikan peta untuk mobile kecil */
+                height: 220px;
+                /* PERBAIKAN: Meninggikan peta untuk mobile kecil */
             }
         }
 
@@ -1148,319 +1255,37 @@
             }
 
             .map-container {
-                height: 240px; /* PERBAIKAN: Meninggikan peta untuk handphone */
+                height: 240px;
+                /* PERBAIKAN: Meninggikan peta untuk handphone */
             }
         }
 
-        /* Medium devices (tablets, 576px to 767px) */
-        @media (min-width: 576px) and (max-width: 767px) {
-            .cover {
-                background-image: url('https://i.pinimg.com/1200x/93/1f/9c/931f9cc4c1bf7a0f1ee7b4fdfa334c5d.jpg');
+        /* Medium devices and up (tablets, desktops) */
+        @media (min-width: 576px) {
+
+            /* Ensure mobile-first design consistency */
+            .main-content {
+                width: 100%;
+                max-width: 500px;
             }
 
             .section-content {
-                padding: 25px 0;
                 width: 90%;
+                max-width: 450px;
             }
 
             .bottom-nav {
-                padding: 12px 8px;
-            }
-
-            .music-player {
-                bottom: 105px;
-                right: 20px;
+                justify-content: center;
+                gap: 5px;
             }
 
             .nav-item {
                 min-width: 45px;
-                padding: 10px 12px;
+                padding: 10px;
             }
 
-            .nav-item span {
-                font-size: 11px;
-            }
-
-            .nav-item i {
-                font-size: 19px;
-            }
-
-            .main-content {
-                padding-bottom: 105px;
-            }
-
-            /* Tablet-specific section backgrounds */
-            #home {
-                background-image: url('https://i.pinimg.com/1200x/6e/53/2a/6e532a2a60bdf632b920842a70e16e46.jpg');
-            }
-
-            #couple {
-                background-image: url('https://i.pinimg.com/1200x/6e/53/2a/6e532a2a60bdf632b920842a70e16e46.jpg');
-            }
-
-            #quotes {
-                background-image: url('https://i.pinimg.com/1200x/6e/53/2a/6e532a2a60bdf632b920842a70e16e46.jpg');
-            }
-
-            #event {
-                background-image: url('https://i.pinimg.com/1200x/6e/53/2a/6e532a2a60bdf632b920842a70e16e46.jpg');
-            }
-
-            #gallery {
-                background-image: url('https://i.pinimg.com/1200x/6e/53/2a/6e532a2a60bdf632b920842a70e16e46.jpg');
-            }
-
-            #gift {
-                background-image: url('https://i.pinimg.com/1200x/6e/53/2a/6e532a2a60bdf632b920842a70e16e46.jpg');
-            }
-
-            #location {
-                background-image: url('https://i.pinimg.com/1200x/6e/53/2a/6e532a2a60bdf632b920842a70e16e46.jpg');
-            }
-
-            #thanks {
-                background-image: url('https://i.pinimg.com/1200x/6e/53/2a/6e532a2a60bdf632b920842a70e16e46.jpg');
-            }
-
-            /* Galeri untuk tablet */
             .square-gallery {
                 grid-template-columns: repeat(3, 1fr);
-                gap: 12px;
-                max-width: 500px;
-                margin: 0 auto;
-            }
-
-            .map-container {
-                height: 280px; /* PERBAIKAN: Meninggikan peta untuk tablet */
-            }
-        }
-
-        /* Large devices (tablets, 768px to 991px) */
-        @media (min-width: 768px) and (max-width: 991px) {
-            .cover {
-                background-image: url('https://i.pinimg.com/1200x/93/1f/9c/931f9cc4c1bf7a0f1ee7b4fdfa334c5d.jpg');
-            }
-
-            .cover p {
-                font-size: 1.1rem;
-                max-width: 70%;
-            }
-
-            .open-btn {
-                padding: 15px 40px;
-                font-size: 1.1rem;
-            }
-
-            .section-content {
-                padding: 30px 0;
-                width: 85%;
-            }
-
-            .bottom-nav {
-                padding: 14px 12px;
-                justify-content: space-between;
-                max-width: 90%;
-                margin: 0 auto;
-                left: 50%;
-                transform: translateX(-50%);
-                border-radius: 50px;
-                width: auto;
-            }
-
-            .music-player {
-                bottom: 115px;
-                right: 30px;
-                width: 55px;
-                height: 55px;
-            }
-
-            .music-player i {
-                font-size: 22px;
-            }
-
-            .nav-item {
-                min-width: 50px;
-                padding: 10px 15px;
-            }
-
-            .nav-item span {
-                font-size: 12px;
-            }
-
-            .nav-item i {
-                font-size: 20px;
-            }
-
-            .main-content {
-                padding-bottom: 110px;
-                max-width: 700px;
-            }
-
-            /* Large tablet-specific section backgrounds */
-            #home {
-                background-image: url('/image/BG-Flower-2.png');
-            }
-
-            #couple {
-                background-image: url('/image/BG-Flower-2.png');
-            }
-
-            #quotes {
-                background-image: url('/image/BG-Flower-2.png');
-            }
-
-            #event {
-                background-image: url('/image/BG-Flower-2.png');
-            }
-
-            #gallery {
-                background-image: url('/image/BG-Flower-2.png');
-            }
-
-            #gift {
-                background-image: url('/image/BG-Flower-2.png');
-            }
-
-            #location {
-                background-image: url('/image/BG-Flower-2.png');
-            }
-
-            #thanks {
-                background-image: url('/image/BG-Flower-2.png');
-            }
-
-            /* Galeri untuk tablet besar */
-            .square-gallery {
-                grid-template-columns: repeat(3, 1fr);
-                gap: 15px;
-                max-width: 550px;
-            }
-
-            .map-container {
-                height: 320px; /* PERBAIKAN: Meninggikan peta untuk tablet besar */
-            }
-
-            .event-container {
-                gap: 25px;
-            }
-        }
-
-        /* Extra large devices (desktops, 992px and up) */
-        @media (min-width: 992px) {
-            .cover {
-                background-image: url('https://i.pinimg.com/1200x/93/1f/9c/931f9cc4c1bf7a0f1ee7b4fdfa334c5d.jpg');
-            }
-
-            .main-content {
-                max-width: 900px;
-            }
-
-            .section-content {
-                padding: 35px 0;
-                max-width: 800px;
-                width: 80%;
-            }
-
-            .bottom-nav {
-                left: 50%;
-                transform: translateX(-50%);
-                width: auto;
-                max-width: 800px;
-                border-radius: 50px;
-                border: 1px solid rgba(0, 0, 0, 0.08);
-                padding: 15px 25px;
-            }
-
-            .music-player {
-                width: 60px;
-                height: 60px;
-                bottom: 125px;
-                right: 40px;
-            }
-
-            .music-player i {
-                font-size: 24px;
-            }
-
-            .nav-item {
-                min-width: 55px;
-                padding: 12px 18px;
-            }
-
-            .nav-item span {
-                font-size: 12px;
-            }
-
-            .nav-item i {
-                font-size: 22px;
-            }
-
-            .main-content {
-                padding-bottom: 120px;
-            }
-
-            /* Desktop-specific section backgrounds - MEMPERBESAR GAMBAR */
-            #home {
-                background-image: url('/image/BG-Flower-2.png');
-                background-size: 120% auto;
-            }
-
-            #couple {
-                background-image: url('/image/BG-Flower-2.png');
-                background-size: 120% auto;
-            }
-
-            #quotes {
-                background-image: url('/image/BG-Flower-2.png');
-                background-size: 120% auto;
-            }
-
-            #event {
-                background-image: url('/image/BG-Flower-2.png');
-                background-size: 120% auto;
-            }
-
-            #gallery {
-                background-image: url('/image/BG-Flower-2.png');
-                background-size: 120% auto;
-            }
-
-            #gift {
-                background-image: url('/image/BG-Flower-2.png');
-                background-size: 120% auto;
-            }
-
-            #location {
-                background-image: url('/image/BG-Flower-2.png');
-                background-size: 120% auto;
-            }
-
-            #thanks {
-                background-image: url('/image/BG-Flower-2.png');
-                background-size: 120% auto;
-            }
-
-            /* Galeri untuk desktop - diatur agar tidak overflow */
-            .square-gallery {
-                grid-template-columns: repeat(3, 1fr);
-                gap: 15px;
-                max-width: 500px;
-                margin: 0 auto;
-                max-height: 400px;
-                overflow-y: auto;
-                padding: 5px;
-            }
-
-            .map-container {
-                height: 350px; /* PERBAIKAN: Meninggikan peta untuk desktop */
-            }
-
-            .event-container {
-                gap: 30px;
-            }
-
-            .event-details {
-                padding: 1.8rem;
             }
         }
 
@@ -1509,74 +1334,131 @@
     <div class="main-content" id="mainContent">
         <!-- Home Section -->
         <section id="home" class="section active">
-            <h1 class="section-title">The Wedding of</h1>
             <div class="section-content">
-                <div class="couple-names">
-                    <span>Arka Annur</span>
-                    <span class="amp">&</span>
-                    <span>Setya Ayu</span>
+                <div class="section-container">
+                    <img src="/ornaments/Pillar-Ornament.png" alt=""
+                        style="width: 80px; height: 230px; display: block; margin: 0 auto 20px auto; position: absolute; left: 1px;">
+                    <img src="/ornaments/Pillar-Ornament.png" alt=""
+                        style="width: 80px; height: 230px; display: block; margin: 0 auto 20px auto; position: absolute; right: 1px; transform: scaleX(-1);">
+                    <h1 class="section-title">The Wedding of</h1>
+                    <div class="couple-names">
+                        <span>Arka Annur</span>
+                        <span class="amp">&</span>
+                        <span>Setya Ayu</span>
+                    </div>
+                    <p>Kami mengundang Anda untuk berpartisipasi dalam kebahagiaan kami</p>
                 </div>
-                <p>Kami mengundang Anda untuk berpartisipasi dalam kebahagiaan kami</p>
             </div>
         </section>
 
-        <!-- Couple Section -->
-        <section id="couple" class="section">
-            <h1 class="section-title">Mempelai</h1>
+        <!-- Groom Section -->
+        <section id="groom" class="section">
             <div class="section-content">
-                <div class="couple-info">
-                    <h2>Arka Annur</h2>
-                    <p>Putra pertama dari Bapak Azhar dan Ibu Siska</p>
-                    <div class="divider">
-                        <div class="divider-line"></div>
-                        <i class="fas fa-heart"></i>
-                        <div class="divider-line"></div>
+                <div class="section-container">
+                    <h1 class="section-title">Mempelai Pria</h1>
+                    <div class="couple-info">
+                        <h2>Arka Annur</h2>
+                        <p>Putra pertama dari Bapak Azhar dan Ibu Siska</p>
                     </div>
-                    <h2>Setya Ayu</h2>
-                    <p>Putri kedua dari Bapak Kusnuri dan Ibu Sulastri</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Bride Section -->
+        <section id="bride" class="section">
+            <div class="section-content">
+                <div class="section-container">
+                    <h1 class="section-title">Mempelai Wanita</h1>
+                    <div class="couple-info">
+                        <h2>Setya Ayu</h2>
+                        <p>Putri kedua dari Bapak Kusnuri dan Ibu Sulastri</p>
+                    </div>
                 </div>
             </div>
         </section>
 
         <!-- Quotes Section -->
         <section id="quotes" class="section">
-            <h1 class="section-title">Quotes Cinta</h1>
             <div class="section-content">
-                <p class="quote-text">"Dan di antara tanda-tanda kekuasaan-Nya ialah Dia menciptakan untukmu pasangan
-                    hidup dari jenismu sendiri, supaya kamu dapat ketenangan kepadanya."</p>
-                <p class="quote-source">(QS. Ar-Rum: 21)</p>
+                <div class="section-container">
+                    <h1 class="section-title">Quotes Cinta</h1>
+                    <p class="quote-text">"Dan di antara tanda-tanda kekuasaan-Nya ialah Dia menciptakan untukmu
+                        pasangan
+                        hidup dari jenismu sendiri, supaya kamu dapat ketenangan kepadanya."</p>
+                    <p class="quote-source">(QS. Ar-Rum: 21)</p>
+                </div>
             </div>
         </section>
 
         <!-- Event Section -->
         <section id="event" class="section">
-            <h1 class="section-title">Akad & Resepsi</h1>
             <div class="section-content">
-                <div class="event-container">
-                    <div class="event-details">
-                        <h2>Tanggal Acara</h2>
-                        <p><i class="far fa-calendar-alt"></i> Sabtu, 5 Februari 2026</p>
-                        <p><i class="far fa-clock"></i> Pukul 08.00 - 10.00 WIB</p>
-                        <p><i class="fas fa-map-marker-alt"></i> Masjid At - Tanwir, Banjarmasin</p>
+                <div class="section-container">
+                    <h1 class="section-title">Akad & Resepsi</h1>
+                    <div class="event-container">
+                        <div class="event-details">
+                            <h2>Tanggal Acara</h2>
+                            <p><i class="far fa-calendar-alt"></i> Sabtu, 5 Februari 2026</p>
+                            <p><i class="far fa-clock"></i> Pukul 08.00 - 10.00 WIB</p>
+                            <p><i class="fas fa-map-marker-alt"></i> Masjid At - Tanwir, Banjarmasin</p>
+                        </div>
+
+                        <div class="countdown">
+                            <div class="countdown-item">
+                                <div class="countdown-number" id="days">00</div>
+                                <div class="countdown-label">Hari</div>
+                            </div>
+                            <div class="countdown-item">
+                                <div class="countdown-number" id="hours">00</div>
+                                <div class="countdown-label">Jam</div>
+                            </div>
+                            <div class="countdown-item">
+                                <div class="countdown-number" id="minutes">00</div>
+                                <div class="countdown-label">Menit</div>
+                            </div>
+                            <div class="countdown-item">
+                                <div class="countdown-number" id="seconds">00</div>
+                                <div class="countdown-label">Detik</div>
+                            </div>
+                        </div>
                     </div>
-                
-                    <div class="countdown">
-                        <div class="countdown-item">
-                            <div class="countdown-number" id="days">00</div>
-                            <div class="countdown-label">Hari</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- RSVP Section -->
+        <section id="rsvp" class="section">
+            <div class="section-content">
+                <div class="section-container">
+                    <h1 class="section-title">Konfirmasi Kehadiran</h1>
+                    <div class="rsvp-form">
+                        <div class="form-group">
+                            <label for="name">Nama Lengkap</label>
+                            <input type="text" id="name" placeholder="Masukkan nama lengkap">
                         </div>
-                        <div class="countdown-item">
-                            <div class="countdown-number" id="hours">00</div>
-                            <div class="countdown-label">Jam</div>
+                        <div class="form-group">
+                            <label for="attendance">Konfirmasi Kehadiran</label>
+                            <select id="attendance">
+                                <option value="">Pilih opsi</option>
+                                <option value="hadir">Hadir</option>
+                                <option value="tidak-hadir">Tidak Hadir</option>
+                            </select>
                         </div>
-                        <div class="countdown-item">
-                            <div class="countdown-number" id="minutes">00</div>
-                            <div class="countdown-label">Menit</div>
+                        <div class="form-group">
+                            <label for="guest-count">Jumlah Tamu</label>
+                            <input type="number" id="guest-count" min="1" value="1" placeholder="Jumlah tamu">
                         </div>
-                        <div class="countdown-item">
-                            <div class="countdown-number" id="seconds">00</div>
-                            <div class="countdown-label">Detik</div>
+                        <div class="form-group">
+                            <label for="message">Pesan (opsional)</label>
+                            <textarea id="message" placeholder="Tulis pesan atau doa untuk mempelai"></textarea>
                         </div>
+                        <button class="submit-btn" onclick="submitRSVP()">
+                            <i class="fas fa-paper-plane"></i> Kirim Konfirmasi
+                        </button>
+                    </div>
+                    <div class="rsvp-message" id="rsvpMessage">
+                        <p><i class="fas fa-check-circle"></i> Terima kasih! Konfirmasi kehadiran Anda telah terkirim.
+                        </p>
                     </div>
                 </div>
             </div>
@@ -1584,37 +1466,39 @@
 
         <!-- Gallery Section -->
         <section id="gallery" class="section">
-            <h1 class="section-title">Galeri Kami</h1>
             <div class="section-content">
-                <div class="gallery-container">
-                    <div class="square-gallery">
-                        <div class="gallery-item" onclick="openModal('/image/Gal-1.jpg', this)">
-                            <img src="/image/Gal-1.jpg" alt="Moment 1">
-                        </div>
-                        <div class="gallery-item" onclick="openModal('/image/Gal-8.jpg', this)">
-                            <img src="/image/Gal-8.jpg" alt="Moment 2">
-                        </div>
-                        <div class="gallery-item" onclick="openModal('/image/Gal-3.jpg', this)">
-                            <img src="/image/Gal-3.jpg" alt="Moment 3">
-                        </div>
-                        <div class="gallery-item" onclick="openModal('/image/Gal-4.jpg', this)">
-                            <img src="/image/Gal-4.jpg" alt="Moment 4">
-                        </div>
-                        <div class="gallery-item" onclick="openModal('/image/Gal-5.jpg', this)">
-                            <img src="/image/Gal-5.jpg" alt="Moment 5">
-                        </div>
-                        <div class="gallery-item" onclick="openModal('/image/Gal-6.jpg', this)">
-                            <img src="/image/Gal-6.jpg" alt="Moment 6">
-                        </div>
-                        <!-- Menambahkan 3 gambar baru -->
-                        <div class="gallery-item" onclick="openModal('/image/Gal-7.jpg', this)">
-                            <img src="/image/Gal-7.jpg" alt="Moment 7">
-                        </div>
-                        <div class="gallery-item" onclick="openModal('/image/Gal-9.jpg', this)">
-                            <img src="/image/Gal-9.jpg" alt="Moment 8">
-                        </div>
-                        <div class="gallery-item" onclick="openModal('/image/Gal-2.jpg', this)">
-                            <img src="/image/Gal-2.jpg" alt="Moment 9">
+                <div class="section-container">
+                    <h1 class="section-title">Galeri Kami</h1>
+                    <div class="gallery-container">
+                        <div class="square-gallery">
+                            <div class="gallery-item" onclick="openModal('/image/Gal-1.jpg', this)">
+                                <img src="/image/Gal-1.jpg" alt="Moment 1">
+                            </div>
+                            <div class="gallery-item" onclick="openModal('/image/Gal-8.jpg', this)">
+                                <img src="/image/Gal-8.jpg" alt="Moment 2">
+                            </div>
+                            <div class="gallery-item" onclick="openModal('/image/Gal-3.jpg', this)">
+                                <img src="/image/Gal-3.jpg" alt="Moment 3">
+                            </div>
+                            <div class="gallery-item" onclick="openModal('/image/Gal-4.jpg', this)">
+                                <img src="/image/Gal-4.jpg" alt="Moment 4">
+                            </div>
+                            <div class="gallery-item" onclick="openModal('/image/Gal-5.jpg', this)">
+                                <img src="/image/Gal-5.jpg" alt="Moment 5">
+                            </div>
+                            <div class="gallery-item" onclick="openModal('/image/Gal-6.jpg', this)">
+                                <img src="/image/Gal-6.jpg" alt="Moment 6">
+                            </div>
+                            <!-- Menambahkan 3 gambar baru -->
+                            <div class="gallery-item" onclick="openModal('/image/Gal-7.jpg', this)">
+                                <img src="/image/Gal-7.jpg" alt="Moment 7">
+                            </div>
+                            <div class="gallery-item" onclick="openModal('/image/Gal-9.jpg', this)">
+                                <img src="/image/Gal-9.jpg" alt="Moment 8">
+                            </div>
+                            <div class="gallery-item" onclick="openModal('/image/Gal-2.jpg', this)">
+                                <img src="/image/Gal-2.jpg" alt="Moment 9">
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -1623,59 +1507,65 @@
 
         <!-- Digital Envelope/Gift Section -->
         <section id="gift" class="section">
-            <h1 class="section-title">Amplop Digital</h1>
             <div class="section-content">
-                <p>Jika Anda ingin memberikan hadiah, kami menerima transfer ke:</p>
-                <div class="bank-account">
-                    <h3>Bank Mandiri</h3>
-                    <p><i class="fas fa-credit-card"></i> <span id="account-number">310021309383</span></p>
-                    <p><i class="fas fa-user"></i> a.n. Arka Annur & Setya Ayu</p>
-                    <div class="copy-btn-container">
-                        <button class="copy-btn" onclick="copyAccountNumber()">
-                            <i class="fas fa-copy"></i> Salin Nomor Rekening
-                        </button>
+                <div class="section-container">
+                    <h1 class="section-title">Amplop Digital</h1>
+                    <p>Jika Anda ingin memberikan hadiah, kami menerima transfer ke:</p>
+                    <div class="bank-account">
+                        <h3>Bank Mandiri</h3>
+                        <p><i class="fas fa-credit-card"></i> <span id="account-number">310021309383</span></p>
+                        <p><i class="fas fa-user"></i> a.n. Arka Annur & Setya Ayu</p>
+                        <div class="copy-btn-container">
+                            <button class="copy-btn" onclick="copyAccountNumber()">
+                                <i class="fas fa-copy"></i> Salin Nomor Rekening
+                            </button>
+                        </div>
                     </div>
+                    <p style="margin-top: 1.5rem;">Terima kasih atas kebaikan dan doa restu Anda.</p>
                 </div>
-                <p style="margin-top: 1.5rem;">Terima kasih atas kebaikan dan doa restu Anda.</p>
             </div>
         </section>
 
         <!-- Location Section -->
         <section id="location" class="section">
-            <h1 class="section-title">Lokasi Acara</h1>
             <div class="section-content">
-                <!-- PERBAIKAN: Menambahkan margin negatif untuk menaikkan posisi -->
-                <div class="location-info">
-                    <h2 style="margin-top: 0;">Resepsi Pernikahan</h2>
-                    <p><i class="fas fa-map-marker-alt"></i> Grand Ballroom Hotel Santika</p>
-                    <p><i class="fas fa-location-arrow"></i> Jl. Gatot Subroto No. 45, Jakarta Selatan</p>
-                </div>
+                <div class="section-container">
+                    <h1 class="section-title">Lokasi Acara</h1>
+                    <!-- PERBAIKAN: Menambahkan margin negatif untuk menaikkan posisi -->
+                    <div class="location-info">
+                        <h2 style="margin-top: 0;">Resepsi Pernikahan</h2>
+                        <p><i class="fas fa-map-marker-alt"></i> Grand Ballroom Hotel Santika</p>
+                        <p><i class="fas fa-location-arrow"></i> Jl. Gatot Subroto No. 45, Jakarta Selatan</p>
+                    </div>
 
-                <!-- PERBAIKAN: Memperbesar peta dengan menambah tinggi -->
-                <div class="map-container">
-                    <iframe
-                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.521260322283!2d106.81956135000001!3d-6.1947419999999945!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f5390917b759%3A0x6b462e9b5e9ee709!2sHotel%20Santika%20Premiere%20Hayam%20Wuruk%20Jakarta!5e0!3m2!1sen!2sid!4v1623830287593!5m2!1sen!2sid"
-                        width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
-                    <div class="map-overlay"></div>
-                </div>
+                    <!-- PERBAIKAN: Memperbesar peta dengan menambah tinggi -->
+                    <div class="map-container">
+                        <iframe
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.521260322283!2d106.81956135000001!3d-6.1947419999999945!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f5390917b759%3A0x6b462e9b5e9ee709!2sHotel%20Santika%20Premiere%20Hayam%20Wuruk%20Jakarta!5e0!3m2!1sen!2sid!4v1623830287593!5m2!1sen!2sid"
+                            width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                        <div class="map-overlay"></div>
+                    </div>
 
-                <div style="text-align: center; margin-top: 1rem;">
-                    <button class="direction-btn"
-                        onclick="window.open('https://maps.google.com?q=Hotel+Santika+Premiere+Hayam+Wuruk+Jakarta')">
-                        <i class="fas fa-directions"></i> Petunjuk Arah
-                    </button>
+                    <div style="text-align: center; margin-top: 1rem;">
+                        <button class="direction-btn"
+                            onclick="window.open('https://maps.google.com?q=Hotel+Santika+Premiere+Hayam+Wuruk+Jakarta')">
+                            <i class="fas fa-directions"></i> Petunjuk Arah
+                        </button>
+                    </div>
                 </div>
             </div>
         </section>
 
         <!-- Thank You Section -->
         <section id="thanks" class="section">
-            <h1 class="section-title">Terima Kasih</h1>
             <div class="section-content">
-                <div class="thank-you">
-                    <p>Atas kehadiran dan doa restunya, kami mengucapkan terima kasih yang sebesar-besarnya.</p>
-                    <p>Wassalamu'alaikum Warahmatullahi Wabarakatuh</p>
-                    <p>Arka & Ayu</p>
+                <div class="section-container">
+                    <h1 class="section-title">Terima Kasih</h1>
+                    <div class="thank-you">
+                        <p>Atas kehadiran dan doa restunya, kami mengucapkan terima kasih yang sebesar-besarnya.</p>
+                        <p>Wassalamu'alaikum Warahmatullahi Wabarakatuh</p>
+                        <p>Arka & Ayu</p>
+                    </div>
                 </div>
             </div>
         </section>
@@ -1696,9 +1586,13 @@
             <i class="fas fa-home"></i>
             <span>Home</span>
         </a>
-        <a href="#couple" class="nav-item" data-section="couple">
-            <i class="fas fa-heart"></i>
-            <span>Couple</span>
+        <a href="#groom" class="nav-item" data-section="groom">
+            <i class="fas fa-male"></i>
+            <span>Groom</span>
+        </a>
+        <a href="#bride" class="nav-item" data-section="bride">
+            <i class="fas fa-female"></i>
+            <span>Bride</span>
         </a>
         <a href="#quotes" class="nav-item" data-section="quotes">
             <i class="fas fa-quote-right"></i>
@@ -1707,6 +1601,10 @@
         <a href="#event" class="nav-item" data-section="event">
             <i class="fas fa-calendar-alt"></i>
             <span>Event</span>
+        </a>
+        <a href="#rsvp" class="nav-item" data-section="rsvp">
+            <i class="fas fa-edit"></i>
+            <span>RSVP</span>
         </a>
         <a href="#gallery" class="nav-item" data-section="gallery">
             <i class="fas fa-images"></i>
@@ -1924,6 +1822,38 @@
 
         setInterval(updateCountdown, 1000);
         updateCountdown();
+
+        // ========== RSVP FORM FUNCTIONALITY ==========
+        function submitRSVP() {
+            const name = document.getElementById('name').value;
+            const attendance = document.getElementById('attendance').value;
+            const guestCount = document.getElementById('guest-count').value;
+            const message = document.getElementById('message').value;
+
+            // Simple validation
+            if (!name || !attendance) {
+                alert('Mohon isi nama lengkap dan konfirmasi kehadiran');
+                return;
+            }
+
+            // In a real implementation, you would send this data to a server
+            console.log('RSVP Submitted:', { name, attendance, guestCount, message });
+
+            // Show success message
+            const rsvpMessage = document.getElementById('rsvpMessage');
+            rsvpMessage.style.display = 'block';
+
+            // Clear form
+            document.getElementById('name').value = '';
+            document.getElementById('attendance').value = '';
+            document.getElementById('guest-count').value = '1';
+            document.getElementById('message').value = '';
+
+            // Hide message after 5 seconds
+            setTimeout(() => {
+                rsvpMessage.style.display = 'none';
+            }, 5000);
+        }
 
         // ========== GALLERY MODAL ==========
         let currentImageIndex = 0;

@@ -34,6 +34,93 @@
             box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
         }
 
+        /* Overlay Home - Diperbarui dengan transparansi lebih */
+        .home-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(143, 143, 143, 0.7), rgba(0, 0, 0, 0.7)), url('/image/Gal-2.jpg') center/cover no-repeat;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            z-index: 1000;
+            transition: transform 1.2s cubic-bezier(0.65, 0.05, 0.36, 1), opacity 1.2s ease;
+            padding: 20px;
+        }
+
+        /* Konten overlay dengan transparansi lebih */
+        .overlay-content {
+            background: rgba(255, 255, 255, 0.85); /* Diubah dari 0.9 menjadi 0.85 */
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(255, 248, 248, 0.15);
+            max-width: 350px;
+            animation: fadeIn 1.5s ease;
+        }
+
+        .overlay-title {
+            font-size: 28px;
+            color: #ff4081;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .overlay-subtitle {
+            font-size: 18px;
+            color: #666;
+            margin-bottom: 20px;
+        }
+
+        .couple-names {
+            font-size: 22px;
+            color: #333;
+            margin-bottom: 25px;
+            font-weight: 500;
+        }
+
+        .open-invitation-btn {
+            background: linear-gradient(45deg, #ff4081, #e91e63);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 50px;
+            font-size: 18px;
+            font-weight: 500;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(233, 30, 99, 0.4);
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 20px auto;
+        }
+
+        .open-invitation-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(233, 30, 99, 0.5);
+        }
+
+        .open-invitation-btn i {
+            margin-left: 10px;
+            transition: transform 0.3s ease;
+        }
+
+        .open-invitation-btn:hover i {
+            transform: translateX(5px);
+        }
+
+        .instruction {
+            margin-top: 20px;
+            color: #666;
+            font-size: 14px;
+            animation: pulse 2s infinite;
+        }
+
+        /* Section styling */
         .section {
             display: flex;
             flex-direction: column;
@@ -116,6 +203,14 @@
             border-top: 1px solid #ddd;
             z-index: 1000;
             box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.05);
+            transform: translateY(100px);
+            opacity: 0;
+            transition: transform 0.8s ease, opacity 0.8s ease;
+        }
+
+        .bottom-nav.visible {
+            transform: translateY(0);
+            opacity: 1;
         }
 
         .bottom-nav a {
@@ -148,7 +243,33 @@
             font-size: 24px;
             margin: 10px;
         }
+        
+        /* Animasi */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
 
+        @keyframes pulse {
+            0% {
+                opacity: 0.7;
+            }
+            50% {
+                opacity: 1;
+            }
+            100% {
+                opacity: 0.7;
+            }
+        }
+
+        /* Media Queries untuk Tablet dan Desktop */
+        /* Tablet (768px dan lebih besar) */
         @media (min-width: 768px) {
             .container {
                 max-width: 800px;
@@ -161,11 +282,70 @@
             .bottom-nav a i {
                 font-size: 20px;
             }
+            
+            /* Background overlay khusus untuk tablet dengan transparansi lebih */
+            .home-overlay {
+                background: linear-gradient(135deg, rgba(143, 143, 143, 0.6), rgba(0, 0, 0, 0.6)), url('/image/Dekstop.png') center/cover no-repeat;
+            }
+            
+            .overlay-content {
+                max-width: 450px;
+                padding: 40px;
+                opacity: 0.9; /* Sedikit lebih transparan untuk tablet */
+            }
+            
+            .overlay-title {
+                font-size: 32px;
+            }
+            
+            .couple-names {
+                font-size: 26px;
+            }
+        }
+
+        /* Desktop (1024px dan lebih besar) */
+        @media (min-width: 1024px) {
+            /* Background overlay khusus untuk desktop dengan transparansi lebih */
+            .home-overlay {
+                background: linear-gradient(135deg, rgba(143, 143, 143, 0.5), rgba(0, 0, 0, 0.5)), url('/image/Dekstop.png') center/cover no-repeat;
+            }
+            
+            .overlay-content {
+                max-width: 500px;
+                padding: 50px;
+                opacity: 0.95; /* Sedikit lebih transparan untuk desktop */
+            }
+            
+            .overlay-title {
+                font-size: 36px;
+            }
+            
+            .couple-names {
+                font-size: 28px;
+            }
+            
+            .open-invitation-btn {
+                padding: 18px 35px;
+                font-size: 20px;
+            }
         }
     </style>
 </head>
 
 <body>
+    <!-- Overlay Home -->
+    <div class="home-overlay" id="homeOverlay">
+        <div class="overlay-content">
+            <h1 class="overlay-title">Undangan Pernikahan</h1>
+            <p class="overlay-subtitle">Kami Mengundang Anda Untuk Hadir</p>
+            <div class="couple-names">Sarah &amp; Rizal</div>
+            <button class="open-invitation-btn" id="openInvitationBtn">
+                Buka Undangan <i class="fa-solid fa-envelope"></i>
+            </button>
+
+        </div>
+    </div>
+
     <div class="container">
         <!-- Sections -->
         <section id="home" class="section active">
@@ -213,6 +393,21 @@
             <p>Sabtu, 12 Juni 2023</p>
             <p>Pukul 10.00 WIB - Selesai</p>
             <p>Gedung Serba Guna, Jl. Merdeka No. 123</p>
+        </section>
+
+        <section id="rsvp" class="section">
+            <h1>Konfirmasi Kehadiran</h1>
+            <form id="rsvpForm">
+                <input type="text" placeholder="Nama Lengkap" required>
+                <select required>
+                    <option value="">Pilih Kehadiran</option>
+                    <option value="hadir">Hadir</option>
+                    <option value="tidak">Tidak Hadir</option>
+                </select>
+                <input type="number" placeholder="Jumlah Orang" min="1">
+                <button type="submit"><i class="fa-solid fa-envelope"></i> Kirim Konfirmasi</button>
+            </form>
+            <p id="rsvpMessage" style="margin-top: 15px;"></p>
         </section>
 
         <section id="gallery" class="section">
@@ -263,42 +458,46 @@
             <p>Semoga kebahagiaan selalu menyertai kita semua.</p>
         </section>
 
-        <section id="rsvp" class="section">
-            <h1>Konfirmasi Kehadiran</h1>
-            <form id="rsvpForm">
-                <input type="text" placeholder="Nama Lengkap" required>
-                <select required>
-                    <option value="">Pilih Kehadiran</option>
-                    <option value="hadir">Hadir</option>
-                    <option value="tidak">Tidak Hadir</option>
-                </select>
-                <input type="number" placeholder="Jumlah Orang" min="1">
-                <button type="submit"><i class="fa-solid fa-envelope"></i> Kirim Konfirmasi</button>
-            </form>
-            <p id="rsvpMessage" style="margin-top: 15px;"></p>
-        </section>
-
         <!-- Bottom Navbar -->
-        <nav class="bottom-nav">
+        <nav class="bottom-nav" id="bottomNav">
             <a href="#home" data-index="0" class="active"><i class="fa-solid fa-house"></i>Home</a>
             <a href="#quotes" data-index="1"><i class="fa-solid fa-quote-left"></i>Quotes</a>
             <a href="#groom" data-index="2"><i class="fa-solid fa-ring"></i>Groom</a>
             <a href="#bride" data-index="3"><i class="fa-solid fa-ring"></i>Bride</a>
             <a href="#event" data-index="4"><i class="fa-solid fa-calendar-alt"></i>Event</a>
-            <a href="#rsvp" data-index="9"><i class="fa-solid fa-envelope"></i>RSVP</a>
-            <a href="#gallery" data-index="5"><i class="fa-solid fa-image"></i>Gallery</a>
-            <a href="#wallet" data-index="6"><i class="fa-solid fa-wallet"></i>Wallet</a>
-            <a href="#maps" data-index="7"><i class="fa-solid fa-map"></i>Maps</a>
-            <a href="#thanks" data-index="8"><i class="fa-solid fa-hands"></i>Thanks</a>
+            <a href="#rsvp" data-index="5"><i class="fa-solid fa-envelope"></i>RSVP</a>
+            <a href="#gallery" data-index="6"><i class="fa-solid fa-image"></i>Gallery</a>
+            <a href="#wallet" data-index="7"><i class="fa-solid fa-wallet"></i>Wallet</a>
+            <a href="#maps" data-index="8"><i class="fa-solid fa-map"></i>Maps</a>
+            <a href="#thanks" data-index="9"><i class="fa-solid fa-hands"></i>Thanks</a>
         </nav>
     </div>
 
     <script>
+        const homeOverlay = document.getElementById('homeOverlay');
+        const openInvitationBtn = document.getElementById('openInvitationBtn');
+        const bottomNav = document.getElementById('bottomNav');
         const sections = document.querySelectorAll('.section');
         const navLinks = document.querySelectorAll('.bottom-nav a');
         let currentIndex = 0;
         let isScrolling = false;
         let scrollTimeout;
+
+        // Fungsi untuk membuka undangan
+        function openInvitation() {
+            // Animasi overlay menghilang dengan efek slide ke atas
+            homeOverlay.style.transform = 'translateY(-100%)';
+            homeOverlay.style.opacity = '0';
+            
+            // Tampilkan navbar dengan animasi
+            setTimeout(() => {
+                bottomNav.classList.add('visible');
+                homeOverlay.style.display = 'none';
+            }, 800);
+            
+            // Aktifkan section pertama
+            showSection(0);
+        }
 
         // Fungsi untuk menampilkan section berdasarkan index
         function showSection(index) {
@@ -342,6 +541,9 @@
                 isScrolling = false;
             }, 800);
         }
+
+        // Event listener untuk tombol buka undangan
+        openInvitationBtn.addEventListener('click', openInvitation);
 
         // Event listener untuk navbar
         navLinks.forEach(link => {
